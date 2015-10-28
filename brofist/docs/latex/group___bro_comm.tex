@@ -1,0 +1,90 @@
+\hypertarget{group___bro_comm}{
+\section{BROFist Internal Communication Protocol}
+\label{group___bro_comm}\index{BROFist Internal Communication Protocol@{BROFist Internal Communication Protocol}}
+}
+
+
+This module controls the internal communication (the one done via internal sockets).  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{group___bro_comm_ga7fa314c91710130869c2d4ba31f4ac77}{bro\_\-start\_\-server} (int $\ast$server\_\-sock, int $\ast$client\_\-sock)
+\begin{DoxyCompactList}\small\item\em Start the server by making it listen on a local socket for a communication by the client. \item\end{DoxyCompactList}\item 
+int \hyperlink{group___bro_comm_ga2f7cfb1ee0291e76edde0288f71dc02c}{bro\_\-server\_\-fist} (const \hyperlink{structbro__fist__t}{bro\_\-fist\_\-t} $\ast$input\_\-fist, \hyperlink{structbro__fist__t}{bro\_\-fist\_\-t} $\ast$out\_\-fist, int scicos\_\-sock, int spam\_\-sock)
+\begin{DoxyCompactList}\small\item\em bro\_\-server\_\-fist is the function that receives the Operational Fists from the \item\end{DoxyCompactList}\item 
+int \hyperlink{group___bro_comm_ga1686032e099ddba351e93ec6ec6f6b4f}{bro\_\-stop\_\-server} (int server\_\-sock, int client\_\-sock)
+\begin{DoxyCompactList}\small\item\em Stop the server, normally called on finalization. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This module controls the internal communication (the one done via internal sockets). This communication may be between the BROFist server and SciCos blocks or another \char`\"{}ad hoc\char`\"{} client. It is achieved via the usage of UNIX sockets and some other powerful tricks. Please refer to the man page of {\ttfamily socket}. 
+
+\subsection{Function Documentation}
+\hypertarget{group___bro_comm_ga2f7cfb1ee0291e76edde0288f71dc02c}{
+\index{BroComm@{BroComm}!bro\_\-server\_\-fist@{bro\_\-server\_\-fist}}
+\index{bro\_\-server\_\-fist@{bro\_\-server\_\-fist}!BroComm@{BroComm}}
+\subsubsection[{bro\_\-server\_\-fist}]{\setlength{\rightskip}{0pt plus 5cm}int bro\_\-server\_\-fist (const {\bf bro\_\-fist\_\-t} $\ast$ {\em input\_\-fist}, \/  {\bf bro\_\-fist\_\-t} $\ast$ {\em out\_\-fist}, \/  int {\em scicos\_\-sock}, \/  int {\em spam\_\-sock})}}
+\label{group___bro_comm_ga2f7cfb1ee0291e76edde0288f71dc02c}
+
+
+bro\_\-server\_\-fist is the function that receives the Operational Fists from the 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em input\_\-fist$\ast$}]Array containing the operations to send to the SPAM. \item[{\em output\_\-fist$\ast$}]Array containing the responses for the sent operations. \item[{\em scicos\_\-sock}]Socket Descriptor for the client connection. Normally is the {\ttfamily client\_\-sock} returned by \hyperlink{group___bro_comm_ga7fa314c91710130869c2d4ba31f4ac77}{bro\_\-start\_\-server()}. \item[{\em spam\_\-sock}]Socket Descriptor for the SPAM connection. Normally is the {\ttfamily spam\_\-sock} returned by the \hyperlink{group___bro_b_t_ga3782811f033f57a69b10be399da70207}{bro\_\-bt\_\-connect\_\-device()}. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result of the operation 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em 0}]if the connection was succesful. \item[{\em -\/1}]if there were problems in the connection. \end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+If there were errors with the connection then {\ttfamily errno} will be set accordingly to the return values listed on the {\ttfamily \char`\"{}man 2
+        connect\char`\"{}} page. 
+\end{DoxyNote}
+\hypertarget{group___bro_comm_ga7fa314c91710130869c2d4ba31f4ac77}{
+\index{BroComm@{BroComm}!bro\_\-start\_\-server@{bro\_\-start\_\-server}}
+\index{bro\_\-start\_\-server@{bro\_\-start\_\-server}!BroComm@{BroComm}}
+\subsubsection[{bro\_\-start\_\-server}]{\setlength{\rightskip}{0pt plus 5cm}int bro\_\-start\_\-server (int $\ast$ {\em server\_\-sock}, \/  int $\ast$ {\em client\_\-sock})}}
+\label{group___bro_comm_ga7fa314c91710130869c2d4ba31f4ac77}
+
+
+Start the server by making it listen on a local socket for a communication by the client. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em server\_\-sock}]Server's socket descriptor. This value is used only at the end (please refer to \hyperlink{group___bro_comm_ga1686032e099ddba351e93ec6ec6f6b4f}{bro\_\-stop\_\-server()}) to close the socket. \item[{\em client\_\-sock}]Client's socket (Scicos or another application) descriptor. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result of the operation 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em 0}]if the connection was succesful. \item[{\em -\/1}]if there were problems in the connection. \end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+If there were errors with the connection then {\ttfamily errno} will be set accordingly to the return values listed on the {\ttfamily \char`\"{}man 2
+        connect\char`\"{}} page. 
+\end{DoxyNote}
+\hypertarget{group___bro_comm_ga1686032e099ddba351e93ec6ec6f6b4f}{
+\index{BroComm@{BroComm}!bro\_\-stop\_\-server@{bro\_\-stop\_\-server}}
+\index{bro\_\-stop\_\-server@{bro\_\-stop\_\-server}!BroComm@{BroComm}}
+\subsubsection[{bro\_\-stop\_\-server}]{\setlength{\rightskip}{0pt plus 5cm}int bro\_\-stop\_\-server (int {\em server\_\-sock}, \/  int {\em client\_\-sock})}}
+\label{group___bro_comm_ga1686032e099ddba351e93ec6ec6f6b4f}
+
+
+Stop the server, normally called on finalization. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em server\_\-sock}]The server socket descriptor. \item[{\em client\_\-sock}]The client socket descriptor. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result of the operation 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em 0}]if the connection was succesful. \item[{\em -\/1}]if there were problems in the connection. \end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+If there were errors with the connection then {\ttfamily errno} will be set accordingly to the return values listed on the {\ttfamily \char`\"{}man 2
+        connect\char`\"{}} page. 
+\end{DoxyNote}

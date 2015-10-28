@@ -1,0 +1,105 @@
+#include "implementation.oil"
+
+CPU ATMEL_AT91SAM7S256
+{
+	OS LEJOS_OSEK
+	{
+    	STATUS = EXTENDED;
+    	STARTUPHOOK = TRUE;
+    	ERRORHOOK = FALSE;
+    	SHUTDOWNHOOK = FALSE;
+    	PRETASKHOOK = TRUE;
+    	POSTTASKHOOK = FALSE;
+    	USEGETSERVICEID = FALSE;
+    	USEPARAMETERACCESS = FALSE;
+    	USERESSCHEDULER = FALSE;
+  	};
+
+  	APPMODE appmode1{}; 
+
+  	RESOURCE lcd
+	{
+  		RESOURCEPROPERTY = STANDARD;
+  	};
+
+    TASK PID_Controller
+  	{
+    	AUTOSTART = FALSE;
+    	PRIORITY = 3;
+    	ACTIVATION = 1;
+    	SCHEDULE = FULL;
+    	STACKSIZE = 512;
+  	};
+  	
+  	TASK BRO_Comm
+    {
+    	AUTOSTART = FALSE;
+    	PRIORITY = 2;
+    	ACTIVATION = 1;
+    	SCHEDULE = FULL;
+    	STACKSIZE = 512;
+  	};
+
+  	TASK DisplayTask
+  	{
+    	AUTOSTART = FALSE;
+    	PRIORITY = 1;
+    	ACTIVATION = 1;
+    	SCHEDULE = FULL;
+    	STACKSIZE = 512;
+    	RESOURCE = lcd;
+  	};
+
+  	COUNTER SysTimerCnt
+  	{
+    	MINCYCLE = 1;
+    	MAXALLOWEDVALUE = 10000;
+    	TICKSPERBASE = 1;
+  	};
+
+	ALARM PID_alarm
+	{
+    	COUNTER = SysTimerCnt;
+    	ACTION = ACTIVATETASK
+    	{
+      		TASK = PID_Controller;
+    	};
+    	AUTOSTART = TRUE
+    	{
+      		ALARMTIME = 1;
+      		CYCLETIME = 5;  // 5ms run time
+      		APPMODE = appmode1;
+    	};
+  	};
+  	
+  	ALARM BRO_Comm_alarm
+  	{
+    	COUNTER = SysTimerCnt;
+    	ACTION = ACTIVATETASK
+    	{
+      		TASK = BRO_Comm;
+    	};
+    	AUTOSTART = TRUE
+    	{
+      		ALARMTIME = 1;
+      		CYCLETIME = 2;  // 2ms run time
+      		APPMODE = appmode1;
+    	};
+  	};
+     
+
+  	ALARM lcd_update_alarm
+  	{
+    	COUNTER = SysTimerCnt;
+    	ACTION = ACTIVATETASK
+    	{
+      		TASK = DisplayTask;
+    	};
+    	AUTOSTART = TRUE
+    	{
+      		ALARMTIME = 1;
+      		CYCLETIME = 100;    // 100ms run time
+      		APPMODE = appmode1;
+    	};
+  	};
+};

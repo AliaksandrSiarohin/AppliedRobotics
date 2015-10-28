@@ -1,0 +1,518 @@
+\hypertarget{kernel__cfg_8c}{
+\section{/home/jazzinghen/Documents/Tesi/BROFist/spam/kernel\_\-cfg.c File Reference}
+\label{kernel__cfg_8c}\index{/home/jazzinghen/Documents/Tesi/BROFist/spam/kernel\_\-cfg.c@{/home/jazzinghen/Documents/Tesi/BROFist/spam/kernel\_\-cfg.c}}
+}
+{\ttfamily \#include \char`\"{}osek\_\-kernel.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}kernel\_\-id.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}alarm.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}interrupt.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}resource.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}task.h\char`\"{}}\par
+Include dependency graph for kernel\_\-cfg.c:\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{kernel__cfg_8c_adbd924a511d7e4c8427889b780be311b}{\_\-\_\-STK\_\-UNIT}~VP
+\item 
+\#define \hyperlink{kernel__cfg_8c_af6c6717b284becb37579d0899de0a0f9}{\_\-\_\-TCOUNT\_\-STK\_\-UNIT}(sz)~(((sz) + sizeof(\_\-\_\-STK\_\-UNIT) -\/ 1) / sizeof(\_\-\_\-STK\_\-UNIT))
+\item 
+\#define \hyperlink{kernel__cfg_8c_ae557980747d0acc97455cb6086b91b9f}{TNUM\_\-ALARM}~4
+\item 
+\#define \hyperlink{kernel__cfg_8c_a65edb264247dd7d36dda04e0f6661a28}{TNUM\_\-COUNTER}~1
+\item 
+\#define \hyperlink{kernel__cfg_8c_a301c4d815d3438e0c157a4685cbb1b12}{TNUM\_\-ISR2}~0
+\item 
+\#define \hyperlink{kernel__cfg_8c_a7d7c2ffc4c77bdbdba1c93221de39f2f}{TNUM\_\-RESOURCE}~1
+\item 
+\#define \hyperlink{kernel__cfg_8c_a2a5fe0fb3036e77b3b1471ee571c0d33}{TNUM\_\-TASK}~4
+\item 
+\#define \hyperlink{kernel__cfg_8c_a20bfaecffe46d08109576bdaba088e91}{TNUM\_\-EXTTASK}~0
+\item 
+\#define \hyperlink{kernel__cfg_8c_ab22b7605e8905aa503169d40c95a58b9}{IPL\_\-MAXISR2}~0
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void TASKNAME() \hyperlink{kernel__cfg_8c_a685cbe427739b90915b998d08a7ff5d9}{Speed\_\-Updater} (void)
+\item 
+void TASKNAME() \hyperlink{kernel__cfg_8c_a9a7b1ec15b509aa15aee0a1f9760f0ff}{PID\_\-Controller} (void)
+\item 
+void TASKNAME() \hyperlink{kernel__cfg_8c_a6f62c2e96cbcdab6eafcc9cdb6c373c4}{BRO\_\-Comm} (void)
+\item 
+void TASKNAME() \hyperlink{kernel__cfg_8c_a7e9f1890ec6b4625a925aa62ce6b71b2}{DisplayTask} (void)
+\item 
+\hyperlink{kernel__cfg_8c_adee03f538a77a4d19fae1a23ab7e3086}{DEFINE\_\-CTXB} (TNUM\_\-TASK)
+\item 
+\hyperlink{kernel__cfg_8c_a1ac8bb85faf649420991ac4202e30ccb}{DeclareTask} (Speed\_\-Updater)
+\item 
+\hyperlink{kernel__cfg_8c_a9e69b4e383bc23b860dcc58a4607f090}{DeclareTask} (PID\_\-Controller)
+\item 
+\hyperlink{kernel__cfg_8c_a163df5bd04603d015b1b3cdd53b26c06}{DeclareTask} (BRO\_\-Comm)
+\item 
+\hyperlink{kernel__cfg_8c_a4415edbb7c1b9a2d5ae7835342a23aef}{DeclareTask} (DisplayTask)
+\item 
+void \hyperlink{kernel__cfg_8c_ad47362f50b65c4ca1e1390f2ffb8f880}{object\_\-initialize} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const UINT8 \hyperlink{kernel__cfg_8c_a8a783b5718ec25af7bdd8c3758893844}{tnum\_\-alarm} = TNUM\_\-ALARM
+\item 
+const UINT8 \hyperlink{kernel__cfg_8c_a4fca572ead4424cdcd602155d8857e30}{tnum\_\-counter} = TNUM\_\-COUNTER
+\item 
+const UINT8 \hyperlink{kernel__cfg_8c_ac149c1bf3817cac2aaa40d79c6e08149}{tnum\_\-isr2} = TNUM\_\-ISR2
+\item 
+const UINT8 \hyperlink{kernel__cfg_8c_a75efdc8f05a22bb801dc261b10310fa9}{tnum\_\-resource} = TNUM\_\-RESOURCE
+\item 
+const UINT8 \hyperlink{kernel__cfg_8c_aba4418b977068d72b1130cbe8c07f4ce}{tnum\_\-task} = TNUM\_\-TASK
+\item 
+const UINT8 \hyperlink{kernel__cfg_8c_a1eb2119cc0bf2d8cd4c02036b6c16b91}{tnum\_\-exttask} = TNUM\_\-EXTTASK
+\item 
+const TaskType \hyperlink{kernel__cfg_8c_a2b4db5eaa1658798a8f8b748c5977a5d}{Speed\_\-Updater} = 0
+\item 
+const TaskType \hyperlink{kernel__cfg_8c_ae86e652c0e1dbcca40cf97f0650c9168}{PID\_\-Controller} = 1
+\item 
+const TaskType \hyperlink{kernel__cfg_8c_a8b33c0a053a518e6989dfdc63cedb9f5}{BRO\_\-Comm} = 2
+\item 
+const TaskType \hyperlink{kernel__cfg_8c_aa60eaac1bf7d1861bd90afe74ee4b1ce}{DisplayTask} = 3
+\item 
+const Priority \hyperlink{kernel__cfg_8c_a2e38497b5f2f597957009f5a63e1415c}{tinib\_\-inipri} \mbox{[}TNUM\_\-TASK\mbox{]} = \{ TPRI\_\-MINTASK + 4, TPRI\_\-MINTASK + 3, TPRI\_\-MINTASK + 2, TPRI\_\-MINTASK + 1, \}
+\item 
+const Priority \hyperlink{kernel__cfg_8c_a315e8968bc7b347d34c6cb9669dcc8fe}{tinib\_\-exepri} \mbox{[}TNUM\_\-TASK\mbox{]} = \{ TPRI\_\-MINTASK + 4, TPRI\_\-MINTASK + 3, TPRI\_\-MINTASK + 2, TPRI\_\-MINTASK + 1, \}
+\item 
+const UINT8 \hyperlink{kernel__cfg_8c_a17c6a8c620fcebae67bd1c39a8becfcb}{tinib\_\-maxact} \mbox{[}TNUM\_\-TASK\mbox{]} = \{ (1) -\/ 1, (1) -\/ 1, (1) -\/ 1, (1) -\/ 1, \}
+\item 
+const AppModeType \hyperlink{kernel__cfg_8c_a1e1b062c1b356b35efb6e77e4e248c85}{tinib\_\-autoact} \mbox{[}TNUM\_\-TASK\mbox{]} = \{ 0x00000000, 0x00000000, 0x00000000, 0x00000000, \}
+\item 
+const FP \hyperlink{kernel__cfg_8c_aa2243e700feabf179ab3fe712726e348}{tinib\_\-task} \mbox{[}TNUM\_\-TASK\mbox{]} = \{ TASKNAME( Speed\_\-Updater ), TASKNAME( PID\_\-Controller ), TASKNAME( BRO\_\-Comm ), TASKNAME( DisplayTask ), \}
+\item 
+const \_\-\_\-STK\_\-UNIT \hyperlink{kernel__cfg_8c_a8c4281b1d29f79f8b44d6e50888398bb}{tinib\_\-stk} \mbox{[}TNUM\_\-TASK\mbox{]} = \{ (\_\-\_\-STK\_\-UNIT)\_\-stack\_\-Speed\_\-Updater, (\_\-\_\-STK\_\-UNIT)\_\-stack\_\-PID\_\-Controller, (\_\-\_\-STK\_\-UNIT)\_\-stack\_\-BRO\_\-Comm, (\_\-\_\-STK\_\-UNIT)\_\-stack\_\-DisplayTask, \}
+\item 
+const UINT16 \hyperlink{kernel__cfg_8c_aedd5077026796ae1a66facca13aa701e}{tinib\_\-stksz} \mbox{[}TNUM\_\-TASK\mbox{]} = \{ 512, 512, 512, 512, \}
+\item 
+TaskType \hyperlink{kernel__cfg_8c_a6c78d69907471749db8af3632474fa74}{tcb\_\-next} \mbox{[}TNUM\_\-TASK\mbox{]}
+\item 
+UINT8 \hyperlink{kernel__cfg_8c_a0b421dc494818e564a73b332dde79c03}{tcb\_\-tstat} \mbox{[}TNUM\_\-TASK\mbox{]}
+\item 
+Priority \hyperlink{kernel__cfg_8c_ad64442110583372a597683fb5d6154dc}{tcb\_\-curpri} \mbox{[}TNUM\_\-TASK\mbox{]}
+\item 
+UINT8 \hyperlink{kernel__cfg_8c_ac36070773037b3dfccc88b1662ac56ff}{tcb\_\-actcnt} \mbox{[}TNUM\_\-TASK\mbox{]}
+\item 
+EventMaskType \hyperlink{kernel__cfg_8c_ad1b4d59f71f75f0583c11457d2427860}{tcb\_\-curevt} \mbox{[}TNUM\_\-EXTTASK+1\mbox{]}
+\item 
+EventMaskType \hyperlink{kernel__cfg_8c_a884bbd2ac8048bad15669ea9a6004654}{tcb\_\-waievt} \mbox{[}TNUM\_\-EXTTASK+1\mbox{]}
+\item 
+ResourceType \hyperlink{kernel__cfg_8c_a88796c75d36b4d42e887aa256fb09cad}{tcb\_\-lastres} \mbox{[}TNUM\_\-TASK\mbox{]}
+\item 
+const CounterType \hyperlink{kernel__cfg_8c_a75d5ac51631f79688bff1ebbeb1db0ab}{SysTimerCnt} = 0
+\item 
+const TickType \hyperlink{kernel__cfg_8c_ab327bcd5d278a451768bb10da24ccde1}{cntinib\_\-maxval} \mbox{[}TNUM\_\-COUNTER\mbox{]} = \{ 10000, \}
+\item 
+const TickType \hyperlink{kernel__cfg_8c_a41e09576747f7130d9e7c88a4ecb3037}{cntinib\_\-maxval2} \mbox{[}TNUM\_\-COUNTER\mbox{]} = \{ 20001, \}
+\item 
+const TickType \hyperlink{kernel__cfg_8c_a88a440c5a6bd4be5dc9d2612d3c6da6e}{cntinib\_\-tickbase} \mbox{[}TNUM\_\-COUNTER\mbox{]} = \{ 1, \}
+\item 
+const TickType \hyperlink{kernel__cfg_8c_aecf51f17972cd86341ea117b0e1ed575}{cntinib\_\-mincyc} \mbox{[}TNUM\_\-COUNTER\mbox{]} = \{ 1, \}
+\item 
+AlarmType \hyperlink{kernel__cfg_8c_a1f42c04c679243cdc5cc90368bc146fc}{cntcb\_\-almque} \mbox{[}TNUM\_\-COUNTER\mbox{]}
+\item 
+TickType \hyperlink{kernel__cfg_8c_a723b40401f6098d22161286797fce7fe}{cntcb\_\-curval} \mbox{[}TNUM\_\-COUNTER\mbox{]}
+\item 
+const AlarmType \hyperlink{kernel__cfg_8c_ad2b560dcfaef4afba6b35aa1fd5cffe6}{speed\_\-alarm} = 0
+\item 
+const AlarmType \hyperlink{kernel__cfg_8c_a6c3032cb52c077e74d209c2766d593fd}{PID\_\-alarm} = 1
+\item 
+const AlarmType \hyperlink{kernel__cfg_8c_a203d8faf4e2a7e817efedb2f39d60fa7}{BRO\_\-Comm\_\-alarm} = 2
+\item 
+const AlarmType \hyperlink{kernel__cfg_8c_a61a31dfbf2485c53cffe03fa736e1aec}{lcd\_\-update\_\-alarm} = 3
+\item 
+const CounterType \hyperlink{kernel__cfg_8c_ad1072a252ea112b7d4f2485ca543e6a1}{alminib\_\-cntid} \mbox{[}TNUM\_\-ALARM\mbox{]} = \{ 0, 0, 0, 0, \}
+\item 
+const FP \hyperlink{kernel__cfg_8c_ad07756140d34d4d7ca9d52bdb48e473f}{alminib\_\-cback} \mbox{[}TNUM\_\-ALARM\mbox{]} = \{ \_\-activate\_\-alarm\_\-speed\_\-alarm, \_\-activate\_\-alarm\_\-PID\_\-alarm, \_\-activate\_\-alarm\_\-BRO\_\-Comm\_\-alarm, \_\-activate\_\-alarm\_\-lcd\_\-update\_\-alarm, \}
+\item 
+const AppModeType \hyperlink{kernel__cfg_8c_ac1530ce7d18caf789afa2734f5c1b737}{alminib\_\-autosta} \mbox{[}TNUM\_\-ALARM\mbox{]} = \{ 0x00000001, 0x00000001, 0x00000001, 0x00000001, \}
+\item 
+const TickType \hyperlink{kernel__cfg_8c_a16c5af208c99a0d0f68a7e02c0dfeeef}{alminib\_\-almval} \mbox{[}TNUM\_\-ALARM\mbox{]} = \{ 1, 1, 1, 1, \}
+\item 
+const TickType \hyperlink{kernel__cfg_8c_afd28c9c0d0cbe780d88e529186713abb}{alminib\_\-cycle} \mbox{[}TNUM\_\-ALARM\mbox{]} = \{ 5, 5, 2, 100, \}
+\item 
+AlarmType \hyperlink{kernel__cfg_8c_a3cece63c635fc6200a907779572e7196}{almcb\_\-next} \mbox{[}TNUM\_\-ALARM\mbox{]}
+\item 
+AlarmType \hyperlink{kernel__cfg_8c_acde144901843a9d1ce0e697ade75c13c}{almcb\_\-prev} \mbox{[}TNUM\_\-ALARM\mbox{]}
+\item 
+TickType \hyperlink{kernel__cfg_8c_aa7f58a356bef14eb622ba2300066f5a4}{almcb\_\-almval} \mbox{[}TNUM\_\-ALARM\mbox{]}
+\item 
+TickType \hyperlink{kernel__cfg_8c_a7eb6978a13afb5a0741e73e3ab0c1acc}{almcb\_\-cycle} \mbox{[}TNUM\_\-ALARM\mbox{]}
+\item 
+const ResourceType \hyperlink{kernel__cfg_8c_a9ef3efa17d13b73bafcf8d5ef5bd9a93}{lcd} = 0
+\item 
+const Priority \hyperlink{kernel__cfg_8c_ad8218651ddb656314b2f1704a9d5c648}{resinib\_\-ceilpri} \mbox{[}TNUM\_\-RESOURCE\mbox{]} = \{ TPRI\_\-MINTASK + 1, \}
+\item 
+Priority \hyperlink{kernel__cfg_8c_add9a8db4fc43d90f9f479ae43fa888fc}{rescb\_\-prevpri} \mbox{[}TNUM\_\-RESOURCE\mbox{]}
+\item 
+ResourceType \hyperlink{kernel__cfg_8c_a33a38be71c485b0e60cf0eeb1337f1d5}{rescb\_\-prevres} \mbox{[}TNUM\_\-RESOURCE\mbox{]}
+\item 
+const IPL \hyperlink{kernel__cfg_8c_a575c506ee14ec1048435cc03501ac708}{ipl\_\-maxisr2} = IPL\_\-MAXISR2
+\item 
+const Priority \hyperlink{kernel__cfg_8c_a848282eec2e261e9346c7ea6d7bf748a}{isrinib\_\-intpri} \mbox{[}TNUM\_\-ISR2+1\mbox{]} = \{ 0\}
+\item 
+ResourceType \hyperlink{kernel__cfg_8c_a8b8bd49fc8113b7286a0684ab5b38a6d}{isrcb\_\-lastres} \mbox{[}TNUM\_\-ISR2+1\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Define Documentation}
+\hypertarget{kernel__cfg_8c_adbd924a511d7e4c8427889b780be311b}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!\_\-\_\-STK\_\-UNIT@{\_\-\_\-STK\_\-UNIT}}
+\index{\_\-\_\-STK\_\-UNIT@{\_\-\_\-STK\_\-UNIT}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{\_\-\_\-STK\_\-UNIT}]{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-\_\-STK\_\-UNIT~VP}}
+\label{kernel__cfg_8c_adbd924a511d7e4c8427889b780be311b}
+\hypertarget{kernel__cfg_8c_af6c6717b284becb37579d0899de0a0f9}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!\_\-\_\-TCOUNT\_\-STK\_\-UNIT@{\_\-\_\-TCOUNT\_\-STK\_\-UNIT}}
+\index{\_\-\_\-TCOUNT\_\-STK\_\-UNIT@{\_\-\_\-TCOUNT\_\-STK\_\-UNIT}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{\_\-\_\-TCOUNT\_\-STK\_\-UNIT}]{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-\_\-TCOUNT\_\-STK\_\-UNIT(sz)~(((sz) + sizeof(\_\-\_\-STK\_\-UNIT) -\/ 1) / sizeof(\_\-\_\-STK\_\-UNIT))}}
+\label{kernel__cfg_8c_af6c6717b284becb37579d0899de0a0f9}
+\hypertarget{kernel__cfg_8c_ab22b7605e8905aa503169d40c95a58b9}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!IPL\_\-MAXISR2@{IPL\_\-MAXISR2}}
+\index{IPL\_\-MAXISR2@{IPL\_\-MAXISR2}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{IPL\_\-MAXISR2}]{\setlength{\rightskip}{0pt plus 5cm}\#define IPL\_\-MAXISR2~0}}
+\label{kernel__cfg_8c_ab22b7605e8905aa503169d40c95a58b9}
+\hypertarget{kernel__cfg_8c_ae557980747d0acc97455cb6086b91b9f}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!TNUM\_\-ALARM@{TNUM\_\-ALARM}}
+\index{TNUM\_\-ALARM@{TNUM\_\-ALARM}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{TNUM\_\-ALARM}]{\setlength{\rightskip}{0pt plus 5cm}\#define TNUM\_\-ALARM~4}}
+\label{kernel__cfg_8c_ae557980747d0acc97455cb6086b91b9f}
+\hypertarget{kernel__cfg_8c_a65edb264247dd7d36dda04e0f6661a28}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!TNUM\_\-COUNTER@{TNUM\_\-COUNTER}}
+\index{TNUM\_\-COUNTER@{TNUM\_\-COUNTER}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{TNUM\_\-COUNTER}]{\setlength{\rightskip}{0pt plus 5cm}\#define TNUM\_\-COUNTER~1}}
+\label{kernel__cfg_8c_a65edb264247dd7d36dda04e0f6661a28}
+\hypertarget{kernel__cfg_8c_a20bfaecffe46d08109576bdaba088e91}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!TNUM\_\-EXTTASK@{TNUM\_\-EXTTASK}}
+\index{TNUM\_\-EXTTASK@{TNUM\_\-EXTTASK}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{TNUM\_\-EXTTASK}]{\setlength{\rightskip}{0pt plus 5cm}\#define TNUM\_\-EXTTASK~0}}
+\label{kernel__cfg_8c_a20bfaecffe46d08109576bdaba088e91}
+\hypertarget{kernel__cfg_8c_a301c4d815d3438e0c157a4685cbb1b12}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!TNUM\_\-ISR2@{TNUM\_\-ISR2}}
+\index{TNUM\_\-ISR2@{TNUM\_\-ISR2}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{TNUM\_\-ISR2}]{\setlength{\rightskip}{0pt plus 5cm}\#define TNUM\_\-ISR2~0}}
+\label{kernel__cfg_8c_a301c4d815d3438e0c157a4685cbb1b12}
+\hypertarget{kernel__cfg_8c_a7d7c2ffc4c77bdbdba1c93221de39f2f}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!TNUM\_\-RESOURCE@{TNUM\_\-RESOURCE}}
+\index{TNUM\_\-RESOURCE@{TNUM\_\-RESOURCE}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{TNUM\_\-RESOURCE}]{\setlength{\rightskip}{0pt plus 5cm}\#define TNUM\_\-RESOURCE~1}}
+\label{kernel__cfg_8c_a7d7c2ffc4c77bdbdba1c93221de39f2f}
+\hypertarget{kernel__cfg_8c_a2a5fe0fb3036e77b3b1471ee571c0d33}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!TNUM\_\-TASK@{TNUM\_\-TASK}}
+\index{TNUM\_\-TASK@{TNUM\_\-TASK}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{TNUM\_\-TASK}]{\setlength{\rightskip}{0pt plus 5cm}\#define TNUM\_\-TASK~4}}
+\label{kernel__cfg_8c_a2a5fe0fb3036e77b3b1471ee571c0d33}
+
+
+\subsection{Function Documentation}
+\hypertarget{kernel__cfg_8c_a6f62c2e96cbcdab6eafcc9cdb6c373c4}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!BRO\_\-Comm@{BRO\_\-Comm}}
+\index{BRO\_\-Comm@{BRO\_\-Comm}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{BRO\_\-Comm}]{\setlength{\rightskip}{0pt plus 5cm}void TASKNAME() BRO\_\-Comm (void)}}
+\label{kernel__cfg_8c_a6f62c2e96cbcdab6eafcc9cdb6c373c4}
+\hypertarget{kernel__cfg_8c_a4415edbb7c1b9a2d5ae7835342a23aef}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!DeclareTask@{DeclareTask}}
+\index{DeclareTask@{DeclareTask}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{DeclareTask}]{\setlength{\rightskip}{0pt plus 5cm}DeclareTask (DisplayTask)}}
+\label{kernel__cfg_8c_a4415edbb7c1b9a2d5ae7835342a23aef}
+\hypertarget{kernel__cfg_8c_a163df5bd04603d015b1b3cdd53b26c06}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!DeclareTask@{DeclareTask}}
+\index{DeclareTask@{DeclareTask}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{DeclareTask}]{\setlength{\rightskip}{0pt plus 5cm}DeclareTask (BRO\_\-Comm)}}
+\label{kernel__cfg_8c_a163df5bd04603d015b1b3cdd53b26c06}
+\hypertarget{kernel__cfg_8c_a9e69b4e383bc23b860dcc58a4607f090}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!DeclareTask@{DeclareTask}}
+\index{DeclareTask@{DeclareTask}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{DeclareTask}]{\setlength{\rightskip}{0pt plus 5cm}DeclareTask (PID\_\-Controller)}}
+\label{kernel__cfg_8c_a9e69b4e383bc23b860dcc58a4607f090}
+\hypertarget{kernel__cfg_8c_a1ac8bb85faf649420991ac4202e30ccb}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!DeclareTask@{DeclareTask}}
+\index{DeclareTask@{DeclareTask}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{DeclareTask}]{\setlength{\rightskip}{0pt plus 5cm}DeclareTask (Speed\_\-Updater)}}
+\label{kernel__cfg_8c_a1ac8bb85faf649420991ac4202e30ccb}
+\hypertarget{kernel__cfg_8c_adee03f538a77a4d19fae1a23ab7e3086}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!DEFINE\_\-CTXB@{DEFINE\_\-CTXB}}
+\index{DEFINE\_\-CTXB@{DEFINE\_\-CTXB}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{DEFINE\_\-CTXB}]{\setlength{\rightskip}{0pt plus 5cm}DEFINE\_\-CTXB (TNUM\_\-TASK)}}
+\label{kernel__cfg_8c_adee03f538a77a4d19fae1a23ab7e3086}
+\hypertarget{kernel__cfg_8c_a7e9f1890ec6b4625a925aa62ce6b71b2}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!DisplayTask@{DisplayTask}}
+\index{DisplayTask@{DisplayTask}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{DisplayTask}]{\setlength{\rightskip}{0pt plus 5cm}void TASKNAME() DisplayTask (void)}}
+\label{kernel__cfg_8c_a7e9f1890ec6b4625a925aa62ce6b71b2}
+\hypertarget{kernel__cfg_8c_ad47362f50b65c4ca1e1390f2ffb8f880}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!object\_\-initialize@{object\_\-initialize}}
+\index{object\_\-initialize@{object\_\-initialize}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{object\_\-initialize}]{\setlength{\rightskip}{0pt plus 5cm}void object\_\-initialize (void)}}
+\label{kernel__cfg_8c_ad47362f50b65c4ca1e1390f2ffb8f880}
+\hypertarget{kernel__cfg_8c_a9a7b1ec15b509aa15aee0a1f9760f0ff}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!PID\_\-Controller@{PID\_\-Controller}}
+\index{PID\_\-Controller@{PID\_\-Controller}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{PID\_\-Controller}]{\setlength{\rightskip}{0pt plus 5cm}void TASKNAME() PID\_\-Controller (void)}}
+\label{kernel__cfg_8c_a9a7b1ec15b509aa15aee0a1f9760f0ff}
+\hypertarget{kernel__cfg_8c_a685cbe427739b90915b998d08a7ff5d9}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!Speed\_\-Updater@{Speed\_\-Updater}}
+\index{Speed\_\-Updater@{Speed\_\-Updater}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{Speed\_\-Updater}]{\setlength{\rightskip}{0pt plus 5cm}void TASKNAME() Speed\_\-Updater (void)}}
+\label{kernel__cfg_8c_a685cbe427739b90915b998d08a7ff5d9}
+
+
+\subsection{Variable Documentation}
+\hypertarget{kernel__cfg_8c_aa7f58a356bef14eb622ba2300066f5a4}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!almcb\_\-almval@{almcb\_\-almval}}
+\index{almcb\_\-almval@{almcb\_\-almval}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{almcb\_\-almval}]{\setlength{\rightskip}{0pt plus 5cm}TickType {\bf almcb\_\-almval}\mbox{[}TNUM\_\-ALARM\mbox{]}}}
+\label{kernel__cfg_8c_aa7f58a356bef14eb622ba2300066f5a4}
+\hypertarget{kernel__cfg_8c_a7eb6978a13afb5a0741e73e3ab0c1acc}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!almcb\_\-cycle@{almcb\_\-cycle}}
+\index{almcb\_\-cycle@{almcb\_\-cycle}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{almcb\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}TickType {\bf almcb\_\-cycle}\mbox{[}TNUM\_\-ALARM\mbox{]}}}
+\label{kernel__cfg_8c_a7eb6978a13afb5a0741e73e3ab0c1acc}
+\hypertarget{kernel__cfg_8c_a3cece63c635fc6200a907779572e7196}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!almcb\_\-next@{almcb\_\-next}}
+\index{almcb\_\-next@{almcb\_\-next}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{almcb\_\-next}]{\setlength{\rightskip}{0pt plus 5cm}AlarmType {\bf almcb\_\-next}\mbox{[}TNUM\_\-ALARM\mbox{]}}}
+\label{kernel__cfg_8c_a3cece63c635fc6200a907779572e7196}
+\hypertarget{kernel__cfg_8c_acde144901843a9d1ce0e697ade75c13c}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!almcb\_\-prev@{almcb\_\-prev}}
+\index{almcb\_\-prev@{almcb\_\-prev}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{almcb\_\-prev}]{\setlength{\rightskip}{0pt plus 5cm}AlarmType {\bf almcb\_\-prev}\mbox{[}TNUM\_\-ALARM\mbox{]}}}
+\label{kernel__cfg_8c_acde144901843a9d1ce0e697ade75c13c}
+\hypertarget{kernel__cfg_8c_a16c5af208c99a0d0f68a7e02c0dfeeef}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!alminib\_\-almval@{alminib\_\-almval}}
+\index{alminib\_\-almval@{alminib\_\-almval}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{alminib\_\-almval}]{\setlength{\rightskip}{0pt plus 5cm}const TickType {\bf alminib\_\-almval}\mbox{[}TNUM\_\-ALARM\mbox{]} = \{ 1, 1, 1, 1, \}}}
+\label{kernel__cfg_8c_a16c5af208c99a0d0f68a7e02c0dfeeef}
+\hypertarget{kernel__cfg_8c_ac1530ce7d18caf789afa2734f5c1b737}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!alminib\_\-autosta@{alminib\_\-autosta}}
+\index{alminib\_\-autosta@{alminib\_\-autosta}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{alminib\_\-autosta}]{\setlength{\rightskip}{0pt plus 5cm}const AppModeType {\bf alminib\_\-autosta}\mbox{[}TNUM\_\-ALARM\mbox{]} = \{ 0x00000001, 0x00000001, 0x00000001, 0x00000001, \}}}
+\label{kernel__cfg_8c_ac1530ce7d18caf789afa2734f5c1b737}
+\hypertarget{kernel__cfg_8c_ad07756140d34d4d7ca9d52bdb48e473f}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!alminib\_\-cback@{alminib\_\-cback}}
+\index{alminib\_\-cback@{alminib\_\-cback}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{alminib\_\-cback}]{\setlength{\rightskip}{0pt plus 5cm}const FP {\bf alminib\_\-cback}\mbox{[}TNUM\_\-ALARM\mbox{]} = \{ \_\-activate\_\-alarm\_\-speed\_\-alarm, \_\-activate\_\-alarm\_\-PID\_\-alarm, \_\-activate\_\-alarm\_\-BRO\_\-Comm\_\-alarm, \_\-activate\_\-alarm\_\-lcd\_\-update\_\-alarm, \}}}
+\label{kernel__cfg_8c_ad07756140d34d4d7ca9d52bdb48e473f}
+\hypertarget{kernel__cfg_8c_ad1072a252ea112b7d4f2485ca543e6a1}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!alminib\_\-cntid@{alminib\_\-cntid}}
+\index{alminib\_\-cntid@{alminib\_\-cntid}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{alminib\_\-cntid}]{\setlength{\rightskip}{0pt plus 5cm}const CounterType {\bf alminib\_\-cntid}\mbox{[}TNUM\_\-ALARM\mbox{]} = \{ 0, 0, 0, 0, \}}}
+\label{kernel__cfg_8c_ad1072a252ea112b7d4f2485ca543e6a1}
+\hypertarget{kernel__cfg_8c_afd28c9c0d0cbe780d88e529186713abb}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!alminib\_\-cycle@{alminib\_\-cycle}}
+\index{alminib\_\-cycle@{alminib\_\-cycle}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{alminib\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}const TickType {\bf alminib\_\-cycle}\mbox{[}TNUM\_\-ALARM\mbox{]} = \{ 5, 5, 2, 100, \}}}
+\label{kernel__cfg_8c_afd28c9c0d0cbe780d88e529186713abb}
+\hypertarget{kernel__cfg_8c_a8b33c0a053a518e6989dfdc63cedb9f5}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!BRO\_\-Comm@{BRO\_\-Comm}}
+\index{BRO\_\-Comm@{BRO\_\-Comm}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{BRO\_\-Comm}]{\setlength{\rightskip}{0pt plus 5cm}const TaskType BRO\_\-Comm = 2}}
+\label{kernel__cfg_8c_a8b33c0a053a518e6989dfdc63cedb9f5}
+\hypertarget{kernel__cfg_8c_a203d8faf4e2a7e817efedb2f39d60fa7}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!BRO\_\-Comm\_\-alarm@{BRO\_\-Comm\_\-alarm}}
+\index{BRO\_\-Comm\_\-alarm@{BRO\_\-Comm\_\-alarm}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{BRO\_\-Comm\_\-alarm}]{\setlength{\rightskip}{0pt plus 5cm}const AlarmType {\bf BRO\_\-Comm\_\-alarm} = 2}}
+\label{kernel__cfg_8c_a203d8faf4e2a7e817efedb2f39d60fa7}
+\hypertarget{kernel__cfg_8c_a1f42c04c679243cdc5cc90368bc146fc}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!cntcb\_\-almque@{cntcb\_\-almque}}
+\index{cntcb\_\-almque@{cntcb\_\-almque}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{cntcb\_\-almque}]{\setlength{\rightskip}{0pt plus 5cm}AlarmType {\bf cntcb\_\-almque}\mbox{[}TNUM\_\-COUNTER\mbox{]}}}
+\label{kernel__cfg_8c_a1f42c04c679243cdc5cc90368bc146fc}
+\hypertarget{kernel__cfg_8c_a723b40401f6098d22161286797fce7fe}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!cntcb\_\-curval@{cntcb\_\-curval}}
+\index{cntcb\_\-curval@{cntcb\_\-curval}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{cntcb\_\-curval}]{\setlength{\rightskip}{0pt plus 5cm}TickType {\bf cntcb\_\-curval}\mbox{[}TNUM\_\-COUNTER\mbox{]}}}
+\label{kernel__cfg_8c_a723b40401f6098d22161286797fce7fe}
+\hypertarget{kernel__cfg_8c_ab327bcd5d278a451768bb10da24ccde1}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!cntinib\_\-maxval@{cntinib\_\-maxval}}
+\index{cntinib\_\-maxval@{cntinib\_\-maxval}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{cntinib\_\-maxval}]{\setlength{\rightskip}{0pt plus 5cm}const TickType {\bf cntinib\_\-maxval}\mbox{[}TNUM\_\-COUNTER\mbox{]} = \{ 10000, \}}}
+\label{kernel__cfg_8c_ab327bcd5d278a451768bb10da24ccde1}
+\hypertarget{kernel__cfg_8c_a41e09576747f7130d9e7c88a4ecb3037}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!cntinib\_\-maxval2@{cntinib\_\-maxval2}}
+\index{cntinib\_\-maxval2@{cntinib\_\-maxval2}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{cntinib\_\-maxval2}]{\setlength{\rightskip}{0pt plus 5cm}const TickType {\bf cntinib\_\-maxval2}\mbox{[}TNUM\_\-COUNTER\mbox{]} = \{ 20001, \}}}
+\label{kernel__cfg_8c_a41e09576747f7130d9e7c88a4ecb3037}
+\hypertarget{kernel__cfg_8c_aecf51f17972cd86341ea117b0e1ed575}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!cntinib\_\-mincyc@{cntinib\_\-mincyc}}
+\index{cntinib\_\-mincyc@{cntinib\_\-mincyc}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{cntinib\_\-mincyc}]{\setlength{\rightskip}{0pt plus 5cm}const TickType {\bf cntinib\_\-mincyc}\mbox{[}TNUM\_\-COUNTER\mbox{]} = \{ 1, \}}}
+\label{kernel__cfg_8c_aecf51f17972cd86341ea117b0e1ed575}
+\hypertarget{kernel__cfg_8c_a88a440c5a6bd4be5dc9d2612d3c6da6e}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!cntinib\_\-tickbase@{cntinib\_\-tickbase}}
+\index{cntinib\_\-tickbase@{cntinib\_\-tickbase}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{cntinib\_\-tickbase}]{\setlength{\rightskip}{0pt plus 5cm}const TickType {\bf cntinib\_\-tickbase}\mbox{[}TNUM\_\-COUNTER\mbox{]} = \{ 1, \}}}
+\label{kernel__cfg_8c_a88a440c5a6bd4be5dc9d2612d3c6da6e}
+\hypertarget{kernel__cfg_8c_aa60eaac1bf7d1861bd90afe74ee4b1ce}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!DisplayTask@{DisplayTask}}
+\index{DisplayTask@{DisplayTask}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{DisplayTask}]{\setlength{\rightskip}{0pt plus 5cm}const TaskType DisplayTask = 3}}
+\label{kernel__cfg_8c_aa60eaac1bf7d1861bd90afe74ee4b1ce}
+\hypertarget{kernel__cfg_8c_a575c506ee14ec1048435cc03501ac708}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!ipl\_\-maxisr2@{ipl\_\-maxisr2}}
+\index{ipl\_\-maxisr2@{ipl\_\-maxisr2}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{ipl\_\-maxisr2}]{\setlength{\rightskip}{0pt plus 5cm}const IPL {\bf ipl\_\-maxisr2} = IPL\_\-MAXISR2}}
+\label{kernel__cfg_8c_a575c506ee14ec1048435cc03501ac708}
+\hypertarget{kernel__cfg_8c_a8b8bd49fc8113b7286a0684ab5b38a6d}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!isrcb\_\-lastres@{isrcb\_\-lastres}}
+\index{isrcb\_\-lastres@{isrcb\_\-lastres}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{isrcb\_\-lastres}]{\setlength{\rightskip}{0pt plus 5cm}ResourceType {\bf isrcb\_\-lastres}\mbox{[}TNUM\_\-ISR2+1\mbox{]}}}
+\label{kernel__cfg_8c_a8b8bd49fc8113b7286a0684ab5b38a6d}
+\hypertarget{kernel__cfg_8c_a848282eec2e261e9346c7ea6d7bf748a}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!isrinib\_\-intpri@{isrinib\_\-intpri}}
+\index{isrinib\_\-intpri@{isrinib\_\-intpri}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{isrinib\_\-intpri}]{\setlength{\rightskip}{0pt plus 5cm}const Priority {\bf isrinib\_\-intpri}\mbox{[}TNUM\_\-ISR2+1\mbox{]} = \{ 0\}}}
+\label{kernel__cfg_8c_a848282eec2e261e9346c7ea6d7bf748a}
+\hypertarget{kernel__cfg_8c_a9ef3efa17d13b73bafcf8d5ef5bd9a93}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!lcd@{lcd}}
+\index{lcd@{lcd}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{lcd}]{\setlength{\rightskip}{0pt plus 5cm}const ResourceType {\bf lcd} = 0}}
+\label{kernel__cfg_8c_a9ef3efa17d13b73bafcf8d5ef5bd9a93}
+\hypertarget{kernel__cfg_8c_a61a31dfbf2485c53cffe03fa736e1aec}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!lcd\_\-update\_\-alarm@{lcd\_\-update\_\-alarm}}
+\index{lcd\_\-update\_\-alarm@{lcd\_\-update\_\-alarm}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{lcd\_\-update\_\-alarm}]{\setlength{\rightskip}{0pt plus 5cm}const AlarmType {\bf lcd\_\-update\_\-alarm} = 3}}
+\label{kernel__cfg_8c_a61a31dfbf2485c53cffe03fa736e1aec}
+\hypertarget{kernel__cfg_8c_a6c3032cb52c077e74d209c2766d593fd}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!PID\_\-alarm@{PID\_\-alarm}}
+\index{PID\_\-alarm@{PID\_\-alarm}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{PID\_\-alarm}]{\setlength{\rightskip}{0pt plus 5cm}const AlarmType {\bf PID\_\-alarm} = 1}}
+\label{kernel__cfg_8c_a6c3032cb52c077e74d209c2766d593fd}
+\hypertarget{kernel__cfg_8c_ae86e652c0e1dbcca40cf97f0650c9168}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!PID\_\-Controller@{PID\_\-Controller}}
+\index{PID\_\-Controller@{PID\_\-Controller}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{PID\_\-Controller}]{\setlength{\rightskip}{0pt plus 5cm}const TaskType PID\_\-Controller = 1}}
+\label{kernel__cfg_8c_ae86e652c0e1dbcca40cf97f0650c9168}
+\hypertarget{kernel__cfg_8c_add9a8db4fc43d90f9f479ae43fa888fc}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!rescb\_\-prevpri@{rescb\_\-prevpri}}
+\index{rescb\_\-prevpri@{rescb\_\-prevpri}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{rescb\_\-prevpri}]{\setlength{\rightskip}{0pt plus 5cm}Priority {\bf rescb\_\-prevpri}\mbox{[}TNUM\_\-RESOURCE\mbox{]}}}
+\label{kernel__cfg_8c_add9a8db4fc43d90f9f479ae43fa888fc}
+\hypertarget{kernel__cfg_8c_a33a38be71c485b0e60cf0eeb1337f1d5}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!rescb\_\-prevres@{rescb\_\-prevres}}
+\index{rescb\_\-prevres@{rescb\_\-prevres}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{rescb\_\-prevres}]{\setlength{\rightskip}{0pt plus 5cm}ResourceType {\bf rescb\_\-prevres}\mbox{[}TNUM\_\-RESOURCE\mbox{]}}}
+\label{kernel__cfg_8c_a33a38be71c485b0e60cf0eeb1337f1d5}
+\hypertarget{kernel__cfg_8c_ad8218651ddb656314b2f1704a9d5c648}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!resinib\_\-ceilpri@{resinib\_\-ceilpri}}
+\index{resinib\_\-ceilpri@{resinib\_\-ceilpri}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{resinib\_\-ceilpri}]{\setlength{\rightskip}{0pt plus 5cm}const Priority {\bf resinib\_\-ceilpri}\mbox{[}TNUM\_\-RESOURCE\mbox{]} = \{ TPRI\_\-MINTASK + 1, \}}}
+\label{kernel__cfg_8c_ad8218651ddb656314b2f1704a9d5c648}
+\hypertarget{kernel__cfg_8c_ad2b560dcfaef4afba6b35aa1fd5cffe6}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!speed\_\-alarm@{speed\_\-alarm}}
+\index{speed\_\-alarm@{speed\_\-alarm}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{speed\_\-alarm}]{\setlength{\rightskip}{0pt plus 5cm}const AlarmType {\bf speed\_\-alarm} = 0}}
+\label{kernel__cfg_8c_ad2b560dcfaef4afba6b35aa1fd5cffe6}
+\hypertarget{kernel__cfg_8c_a2b4db5eaa1658798a8f8b748c5977a5d}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!Speed\_\-Updater@{Speed\_\-Updater}}
+\index{Speed\_\-Updater@{Speed\_\-Updater}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{Speed\_\-Updater}]{\setlength{\rightskip}{0pt plus 5cm}const TaskType Speed\_\-Updater = 0}}
+\label{kernel__cfg_8c_a2b4db5eaa1658798a8f8b748c5977a5d}
+\hypertarget{kernel__cfg_8c_a75d5ac51631f79688bff1ebbeb1db0ab}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!SysTimerCnt@{SysTimerCnt}}
+\index{SysTimerCnt@{SysTimerCnt}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{SysTimerCnt}]{\setlength{\rightskip}{0pt plus 5cm}const CounterType {\bf SysTimerCnt} = 0}}
+\label{kernel__cfg_8c_a75d5ac51631f79688bff1ebbeb1db0ab}
+\hypertarget{kernel__cfg_8c_ac36070773037b3dfccc88b1662ac56ff}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!tcb\_\-actcnt@{tcb\_\-actcnt}}
+\index{tcb\_\-actcnt@{tcb\_\-actcnt}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{tcb\_\-actcnt}]{\setlength{\rightskip}{0pt plus 5cm}UINT8 {\bf tcb\_\-actcnt}\mbox{[}TNUM\_\-TASK\mbox{]}}}
+\label{kernel__cfg_8c_ac36070773037b3dfccc88b1662ac56ff}
+\hypertarget{kernel__cfg_8c_ad1b4d59f71f75f0583c11457d2427860}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!tcb\_\-curevt@{tcb\_\-curevt}}
+\index{tcb\_\-curevt@{tcb\_\-curevt}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{tcb\_\-curevt}]{\setlength{\rightskip}{0pt plus 5cm}EventMaskType {\bf tcb\_\-curevt}\mbox{[}TNUM\_\-EXTTASK+1\mbox{]}}}
+\label{kernel__cfg_8c_ad1b4d59f71f75f0583c11457d2427860}
+\hypertarget{kernel__cfg_8c_ad64442110583372a597683fb5d6154dc}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!tcb\_\-curpri@{tcb\_\-curpri}}
+\index{tcb\_\-curpri@{tcb\_\-curpri}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{tcb\_\-curpri}]{\setlength{\rightskip}{0pt plus 5cm}Priority {\bf tcb\_\-curpri}\mbox{[}TNUM\_\-TASK\mbox{]}}}
+\label{kernel__cfg_8c_ad64442110583372a597683fb5d6154dc}
+\hypertarget{kernel__cfg_8c_a88796c75d36b4d42e887aa256fb09cad}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!tcb\_\-lastres@{tcb\_\-lastres}}
+\index{tcb\_\-lastres@{tcb\_\-lastres}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{tcb\_\-lastres}]{\setlength{\rightskip}{0pt plus 5cm}ResourceType {\bf tcb\_\-lastres}\mbox{[}TNUM\_\-TASK\mbox{]}}}
+\label{kernel__cfg_8c_a88796c75d36b4d42e887aa256fb09cad}
+\hypertarget{kernel__cfg_8c_a6c78d69907471749db8af3632474fa74}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!tcb\_\-next@{tcb\_\-next}}
+\index{tcb\_\-next@{tcb\_\-next}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{tcb\_\-next}]{\setlength{\rightskip}{0pt plus 5cm}TaskType {\bf tcb\_\-next}\mbox{[}TNUM\_\-TASK\mbox{]}}}
+\label{kernel__cfg_8c_a6c78d69907471749db8af3632474fa74}
+\hypertarget{kernel__cfg_8c_a0b421dc494818e564a73b332dde79c03}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!tcb\_\-tstat@{tcb\_\-tstat}}
+\index{tcb\_\-tstat@{tcb\_\-tstat}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{tcb\_\-tstat}]{\setlength{\rightskip}{0pt plus 5cm}UINT8 {\bf tcb\_\-tstat}\mbox{[}TNUM\_\-TASK\mbox{]}}}
+\label{kernel__cfg_8c_a0b421dc494818e564a73b332dde79c03}
+\hypertarget{kernel__cfg_8c_a884bbd2ac8048bad15669ea9a6004654}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!tcb\_\-waievt@{tcb\_\-waievt}}
+\index{tcb\_\-waievt@{tcb\_\-waievt}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{tcb\_\-waievt}]{\setlength{\rightskip}{0pt plus 5cm}EventMaskType {\bf tcb\_\-waievt}\mbox{[}TNUM\_\-EXTTASK+1\mbox{]}}}
+\label{kernel__cfg_8c_a884bbd2ac8048bad15669ea9a6004654}
+\hypertarget{kernel__cfg_8c_a1e1b062c1b356b35efb6e77e4e248c85}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!tinib\_\-autoact@{tinib\_\-autoact}}
+\index{tinib\_\-autoact@{tinib\_\-autoact}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{tinib\_\-autoact}]{\setlength{\rightskip}{0pt plus 5cm}const AppModeType {\bf tinib\_\-autoact}\mbox{[}TNUM\_\-TASK\mbox{]} = \{ 0x00000000, 0x00000000, 0x00000000, 0x00000000, \}}}
+\label{kernel__cfg_8c_a1e1b062c1b356b35efb6e77e4e248c85}
+\hypertarget{kernel__cfg_8c_a315e8968bc7b347d34c6cb9669dcc8fe}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!tinib\_\-exepri@{tinib\_\-exepri}}
+\index{tinib\_\-exepri@{tinib\_\-exepri}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{tinib\_\-exepri}]{\setlength{\rightskip}{0pt plus 5cm}const Priority {\bf tinib\_\-exepri}\mbox{[}TNUM\_\-TASK\mbox{]} = \{ TPRI\_\-MINTASK + 4, TPRI\_\-MINTASK + 3, TPRI\_\-MINTASK + 2, TPRI\_\-MINTASK + 1, \}}}
+\label{kernel__cfg_8c_a315e8968bc7b347d34c6cb9669dcc8fe}
+\hypertarget{kernel__cfg_8c_a2e38497b5f2f597957009f5a63e1415c}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!tinib\_\-inipri@{tinib\_\-inipri}}
+\index{tinib\_\-inipri@{tinib\_\-inipri}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{tinib\_\-inipri}]{\setlength{\rightskip}{0pt plus 5cm}const Priority {\bf tinib\_\-inipri}\mbox{[}TNUM\_\-TASK\mbox{]} = \{ TPRI\_\-MINTASK + 4, TPRI\_\-MINTASK + 3, TPRI\_\-MINTASK + 2, TPRI\_\-MINTASK + 1, \}}}
+\label{kernel__cfg_8c_a2e38497b5f2f597957009f5a63e1415c}
+\hypertarget{kernel__cfg_8c_a17c6a8c620fcebae67bd1c39a8becfcb}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!tinib\_\-maxact@{tinib\_\-maxact}}
+\index{tinib\_\-maxact@{tinib\_\-maxact}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{tinib\_\-maxact}]{\setlength{\rightskip}{0pt plus 5cm}const UINT8 {\bf tinib\_\-maxact}\mbox{[}TNUM\_\-TASK\mbox{]} = \{ (1) -\/ 1, (1) -\/ 1, (1) -\/ 1, (1) -\/ 1, \}}}
+\label{kernel__cfg_8c_a17c6a8c620fcebae67bd1c39a8becfcb}
+\hypertarget{kernel__cfg_8c_a8c4281b1d29f79f8b44d6e50888398bb}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!tinib\_\-stk@{tinib\_\-stk}}
+\index{tinib\_\-stk@{tinib\_\-stk}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{tinib\_\-stk}]{\setlength{\rightskip}{0pt plus 5cm}const \_\-\_\-STK\_\-UNIT {\bf tinib\_\-stk}\mbox{[}TNUM\_\-TASK\mbox{]} = \{ (\_\-\_\-STK\_\-UNIT)\_\-stack\_\-Speed\_\-Updater, (\_\-\_\-STK\_\-UNIT)\_\-stack\_\-PID\_\-Controller, (\_\-\_\-STK\_\-UNIT)\_\-stack\_\-BRO\_\-Comm, (\_\-\_\-STK\_\-UNIT)\_\-stack\_\-DisplayTask, \}}}
+\label{kernel__cfg_8c_a8c4281b1d29f79f8b44d6e50888398bb}
+\hypertarget{kernel__cfg_8c_aedd5077026796ae1a66facca13aa701e}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!tinib\_\-stksz@{tinib\_\-stksz}}
+\index{tinib\_\-stksz@{tinib\_\-stksz}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{tinib\_\-stksz}]{\setlength{\rightskip}{0pt plus 5cm}const UINT16 {\bf tinib\_\-stksz}\mbox{[}TNUM\_\-TASK\mbox{]} = \{ 512, 512, 512, 512, \}}}
+\label{kernel__cfg_8c_aedd5077026796ae1a66facca13aa701e}
+\hypertarget{kernel__cfg_8c_aa2243e700feabf179ab3fe712726e348}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!tinib\_\-task@{tinib\_\-task}}
+\index{tinib\_\-task@{tinib\_\-task}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{tinib\_\-task}]{\setlength{\rightskip}{0pt plus 5cm}const FP {\bf tinib\_\-task}\mbox{[}TNUM\_\-TASK\mbox{]} = \{ TASKNAME( Speed\_\-Updater ), TASKNAME( PID\_\-Controller ), TASKNAME( BRO\_\-Comm ), TASKNAME( DisplayTask ), \}}}
+\label{kernel__cfg_8c_aa2243e700feabf179ab3fe712726e348}
+\hypertarget{kernel__cfg_8c_a8a783b5718ec25af7bdd8c3758893844}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!tnum\_\-alarm@{tnum\_\-alarm}}
+\index{tnum\_\-alarm@{tnum\_\-alarm}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{tnum\_\-alarm}]{\setlength{\rightskip}{0pt plus 5cm}const UINT8 {\bf tnum\_\-alarm} = TNUM\_\-ALARM}}
+\label{kernel__cfg_8c_a8a783b5718ec25af7bdd8c3758893844}
+\hypertarget{kernel__cfg_8c_a4fca572ead4424cdcd602155d8857e30}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!tnum\_\-counter@{tnum\_\-counter}}
+\index{tnum\_\-counter@{tnum\_\-counter}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{tnum\_\-counter}]{\setlength{\rightskip}{0pt plus 5cm}const UINT8 {\bf tnum\_\-counter} = TNUM\_\-COUNTER}}
+\label{kernel__cfg_8c_a4fca572ead4424cdcd602155d8857e30}
+\hypertarget{kernel__cfg_8c_a1eb2119cc0bf2d8cd4c02036b6c16b91}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!tnum\_\-exttask@{tnum\_\-exttask}}
+\index{tnum\_\-exttask@{tnum\_\-exttask}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{tnum\_\-exttask}]{\setlength{\rightskip}{0pt plus 5cm}const UINT8 {\bf tnum\_\-exttask} = TNUM\_\-EXTTASK}}
+\label{kernel__cfg_8c_a1eb2119cc0bf2d8cd4c02036b6c16b91}
+\hypertarget{kernel__cfg_8c_ac149c1bf3817cac2aaa40d79c6e08149}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!tnum\_\-isr2@{tnum\_\-isr2}}
+\index{tnum\_\-isr2@{tnum\_\-isr2}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{tnum\_\-isr2}]{\setlength{\rightskip}{0pt plus 5cm}const UINT8 {\bf tnum\_\-isr2} = TNUM\_\-ISR2}}
+\label{kernel__cfg_8c_ac149c1bf3817cac2aaa40d79c6e08149}
+\hypertarget{kernel__cfg_8c_a75efdc8f05a22bb801dc261b10310fa9}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!tnum\_\-resource@{tnum\_\-resource}}
+\index{tnum\_\-resource@{tnum\_\-resource}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{tnum\_\-resource}]{\setlength{\rightskip}{0pt plus 5cm}const UINT8 {\bf tnum\_\-resource} = TNUM\_\-RESOURCE}}
+\label{kernel__cfg_8c_a75efdc8f05a22bb801dc261b10310fa9}
+\hypertarget{kernel__cfg_8c_aba4418b977068d72b1130cbe8c07f4ce}{
+\index{kernel\_\-cfg.c@{kernel\_\-cfg.c}!tnum\_\-task@{tnum\_\-task}}
+\index{tnum\_\-task@{tnum\_\-task}!kernel_cfg.c@{kernel\_\-cfg.c}}
+\subsubsection[{tnum\_\-task}]{\setlength{\rightskip}{0pt plus 5cm}const UINT8 {\bf tnum\_\-task} = TNUM\_\-TASK}}
+\label{kernel__cfg_8c_aba4418b977068d72b1130cbe8c07f4ce}

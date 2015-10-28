@@ -1,0 +1,49 @@
+\hypertarget{structbro__bt__device__t}{
+\section{bro\_\-bt\_\-device\_\-t Struct Reference}
+\label{structbro__bt__device__t}\index{bro\_\-bt\_\-device\_\-t@{bro\_\-bt\_\-device\_\-t}}
+}
+
+
+Structure for representing a BlueTooth Device.  
+
+
+
+
+{\ttfamily \#include $<$bro\_\-bt.h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{structbro__bt__device__t_ab68bf00ae4a0036aee3d3371354748de}{name} \mbox{[}248\mbox{]}
+\begin{DoxyCompactList}\small\item\em Human Readable Name (As set on the Device). \item\end{DoxyCompactList}\item 
+bdaddr\_\-t \hyperlink{structbro__bt__device__t_a948e84481473311b7e41236653773e60}{mac}
+\begin{DoxyCompactList}\small\item\em Mac address. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Structure for representing a BlueTooth Device. It contains the data needed for connection and for the interaction with the user. 
+
+\subsection{Field Documentation}
+\hypertarget{structbro__bt__device__t_a948e84481473311b7e41236653773e60}{
+\index{bro\_\-bt\_\-device\_\-t@{bro\_\-bt\_\-device\_\-t}!mac@{mac}}
+\index{mac@{mac}!bro_bt_device_t@{bro\_\-bt\_\-device\_\-t}}
+\subsubsection[{mac}]{\setlength{\rightskip}{0pt plus 5cm}bdaddr\_\-t {\bf mac}}}
+\label{structbro__bt__device__t_a948e84481473311b7e41236653773e60}
+
+
+Mac address. 
+
+The MAC address here is not stored as a Human Readable String, but as a {\ttfamily bdaddr\_\-t}. This type is declared inside the BlueTooth Library ({\ttfamily BlueZ} or {\ttfamily Libbluetooth}) as an array of 6 {\ttfamily uint8\_\-t} (Since a MAC address is a 6 integer tuple, all of which can have a maximum value of 0xFF or 255). This kind of variable can be transformed in a Human Readable String with the use of ba2str(const bdaddr\_\-t$\ast$, char$\ast$) function, part of the Libbluetooth. \hypertarget{structbro__bt__device__t_ab68bf00ae4a0036aee3d3371354748de}{
+\index{bro\_\-bt\_\-device\_\-t@{bro\_\-bt\_\-device\_\-t}!name@{name}}
+\index{name@{name}!bro_bt_device_t@{bro\_\-bt\_\-device\_\-t}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}char {\bf name}\mbox{[}248\mbox{]}}}
+\label{structbro__bt__device__t_ab68bf00ae4a0036aee3d3371354748de}
+
+
+Human Readable Name (As set on the Device). 
+
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+src/headers/\hyperlink{bro__bt_8h}{bro\_\-bt.h}\end{DoxyCompactItemize}

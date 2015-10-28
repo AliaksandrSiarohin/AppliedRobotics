@@ -1,0 +1,139 @@
+\hypertarget{group___bro_b_t}{
+\section{BROFist Bluetooth Control}
+\label{group___bro_b_t}\index{BROFist Bluetooth Control@{BROFist Bluetooth Control}}
+}
+
+
+This module controls the BlueTooth communication with the SPAM paired with the server.  
+
+
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structbro__bt__device__t}{bro\_\-bt\_\-device\_\-t}
+\begin{DoxyCompactList}\small\item\em Structure for representing a BlueTooth Device. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___bro_b_t_gad8d503dc1b9bb10e606ac09669305612}{MAX\_\-BT\_\-DEVICES}~255
+\begin{DoxyCompactList}\small\item\em Maximum nuber of BlueTooth Devices discoverable. \item\end{DoxyCompactList}\item 
+\#define \hyperlink{group___bro_b_t_ga71ecc1aec5ed97ddbc4a321750a93a92}{BT\_\-INQUIRY\_\-LEN}~8
+\begin{DoxyCompactList}\small\item\em Lenght of the BlueTooth Inquiry. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\_\-t \hyperlink{group___bro_b_t_ga4d15ac149696de8a2e530da1840cd8c3}{bro\_\-bt\_\-scan\_\-devices} (\hyperlink{structbro__bt__device__t}{bro\_\-bt\_\-device\_\-t} $\ast$devices\mbox{[}MAX\_\-BT\_\-DEVICES\mbox{]})
+\begin{DoxyCompactList}\small\item\em Discover all the BT Devices in range and then put their details in an array. \item\end{DoxyCompactList}\item 
+int \hyperlink{group___bro_b_t_ga3782811f033f57a69b10be399da70207}{bro\_\-bt\_\-connect\_\-device} (int $\ast$spam\_\-sock, bdaddr\_\-t mac\_\-addr)
+\begin{DoxyCompactList}\small\item\em Connect to the given device. \item\end{DoxyCompactList}\item 
+int \hyperlink{group___bro_b_t_gafe494b1180377249a86e62f44a95638b}{bro\_\-bt\_\-client\_\-fist} (\hyperlink{structbro__fist__t}{bro\_\-fist\_\-t} $\ast$input\_\-fist, \hyperlink{structbro__fist__t}{bro\_\-fist\_\-t} $\ast$out\_\-fist, int spam\_\-sock)
+\begin{DoxyCompactList}\small\item\em Send a BROFist to the SPAM and receive the response. \item\end{DoxyCompactList}\item 
+int \hyperlink{group___bro_b_t_ga7e4a6289129f5f2a9d3c87619629dac8}{bro\_\-bt\_\-close\_\-connection} (int spam\_\-sock)
+\begin{DoxyCompactList}\small\item\em Close the connection to the SPAM unit. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This module controls the BlueTooth communication with the SPAM paired with the server. We use {\ttfamily LibBluez} to communicate via BlueTooth, please refer to \char`\"{}An introduction to BlueTooth Programming\char`\"{} ( \href{http://people.csail.mit.edu/albert/bluez-intro/}{\tt http://people.csail.mit.edu/albert/bluez-\/intro/}) to get an idea on how {\ttfamily LibBluez} works. 
+
+\subsection{Define Documentation}
+\hypertarget{group___bro_b_t_ga71ecc1aec5ed97ddbc4a321750a93a92}{
+\index{BroBT@{BroBT}!BT\_\-INQUIRY\_\-LEN@{BT\_\-INQUIRY\_\-LEN}}
+\index{BT\_\-INQUIRY\_\-LEN@{BT\_\-INQUIRY\_\-LEN}!BroBT@{BroBT}}
+\subsubsection[{BT\_\-INQUIRY\_\-LEN}]{\setlength{\rightskip}{0pt plus 5cm}\#define BT\_\-INQUIRY\_\-LEN~8}}
+\label{group___bro_b_t_ga71ecc1aec5ed97ddbc4a321750a93a92}
+
+
+Lenght of the BlueTooth Inquiry. 
+
+This time is not in seconds but in 1.28 seconds. Beats me why they have chosen to this, however it is discussed on the BlueZ tutorial here: \href{http://people.csail.mit.edu/albert/bluez-intro/c404.html}{\tt http://people.csail.mit.edu/albert/bluez-\/intro/c404.html} \hypertarget{group___bro_b_t_gad8d503dc1b9bb10e606ac09669305612}{
+\index{BroBT@{BroBT}!MAX\_\-BT\_\-DEVICES@{MAX\_\-BT\_\-DEVICES}}
+\index{MAX\_\-BT\_\-DEVICES@{MAX\_\-BT\_\-DEVICES}!BroBT@{BroBT}}
+\subsubsection[{MAX\_\-BT\_\-DEVICES}]{\setlength{\rightskip}{0pt plus 5cm}\#define MAX\_\-BT\_\-DEVICES~255}}
+\label{group___bro_b_t_gad8d503dc1b9bb10e606ac09669305612}
+
+
+Maximum nuber of BlueTooth Devices discoverable. 
+
+
+
+\subsection{Function Documentation}
+\hypertarget{group___bro_b_t_gafe494b1180377249a86e62f44a95638b}{
+\index{BroBT@{BroBT}!bro\_\-bt\_\-client\_\-fist@{bro\_\-bt\_\-client\_\-fist}}
+\index{bro\_\-bt\_\-client\_\-fist@{bro\_\-bt\_\-client\_\-fist}!BroBT@{BroBT}}
+\subsubsection[{bro\_\-bt\_\-client\_\-fist}]{\setlength{\rightskip}{0pt plus 5cm}int bro\_\-bt\_\-client\_\-fist ({\bf bro\_\-fist\_\-t} $\ast$ {\em input\_\-fist}, \/  {\bf bro\_\-fist\_\-t} $\ast$ {\em out\_\-fist}, \/  int {\em spam\_\-sock})}}
+\label{group___bro_b_t_gafe494b1180377249a86e62f44a95638b}
+
+
+Send a BROFist to the SPAM and receive the response. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em input\_\-fist}]The operations to send to the SPAM. \item[{\em out\_\-fist}]The response received from the SPAM. \item[{\em spam\_\-sock}]The SPAM Socket Descriptor. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Bytes received. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em -\/1}]if there was any problem. \end{DoxyRetVals}
+\hypertarget{group___bro_b_t_ga7e4a6289129f5f2a9d3c87619629dac8}{
+\index{BroBT@{BroBT}!bro\_\-bt\_\-close\_\-connection@{bro\_\-bt\_\-close\_\-connection}}
+\index{bro\_\-bt\_\-close\_\-connection@{bro\_\-bt\_\-close\_\-connection}!BroBT@{BroBT}}
+\subsubsection[{bro\_\-bt\_\-close\_\-connection}]{\setlength{\rightskip}{0pt plus 5cm}int bro\_\-bt\_\-close\_\-connection (int {\em spam\_\-sock})}}
+\label{group___bro_b_t_ga7e4a6289129f5f2a9d3c87619629dac8}
+
+
+Close the connection to the SPAM unit. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em spam\_\-sock}]The SPAM Socket Descriptor. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result of the operation 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em 0}]if the closing was succesful. \item[{\em -\/1}]if there was any problem. \end{DoxyRetVals}
+\hypertarget{group___bro_b_t_ga3782811f033f57a69b10be399da70207}{
+\index{BroBT@{BroBT}!bro\_\-bt\_\-connect\_\-device@{bro\_\-bt\_\-connect\_\-device}}
+\index{bro\_\-bt\_\-connect\_\-device@{bro\_\-bt\_\-connect\_\-device}!BroBT@{BroBT}}
+\subsubsection[{bro\_\-bt\_\-connect\_\-device}]{\setlength{\rightskip}{0pt plus 5cm}int bro\_\-bt\_\-connect\_\-device (int $\ast$ {\em spam\_\-sock}, \/  bdaddr\_\-t {\em mac\_\-addr})}}
+\label{group___bro_b_t_ga3782811f033f57a69b10be399da70207}
+
+
+Connect to the given device. 
+
+The connection is done using a {\ttfamily bdaddr\_\-t} parameter since it is possible to connect to a BlueTooth device knowing only the MAC address, since one of the connecting options for the BROFist server is to pass directly the MAC address at the startup.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em spam\_\-sock}]Pointer to the SPAM Socket Descriptor. \item[{\em mac\_\-addr}]MAC Address of the Device to connect to. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result of the operation 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em 0}]if the connection was succesful. \item[{\em -\/1}]if there were problems in the connection. \end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+If there were errors with the connection then {\ttfamily errno} will be set accordingly to the return values listed on the {\ttfamily \char`\"{}man 2
+        connect\char`\"{}} page. 
+\end{DoxyNote}
+\hypertarget{group___bro_b_t_ga4d15ac149696de8a2e530da1840cd8c3}{
+\index{BroBT@{BroBT}!bro\_\-bt\_\-scan\_\-devices@{bro\_\-bt\_\-scan\_\-devices}}
+\index{bro\_\-bt\_\-scan\_\-devices@{bro\_\-bt\_\-scan\_\-devices}!BroBT@{BroBT}}
+\subsubsection[{bro\_\-bt\_\-scan\_\-devices}]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t bro\_\-bt\_\-scan\_\-devices ({\bf bro\_\-bt\_\-device\_\-t} $\ast$ {\em devices}\mbox{[}MAX\_\-BT\_\-DEVICES\mbox{]})}}
+\label{group___bro_b_t_ga4d15ac149696de8a2e530da1840cd8c3}
+
+
+Discover all the BT Devices in range and then put their details in an array. 
+
+Bla.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em devices\mbox{[}MAX\_\-BT\_\-DEVICES\mbox{]}}]Array that will contains al the Devices Found. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of Devices found. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em -\/1}]if any connection error emerged. \end{DoxyRetVals}

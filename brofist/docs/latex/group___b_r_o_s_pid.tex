@@ -1,0 +1,16 @@
+\hypertarget{group___b_r_o_s_pid}{
+\section{PID Controller Functions}
+\label{group___b_r_o_s_pid}\index{PID Controller Functions@{PID Controller Functions}}
+}
+
+
+This modules provides a PID Controller and an average speed function.  
+
+
+This modules provides a PID Controller and an average speed function. There also are some general purpose functions to update the Servo Motors' speeds and to compute their average speed.\hypertarget{group___b_r_o_s_pid_PIDController}{}\subsection{PID Controller}\label{group___b_r_o_s_pid_PIDController}
+Directly from Wikipedia (\href{http://en.wikipedia.org/wiki/PID_controller}{\tt http://en.wikipedia.org/wiki/PID\_\-controller}):
+
+A proportional–integral–derivative controller (PID controller) is a generic control loop feedback mechanism (controller) widely used in industrial control systems – a PID is the most commonly used feedback controller. A PID controller calculates an \char`\"{}error\char`\"{} value as the difference between a measured process variable and a desired setpoint. The controller attempts to minimize the error by adjusting the process control inputs. In the absence of knowledge of the underlying process, a PID controller is the best controller. However, for best performance, the PID parameters used in the calculation must be tuned according to the nature of the system – while the design is generic, the parameters depend on the specific system.
+
+All the data needed by the PID is stored inside the \hyperlink{structmotor__t}{motor\_\-t} related to the Servo Motor we want to control, such as the last three computed errors or the last powers used. The values used to tune the PID are stored inside {\ttfamily BRO\_\-spam\_\-pid.c} as defines.\hypertarget{group___b_r_o_s_pid_BROSAvgSpd}{}\subsection{BROFist SPAM Average Speed Computation}\label{group___b_r_o_s_pid_BROSAvgSpd}
+Since the Servo Motors can only sense a change of rotation of a degree or more, computing the average speed in Degree per second can be a long, for embedded control, task, since the shorter the sampling time, the higher the computed error will be. E.g.: If we use a 2ms sampling time we would have to multiply the value by 500ms to get the average Degree per Second rotation speed. This wouldn't be a problem if the Tachometric Sensor embedded in the Servo Motors had a rational resolution, but in our case the error would be as high as 500 Degree per Second (since we can have an error of 1 degree every 2 ms). For that purpose and average speed computing function avg() has been implemented. 
