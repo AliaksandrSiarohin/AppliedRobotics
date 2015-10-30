@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <assert.h>
 
-// BAD BAD STUFF :) :O
+// BAD BAD STUFF :) :O :/
 #include <stdarg.h>
 FILE * output;
 
