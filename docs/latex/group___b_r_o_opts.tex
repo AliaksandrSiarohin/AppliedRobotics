@@ -1,0 +1,43 @@
+\hypertarget{group___b_r_o_opts}{
+\section{BROFist Options Manager}
+\label{group___b_r_o_opts}\index{BROFist Options Manager@{BROFist Options Manager}}
+}
+
+
+This module controls the options for the BROFist server.  
+
+
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structbro__opts__t}{bro\_\-opts\_\-t}
+\begin{DoxyCompactList}\small\item\em Struct that contains all the data parsed from the options. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{group___b_r_o_opts_ga3b624c622d32ee21daaee3e33adbe003}{bro\_\-opts\_\-parse} (\hyperlink{structbro__opts__t}{bro\_\-opts\_\-t} $\ast$so, int argc, char $\ast$const argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Function that uses getopt to parse every option passed to the BROFist Server. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This module controls the options for the BROFist server. It makes full use of the {\ttfamily getopt} library. 
+
+\subsection{Function Documentation}
+\hypertarget{group___b_r_o_opts_ga3b624c622d32ee21daaee3e33adbe003}{
+\index{BROOpts@{BROOpts}!bro\_\-opts\_\-parse@{bro\_\-opts\_\-parse}}
+\index{bro\_\-opts\_\-parse@{bro\_\-opts\_\-parse}!BROOpts@{BROOpts}}
+\subsubsection[{bro\_\-opts\_\-parse}]{\setlength{\rightskip}{0pt plus 5cm}int bro\_\-opts\_\-parse ({\bf bro\_\-opts\_\-t} $\ast$ {\em so}, \/  int {\em argc}, \/  char $\ast$const  {\em argv}\mbox{[}$\,$\mbox{]})}}
+\label{group___b_r_o_opts_ga3b624c622d32ee21daaee3e33adbe003}
+
+
+Function that uses getopt to parse every option passed to the BROFist Server. 
+
+It should be called before any initialisation function, to get the MAC addres for the SPAM or any other data. 
+\begin{DoxyParams}{Parameters}
+\item[{\em so}]The struct that will contain every parsed option. \item[{\em argc}]Sounds familiar, doesn't it? It's the argument count passed to the main(). It is needed, alongside argv, by getopt. \item[{\em argv\mbox{[}$\,$\mbox{]}}]Another familiar name: it's the array of strings passed to the applications as arguments. Another thing required by getopt. \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Result of the operation. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+\item[{\em 0}]if everything went as espected and the operation did not need to start the server. \item[{\em -\/1}]if there was an error or we called either the help ({\ttfamily -\/h}) or the BlueTooth Discovery ({\ttfamily -\/l}). \end{DoxyRetVals}

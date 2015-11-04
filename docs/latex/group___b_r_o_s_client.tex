@@ -1,0 +1,97 @@
+\hypertarget{group___b_r_o_s_client}{
+\section{Generic SPAM Data Types and Defines}
+\label{group___b_r_o_s_client}\index{Generic SPAM Data Types and Defines@{Generic SPAM Data Types and Defines}}
+}
+
+
+This module defines some common data types for the SPAM Client.  
+
+
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmotor__t}{motor\_\-t}
+\begin{DoxyCompactList}\small\item\em Servo Motor's descripting structure. \item\end{DoxyCompactList}\item 
+struct \hyperlink{structengines__t}{engines\_\-t}
+\begin{DoxyCompactList}\small\item\em Structure containing all the Servo Motors' Strunctures. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___b_r_o_s_client_gad9e94416ba83380751dc4588286d8130}{CONN\_\-SONAR}~1
+\begin{DoxyCompactList}\small\item\em Ultrasonic Distance Sensor Flag. \item\end{DoxyCompactList}\item 
+\#define \hyperlink{group___b_r_o_s_client_ga72f4e7f36b69fdd1b3874e0824c0316a}{SONAR\_\-PORT}~NXT\_\-PORT\_\-S1
+\begin{DoxyCompactList}\small\item\em Ultrasonic Distance Sensor PORT. \item\end{DoxyCompactList}\item 
+\#define \hyperlink{group___b_r_o_s_client_ga82692265ede80e0cfdfe84a87d3093f1}{CONN\_\-LIGHT}~1
+\begin{DoxyCompactList}\small\item\em Light Sensor Flag. \item\end{DoxyCompactList}\item 
+\#define \hyperlink{group___b_r_o_s_client_gafe5f0db4351597e50603e53a4a7d0051}{LIGHT\_\-PORT}~NXT\_\-PORT\_\-S2
+\begin{DoxyCompactList}\small\item\em Ultrasonic Distance Sensor PORT. \item\end{DoxyCompactList}\item 
+\hypertarget{group___b_r_o_s_client_gab7639a7ba7ef8c7dab82759c5ef5a9a8}{
+\#define {\bfseries PID\_\-CONTROLLED}~1}
+\label{group___b_r_o_s_client_gab7639a7ba7ef8c7dab82759c5ef5a9a8}
+
+\item 
+\hypertarget{group___b_r_o_s_client_gaf89a62f836d5ac2ffa204a4dd0615a8d}{
+\#define {\bfseries RAW\_\-POWER}~0}
+\label{group___b_r_o_s_client_gaf89a62f836d5ac2ffa204a4dd0615a8d}
+
+\item 
+\hypertarget{group___b_r_o_s_client_gac420162ed79637b2e19a25d7e01cbf6c}{
+\#define {\bfseries NOT\_\-USING}~-\/1}
+\label{group___b_r_o_s_client_gac420162ed79637b2e19a25d7e01cbf6c}
+
+\item 
+\#define \hyperlink{group___b_r_o_s_client_gaeef07cfe778af527fd0738e828efa43a}{SAMP\_\-NUM}~10
+\begin{DoxyCompactList}\small\item\em Number of samples for Average Speed Computation. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This module defines some common data types for the SPAM Client. These modules are used to control every Servo Motor that might be installed on a \hyperlink{main_SPAM}{SPAM}. As you might see, every function that interacts with a Servo Motor uses these structures, so if some modifications are needed they should be seameless.\hypertarget{group___b_r_o_s_client_BROSDefinitions}{}\subsection{BROFist SPAM Client Defines}\label{group___b_r_o_s_client_BROSDefinitions}
+There also are a great deal of definitions in this module. They are needed to control the motors (There is a section dedicated to the PID Controller, as you might see by looking at the sources) and to initialize the Light Sensor and the Ultrasonic Distance Sensor. It's a shame that we can't activate them via Bluetooth and, instead, have to activate them by putting the correct ports in this file. 
+
+\subsection{Define Documentation}
+\hypertarget{group___b_r_o_s_client_ga82692265ede80e0cfdfe84a87d3093f1}{
+\index{BROSClient@{BROSClient}!CONN\_\-LIGHT@{CONN\_\-LIGHT}}
+\index{CONN\_\-LIGHT@{CONN\_\-LIGHT}!BROSClient@{BROSClient}}
+\subsubsection[{CONN\_\-LIGHT}]{\setlength{\rightskip}{0pt plus 5cm}\#define CONN\_\-LIGHT~1}}
+\label{group___b_r_o_s_client_ga82692265ede80e0cfdfe84a87d3093f1}
+
+
+Light Sensor Flag. 
+
+Set to {\ttfamily 1} if connected, {\ttfamily 0} if not present. \hypertarget{group___b_r_o_s_client_gad9e94416ba83380751dc4588286d8130}{
+\index{BROSClient@{BROSClient}!CONN\_\-SONAR@{CONN\_\-SONAR}}
+\index{CONN\_\-SONAR@{CONN\_\-SONAR}!BROSClient@{BROSClient}}
+\subsubsection[{CONN\_\-SONAR}]{\setlength{\rightskip}{0pt plus 5cm}\#define CONN\_\-SONAR~1}}
+\label{group___b_r_o_s_client_gad9e94416ba83380751dc4588286d8130}
+
+
+Ultrasonic Distance Sensor Flag. 
+
+Set to {\ttfamily 1} if connected, {\ttfamily 0} if not present. \hypertarget{group___b_r_o_s_client_gafe5f0db4351597e50603e53a4a7d0051}{
+\index{BROSClient@{BROSClient}!LIGHT\_\-PORT@{LIGHT\_\-PORT}}
+\index{LIGHT\_\-PORT@{LIGHT\_\-PORT}!BROSClient@{BROSClient}}
+\subsubsection[{LIGHT\_\-PORT}]{\setlength{\rightskip}{0pt plus 5cm}\#define LIGHT\_\-PORT~NXT\_\-PORT\_\-S2}}
+\label{group___b_r_o_s_client_gafe5f0db4351597e50603e53a4a7d0051}
+
+
+Ultrasonic Distance Sensor PORT. 
+
+Use the standard nxtOSEK port descriptors to tell the system which port the Sonar is connected to. \hypertarget{group___b_r_o_s_client_gaeef07cfe778af527fd0738e828efa43a}{
+\index{BROSClient@{BROSClient}!SAMP\_\-NUM@{SAMP\_\-NUM}}
+\index{SAMP\_\-NUM@{SAMP\_\-NUM}!BROSClient@{BROSClient}}
+\subsubsection[{SAMP\_\-NUM}]{\setlength{\rightskip}{0pt plus 5cm}\#define SAMP\_\-NUM~10}}
+\label{group___b_r_o_s_client_gaeef07cfe778af527fd0738e828efa43a}
+
+
+Number of samples for Average Speed Computation. 
+
+\hypertarget{group___b_r_o_s_client_ga72f4e7f36b69fdd1b3874e0824c0316a}{
+\index{BROSClient@{BROSClient}!SONAR\_\-PORT@{SONAR\_\-PORT}}
+\index{SONAR\_\-PORT@{SONAR\_\-PORT}!BROSClient@{BROSClient}}
+\subsubsection[{SONAR\_\-PORT}]{\setlength{\rightskip}{0pt plus 5cm}\#define SONAR\_\-PORT~NXT\_\-PORT\_\-S1}}
+\label{group___b_r_o_s_client_ga72f4e7f36b69fdd1b3874e0824c0316a}
+
+
+Ultrasonic Distance Sensor PORT. 
+
+Use the standard nxtOSEK port descriptors to tell the system which port the Sonar is connected to. 

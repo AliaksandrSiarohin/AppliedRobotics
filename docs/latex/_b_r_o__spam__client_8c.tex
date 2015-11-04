@@ -1,0 +1,132 @@
+\hypertarget{_b_r_o__spam__client_8c}{
+\section{/home/jazzinghen/Documents/Tesi/BROFist/spam/BRO\_\-spam\_\-client.c File Reference}
+\label{_b_r_o__spam__client_8c}\index{/home/jazzinghen/Documents/Tesi/BROFist/spam/BRO\_\-spam\_\-client.c@{/home/jazzinghen/Documents/Tesi/BROFist/spam/BRO\_\-spam\_\-client.c}}
+}
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include \char`\"{}headers/BRO\_\-spam\_\-fists.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}BRO\_\-spam\_\-client.h\char`\"{}}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$math.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include \char`\"{}kernel.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}kernel\_\-id.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}ecrobot\_\-interface.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}../../src/headers/bro\_\-fist.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_b_r_o__spam__client_8c_a5ed320798edfd93d13f6cf1c7f36b3c5}{DeclareCounter} (SysTimerCnt)
+\item 
+\hyperlink{_b_r_o__spam__client_8c_a405f7f0ef0e724582315e39e78c2b382}{DeclareResource} (lcd)
+\item 
+\hyperlink{_b_r_o__spam__client_8c_a163df5bd04603d015b1b3cdd53b26c06}{DeclareTask} (BRO\_\-Comm)
+\item 
+\hyperlink{_b_r_o__spam__client_8c_a9e69b4e383bc23b860dcc58a4607f090}{DeclareTask} (PID\_\-Controller)
+\item 
+\hyperlink{_b_r_o__spam__client_8c_a1ac8bb85faf649420991ac4202e30ccb}{DeclareTask} (Speed\_\-Updater)
+\item 
+\hyperlink{_b_r_o__spam__client_8c_a4415edbb7c1b9a2d5ae7835342a23aef}{DeclareTask} (DisplayTask)
+\item 
+void \hyperlink{_b_r_o__spam__client_8c_a86da020e3c5904b0fcb50392b7da36f8}{ecrobot\_\-device\_\-initialize} ()
+\item 
+void \hyperlink{_b_r_o__spam__client_8c_ab71e853f21b14a98926ad68307fb9f0e}{ecrobot\_\-device\_\-terminate} ()
+\item 
+void \hyperlink{_b_r_o__spam__client_8c_a1a3fecba0774248495ab7a226e23b9fe}{user\_\-1ms\_\-isr\_\-type2} (void)
+\item 
+\hyperlink{_b_r_o__spam__client_8c_a23a1e28c8693236c39f21bc79ae19f1f}{TASK} (PID\_\-Controller)
+\item 
+\hyperlink{_b_r_o__spam__client_8c_ab3f5feb782c7ea2f5be3b4892d0ca213}{TASK} (Speed\_\-Updater)
+\item 
+\hyperlink{_b_r_o__spam__client_8c_a6d37f1ccd044e4bc9646ce416f0c8852}{TASK} (BRO\_\-Comm)
+\item 
+\hyperlink{_b_r_o__spam__client_8c_a5cb9e6c2f84fdec7c9c67ceaa05cd967}{TASK} (DisplayTask)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structengines__t}{engines\_\-t} \hyperlink{_b_r_o__spam__client_8c_ae139b35c9ea4f41c8b82c22015a2c8d3}{engines}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{_b_r_o__spam__client_8c_a5ed320798edfd93d13f6cf1c7f36b3c5}{
+\index{BRO\_\-spam\_\-client.c@{BRO\_\-spam\_\-client.c}!DeclareCounter@{DeclareCounter}}
+\index{DeclareCounter@{DeclareCounter}!BRO_spam_client.c@{BRO\_\-spam\_\-client.c}}
+\subsubsection[{DeclareCounter}]{\setlength{\rightskip}{0pt plus 5cm}DeclareCounter (SysTimerCnt)}}
+\label{_b_r_o__spam__client_8c_a5ed320798edfd93d13f6cf1c7f36b3c5}
+\hypertarget{_b_r_o__spam__client_8c_a405f7f0ef0e724582315e39e78c2b382}{
+\index{BRO\_\-spam\_\-client.c@{BRO\_\-spam\_\-client.c}!DeclareResource@{DeclareResource}}
+\index{DeclareResource@{DeclareResource}!BRO_spam_client.c@{BRO\_\-spam\_\-client.c}}
+\subsubsection[{DeclareResource}]{\setlength{\rightskip}{0pt plus 5cm}DeclareResource (lcd)}}
+\label{_b_r_o__spam__client_8c_a405f7f0ef0e724582315e39e78c2b382}
+\hypertarget{_b_r_o__spam__client_8c_a4415edbb7c1b9a2d5ae7835342a23aef}{
+\index{BRO\_\-spam\_\-client.c@{BRO\_\-spam\_\-client.c}!DeclareTask@{DeclareTask}}
+\index{DeclareTask@{DeclareTask}!BRO_spam_client.c@{BRO\_\-spam\_\-client.c}}
+\subsubsection[{DeclareTask}]{\setlength{\rightskip}{0pt plus 5cm}DeclareTask (DisplayTask)}}
+\label{_b_r_o__spam__client_8c_a4415edbb7c1b9a2d5ae7835342a23aef}
+\hypertarget{_b_r_o__spam__client_8c_a1ac8bb85faf649420991ac4202e30ccb}{
+\index{BRO\_\-spam\_\-client.c@{BRO\_\-spam\_\-client.c}!DeclareTask@{DeclareTask}}
+\index{DeclareTask@{DeclareTask}!BRO_spam_client.c@{BRO\_\-spam\_\-client.c}}
+\subsubsection[{DeclareTask}]{\setlength{\rightskip}{0pt plus 5cm}DeclareTask (Speed\_\-Updater)}}
+\label{_b_r_o__spam__client_8c_a1ac8bb85faf649420991ac4202e30ccb}
+\hypertarget{_b_r_o__spam__client_8c_a9e69b4e383bc23b860dcc58a4607f090}{
+\index{BRO\_\-spam\_\-client.c@{BRO\_\-spam\_\-client.c}!DeclareTask@{DeclareTask}}
+\index{DeclareTask@{DeclareTask}!BRO_spam_client.c@{BRO\_\-spam\_\-client.c}}
+\subsubsection[{DeclareTask}]{\setlength{\rightskip}{0pt plus 5cm}DeclareTask (PID\_\-Controller)}}
+\label{_b_r_o__spam__client_8c_a9e69b4e383bc23b860dcc58a4607f090}
+\hypertarget{_b_r_o__spam__client_8c_a163df5bd04603d015b1b3cdd53b26c06}{
+\index{BRO\_\-spam\_\-client.c@{BRO\_\-spam\_\-client.c}!DeclareTask@{DeclareTask}}
+\index{DeclareTask@{DeclareTask}!BRO_spam_client.c@{BRO\_\-spam\_\-client.c}}
+\subsubsection[{DeclareTask}]{\setlength{\rightskip}{0pt plus 5cm}DeclareTask (BRO\_\-Comm)}}
+\label{_b_r_o__spam__client_8c_a163df5bd04603d015b1b3cdd53b26c06}
+\hypertarget{_b_r_o__spam__client_8c_a86da020e3c5904b0fcb50392b7da36f8}{
+\index{BRO\_\-spam\_\-client.c@{BRO\_\-spam\_\-client.c}!ecrobot\_\-device\_\-initialize@{ecrobot\_\-device\_\-initialize}}
+\index{ecrobot\_\-device\_\-initialize@{ecrobot\_\-device\_\-initialize}!BRO_spam_client.c@{BRO\_\-spam\_\-client.c}}
+\subsubsection[{ecrobot\_\-device\_\-initialize}]{\setlength{\rightskip}{0pt plus 5cm}void ecrobot\_\-device\_\-initialize ()}}
+\label{_b_r_o__spam__client_8c_a86da020e3c5904b0fcb50392b7da36f8}
+\hypertarget{_b_r_o__spam__client_8c_ab71e853f21b14a98926ad68307fb9f0e}{
+\index{BRO\_\-spam\_\-client.c@{BRO\_\-spam\_\-client.c}!ecrobot\_\-device\_\-terminate@{ecrobot\_\-device\_\-terminate}}
+\index{ecrobot\_\-device\_\-terminate@{ecrobot\_\-device\_\-terminate}!BRO_spam_client.c@{BRO\_\-spam\_\-client.c}}
+\subsubsection[{ecrobot\_\-device\_\-terminate}]{\setlength{\rightskip}{0pt plus 5cm}void ecrobot\_\-device\_\-terminate ()}}
+\label{_b_r_o__spam__client_8c_ab71e853f21b14a98926ad68307fb9f0e}
+\hypertarget{_b_r_o__spam__client_8c_a5cb9e6c2f84fdec7c9c67ceaa05cd967}{
+\index{BRO\_\-spam\_\-client.c@{BRO\_\-spam\_\-client.c}!TASK@{TASK}}
+\index{TASK@{TASK}!BRO_spam_client.c@{BRO\_\-spam\_\-client.c}}
+\subsubsection[{TASK}]{\setlength{\rightskip}{0pt plus 5cm}TASK (DisplayTask)}}
+\label{_b_r_o__spam__client_8c_a5cb9e6c2f84fdec7c9c67ceaa05cd967}
+\hypertarget{_b_r_o__spam__client_8c_a6d37f1ccd044e4bc9646ce416f0c8852}{
+\index{BRO\_\-spam\_\-client.c@{BRO\_\-spam\_\-client.c}!TASK@{TASK}}
+\index{TASK@{TASK}!BRO_spam_client.c@{BRO\_\-spam\_\-client.c}}
+\subsubsection[{TASK}]{\setlength{\rightskip}{0pt plus 5cm}TASK (BRO\_\-Comm)}}
+\label{_b_r_o__spam__client_8c_a6d37f1ccd044e4bc9646ce416f0c8852}
+\hypertarget{_b_r_o__spam__client_8c_ab3f5feb782c7ea2f5be3b4892d0ca213}{
+\index{BRO\_\-spam\_\-client.c@{BRO\_\-spam\_\-client.c}!TASK@{TASK}}
+\index{TASK@{TASK}!BRO_spam_client.c@{BRO\_\-spam\_\-client.c}}
+\subsubsection[{TASK}]{\setlength{\rightskip}{0pt plus 5cm}TASK (Speed\_\-Updater)}}
+\label{_b_r_o__spam__client_8c_ab3f5feb782c7ea2f5be3b4892d0ca213}
+\hypertarget{_b_r_o__spam__client_8c_a23a1e28c8693236c39f21bc79ae19f1f}{
+\index{BRO\_\-spam\_\-client.c@{BRO\_\-spam\_\-client.c}!TASK@{TASK}}
+\index{TASK@{TASK}!BRO_spam_client.c@{BRO\_\-spam\_\-client.c}}
+\subsubsection[{TASK}]{\setlength{\rightskip}{0pt plus 5cm}TASK (PID\_\-Controller)}}
+\label{_b_r_o__spam__client_8c_a23a1e28c8693236c39f21bc79ae19f1f}
+\hypertarget{_b_r_o__spam__client_8c_a1a3fecba0774248495ab7a226e23b9fe}{
+\index{BRO\_\-spam\_\-client.c@{BRO\_\-spam\_\-client.c}!user\_\-1ms\_\-isr\_\-type2@{user\_\-1ms\_\-isr\_\-type2}}
+\index{user\_\-1ms\_\-isr\_\-type2@{user\_\-1ms\_\-isr\_\-type2}!BRO_spam_client.c@{BRO\_\-spam\_\-client.c}}
+\subsubsection[{user\_\-1ms\_\-isr\_\-type2}]{\setlength{\rightskip}{0pt plus 5cm}void user\_\-1ms\_\-isr\_\-type2 (void)}}
+\label{_b_r_o__spam__client_8c_a1a3fecba0774248495ab7a226e23b9fe}
+
+
+\subsection{Variable Documentation}
+\hypertarget{_b_r_o__spam__client_8c_ae139b35c9ea4f41c8b82c22015a2c8d3}{
+\index{BRO\_\-spam\_\-client.c@{BRO\_\-spam\_\-client.c}!engines@{engines}}
+\index{engines@{engines}!BRO_spam_client.c@{BRO\_\-spam\_\-client.c}}
+\subsubsection[{engines}]{\setlength{\rightskip}{0pt plus 5cm}{\bf engines\_\-t} {\bf engines}}}
+\label{_b_r_o__spam__client_8c_ae139b35c9ea4f41c8b82c22015a2c8d3}
+{\bfseries Initial value:}
+\begin{DoxyCode}
+ {
+    {.port = NXT_PORT_A, .speed_control_type = NOT_USING, .speed_ref = 0},
+    {.port = NXT_PORT_B, .speed_control_type = NOT_USING, .speed_ref = 0},
+    {.port = NXT_PORT_C, .speed_control_type = NOT_USING, .speed_ref = 0}
+}
+\end{DoxyCode}

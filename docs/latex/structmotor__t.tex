@@ -1,0 +1,131 @@
+\hypertarget{structmotor__t}{
+\section{motor\_\-t Struct Reference}
+\label{structmotor__t}\index{motor\_\-t@{motor\_\-t}}
+}
+
+
+Servo Motor's descripting structure.  
+
+
+
+
+{\ttfamily \#include $<$BRO\_\-spam\_\-client.h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+S8 \hyperlink{structmotor__t_a5b17b9088a3d9bb06293673a7077411c}{speed\_\-control\_\-type}
+\begin{DoxyCompactList}\small\item\em Kind of Speed Control for this Servo Motor. \item\end{DoxyCompactList}\item 
+U32 \hyperlink{structmotor__t_a3fc8cc6c0b771418981cb5df670e3d6c}{speed\_\-ref}
+\begin{DoxyCompactList}\small\item\em Target speed for PID Controller. \item\end{DoxyCompactList}\item 
+U32 \hyperlink{structmotor__t_a5c97ee29120bfb2cc43ca32bbcf0d766}{revolutions} \mbox{[}SAMP\_\-NUM\mbox{]}
+\begin{DoxyCompactList}\small\item\em Last SAMP\_\-NUM Tachometric Readings. \item\end{DoxyCompactList}\item 
+\hypertarget{structmotor__t_a45a66de576d1f141336441d722f9613c}{
+U32 \hyperlink{structmotor__t_a45a66de576d1f141336441d722f9613c}{times} \mbox{[}SAMP\_\-NUM\mbox{]}}
+\label{structmotor__t_a45a66de576d1f141336441d722f9613c}
+
+\begin{DoxyCompactList}\small\item\em Last SAMP\_\-NUM System Times. \item\end{DoxyCompactList}\item 
+F32 \hyperlink{structmotor__t_a4c77ff6da6be3a15bb8fe8523f3909f6}{speeds} \mbox{[}SAMP\_\-NUM\mbox{]}
+\begin{DoxyCompactList}\small\item\em Last SAMP\_\-NUM Average Speeds. \item\end{DoxyCompactList}\item 
+F32 \hyperlink{structmotor__t_ae99d8af7a3f14d868771f3dad4041d76}{powers} \mbox{[}3\mbox{]}
+\begin{DoxyCompactList}\small\item\em Last three RAW Powers set. \item\end{DoxyCompactList}\item 
+F32 \hyperlink{structmotor__t_aaa9b86dcf97cbd4ca2af18ca41a17025}{speed\_\-errors} \mbox{[}3\mbox{]}
+\begin{DoxyCompactList}\small\item\em Last three Speed Errors. \item\end{DoxyCompactList}\item 
+U8 \hyperlink{structmotor__t_afddeb57a376d21ebc28060146d46c608}{port}
+\begin{DoxyCompactList}\small\item\em Servo Motor's Port. \item\end{DoxyCompactList}\item 
+U32 \hyperlink{structmotor__t_a254d07b5f7c8ed7b181a5e069a438697}{counter}
+\begin{DoxyCompactList}\small\item\em Circular Array Counter for AVG Speed Computing. \item\end{DoxyCompactList}\item 
+S32 \hyperlink{structmotor__t_aed14003f4afb01bfd7d28c672c4915dc}{previous\_\-counter}
+\begin{DoxyCompactList}\small\item\em Previous Slot in the Circular Array. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Servo Motor's descripting structure. The data stored insiThde this kind of structure is used for various purposes, such as PID Control, Average Speed computation and things like that. 
+
+\subsection{Field Documentation}
+\hypertarget{structmotor__t_a254d07b5f7c8ed7b181a5e069a438697}{
+\index{motor\_\-t@{motor\_\-t}!counter@{counter}}
+\index{counter@{counter}!motor_t@{motor\_\-t}}
+\subsubsection[{counter}]{\setlength{\rightskip}{0pt plus 5cm}U32 {\bf counter}}}
+\label{structmotor__t_a254d07b5f7c8ed7b181a5e069a438697}
+
+
+Circular Array Counter for AVG Speed Computing. 
+
+\hypertarget{structmotor__t_afddeb57a376d21ebc28060146d46c608}{
+\index{motor\_\-t@{motor\_\-t}!port@{port}}
+\index{port@{port}!motor_t@{motor\_\-t}}
+\subsubsection[{port}]{\setlength{\rightskip}{0pt plus 5cm}U8 {\bf port}}}
+\label{structmotor__t_afddeb57a376d21ebc28060146d46c608}
+
+
+Servo Motor's Port. 
+
+\hypertarget{structmotor__t_ae99d8af7a3f14d868771f3dad4041d76}{
+\index{motor\_\-t@{motor\_\-t}!powers@{powers}}
+\index{powers@{powers}!motor_t@{motor\_\-t}}
+\subsubsection[{powers}]{\setlength{\rightskip}{0pt plus 5cm}F32 {\bf powers}\mbox{[}3\mbox{]}}}
+\label{structmotor__t_ae99d8af7a3f14d868771f3dad4041d76}
+
+
+Last three RAW Powers set. 
+
+Used by the PID controller or, if on RAW Power Control, only the first value is used to set the power. \hypertarget{structmotor__t_aed14003f4afb01bfd7d28c672c4915dc}{
+\index{motor\_\-t@{motor\_\-t}!previous\_\-counter@{previous\_\-counter}}
+\index{previous\_\-counter@{previous\_\-counter}!motor_t@{motor\_\-t}}
+\subsubsection[{previous\_\-counter}]{\setlength{\rightskip}{0pt plus 5cm}S32 {\bf previous\_\-counter}}}
+\label{structmotor__t_aed14003f4afb01bfd7d28c672c4915dc}
+
+
+Previous Slot in the Circular Array. 
+
+\hypertarget{structmotor__t_a5c97ee29120bfb2cc43ca32bbcf0d766}{
+\index{motor\_\-t@{motor\_\-t}!revolutions@{revolutions}}
+\index{revolutions@{revolutions}!motor_t@{motor\_\-t}}
+\subsubsection[{revolutions}]{\setlength{\rightskip}{0pt plus 5cm}U32 {\bf revolutions}\mbox{[}SAMP\_\-NUM\mbox{]}}}
+\label{structmotor__t_a5c97ee29120bfb2cc43ca32bbcf0d766}
+
+
+Last SAMP\_\-NUM Tachometric Readings. 
+
+Used by the avg() function to compute the Average Speed for the current Servo Motor. \hypertarget{structmotor__t_a5b17b9088a3d9bb06293673a7077411c}{
+\index{motor\_\-t@{motor\_\-t}!speed\_\-control\_\-type@{speed\_\-control\_\-type}}
+\index{speed\_\-control\_\-type@{speed\_\-control\_\-type}!motor_t@{motor\_\-t}}
+\subsubsection[{speed\_\-control\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}S8 {\bf speed\_\-control\_\-type}}}
+\label{structmotor__t_a5b17b9088a3d9bb06293673a7077411c}
+
+
+Kind of Speed Control for this Servo Motor. 
+
+Please refer to the Definitions to know which values shall be used for this variable. \hypertarget{structmotor__t_aaa9b86dcf97cbd4ca2af18ca41a17025}{
+\index{motor\_\-t@{motor\_\-t}!speed\_\-errors@{speed\_\-errors}}
+\index{speed\_\-errors@{speed\_\-errors}!motor_t@{motor\_\-t}}
+\subsubsection[{speed\_\-errors}]{\setlength{\rightskip}{0pt plus 5cm}F32 {\bf speed\_\-errors}\mbox{[}3\mbox{]}}}
+\label{structmotor__t_aaa9b86dcf97cbd4ca2af18ca41a17025}
+
+
+Last three Speed Errors. 
+
+This is the difference between the \hyperlink{structmotor__t_a3fc8cc6c0b771418981cb5df670e3d6c}{motor\_\-t::speed\_\-ref} and the current Average Speed. This value is needed by the PID Controller. \hypertarget{structmotor__t_a3fc8cc6c0b771418981cb5df670e3d6c}{
+\index{motor\_\-t@{motor\_\-t}!speed\_\-ref@{speed\_\-ref}}
+\index{speed\_\-ref@{speed\_\-ref}!motor_t@{motor\_\-t}}
+\subsubsection[{speed\_\-ref}]{\setlength{\rightskip}{0pt plus 5cm}U32 {\bf speed\_\-ref}}}
+\label{structmotor__t_a3fc8cc6c0b771418981cb5df670e3d6c}
+
+
+Target speed for PID Controller. 
+
+\hypertarget{structmotor__t_a4c77ff6da6be3a15bb8fe8523f3909f6}{
+\index{motor\_\-t@{motor\_\-t}!speeds@{speeds}}
+\index{speeds@{speeds}!motor_t@{motor\_\-t}}
+\subsubsection[{speeds}]{\setlength{\rightskip}{0pt plus 5cm}F32 {\bf speeds}\mbox{[}SAMP\_\-NUM\mbox{]}}}
+\label{structmotor__t_a4c77ff6da6be3a15bb8fe8523f3909f6}
+
+
+Last SAMP\_\-NUM Average Speeds. 
+
+
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+spam/headers/\hyperlink{_b_r_o__spam__client_8h}{BRO\_\-spam\_\-client.h}\end{DoxyCompactItemize}
