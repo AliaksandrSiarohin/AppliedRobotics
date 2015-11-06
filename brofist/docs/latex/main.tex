@@ -1,0 +1,43 @@
+Project BROFist is aimed at the creation of a toolkit for the communication between SciCosLab and any kind of NXT that uses nxtOSEK (Which we will call \label{main_SPAM}
+\hypertarget{main_SPAM}{}
+ SPAM now on for shortness).
+
+This is achieved by the use of three linked parts:
+
+
+\begin{DoxyItemize}
+\item A set of SciCos blocks and linked C functions
+\item A pc server that marshals the communications between Scicos and SPAM
+\item A client to upload on SPAM
+\end{DoxyItemize}
+
+A test client has been also provided to test BROFist functionality without having to use SciCosLab.\hypertarget{main_Compile}{}\section{Compilation}\label{main_Compile}
+Each of the three parts has its own compilation and Usage method.\hypertarget{main_BROServer}{}\subsection{BROFist Server}\label{main_BROServer}
+For the BROFist Server it is as easy as doing: \begin{DoxyVerb}
+cd srcIt also defines the values of the various operations implemented in BROFist and the encoding for the 7 NXT ports.
+Implemented Operations:
+make all
+\end{DoxyVerb}
+ \hypertarget{main_SPAMClient}{}\subsection{SPAM nxtOSEK Client}\label{main_SPAMClient}
+When compiling the SPAM Client the right path for the nxtOSEK {\ttfamily ecrobot.mak} file (Usually under \mbox{[}nxtOSEK path\mbox{]}/ecrobot/ecrobot.mak\mbox{]}) should be written in line 11 inside spam/Makefile . This is not a good way of doing things, but this is how nxtOSEK team works for their projects.\hypertarget{main_ScicosBlocks}{}\subsection{Scicos Blocks and Functions}\label{main_ScicosBlocks}
+When using Scicoslab, before launching the Scicos screen the comand \begin{DoxyVerb}
+exec BRO_Loader.sce
+\end{DoxyVerb}
+ have to be ran to compile and link all the necessary files. Then, inside Scicos, to add every needed block, the Edit-\/$>$Add New Block should be used with the right name in order to add the required blocks. An example file {\ttfamily Comm\_\-Test.cos} has been provided to give the user an example of how the Scicos Blocks should be used (If you find some other \char`\"{}creative\char`\"{} ways to use them you should send me an eMail to make my day a better one).\hypertarget{main_Dependency}{}\section{Dependency}\label{main_Dependency}
+BROFist Project needs, as you might have suggested, SciCosLab and nxtOSEK. Is it also possible that you don't have the Bluez library. Install it will be as easy as typing \begin{DoxyVerb}
+sudo apt-get install libbluetooth-dev
+\end{DoxyVerb}
+ However it shouldn't be necessary as it should be installed automatically in your system.\hypertarget{main_WhatSPAM}{}\section{The origin of SPAM}\label{main_WhatSPAM}
+At the beginning of this project there was only a NXT unit that had no heart nor build quality. It couldn't go straight due to its bad construction. So I've asked GODS (The \char`\"{}Grande Operatore
+       Didattico Simonini\char`\"{}) to study and then help me realize a NXT unit that could \char`\"{}Do the impossible, Break The Unbreakable\char`\"{}. And so the SPAM (\char`\"{}Super Powerful Automated Mecha\char`\"{}) was born. After a few tries and after lots of tests we realized that is was \char`\"{}Not-\/So-\/Powerful\char`\"{}. So we maintained its name, but changed its meaning. Now you will know that when we talk about SPAM we refer to a \char`\"{}Semi-\/Powerful Automated Mecha\char`\"{}.\hypertarget{main_Thanks}{}\section{Thank Yous and Other Stuff}\label{main_Thanks}
+This project wouldn't have been possible with the help and the presence of lots of people (Thank you all, guys!). However some deserve the spotlight:
+
+
+\begin{DoxyItemize}
+\item Ivan \char`\"{}GODS\char`\"{} Simonini: SPAM \char`\"{}Biological Father\char`\"{}, as some people call him, Metal Gear Solid fan and Mecha addicted.
+\item Giovanni \char`\"{}Simgi Dacav\char`\"{} Simoni: Programming Samurai and predecessor in this \char`\"{}Crusade\char`\"{} against badly written software.
+\item Gabriele \char`\"{}Ranger\char`\"{} De Pedri: Benevolent Friend, Taiji Teacher and \char`\"{}Saint\char`\"{}.
+\item Chiara Finessi: The one who keeps up with all of the \char`\"{}Non-\/Scientific\char`\"{} stuff I come up with.
+\item Michele \char`\"{}Master Miguèl\char`\"{} Graffeo: Cognitive Sciences researcher, drinking buddy and the best RPG Master I've ever met.
+\item The Einherjar \char`\"{}Core\char`\"{}: You know who you are XD. However, Ivan Candiolli should be listed here. Thank you. 
+\end{DoxyItemize}

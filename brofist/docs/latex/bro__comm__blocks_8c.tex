@@ -1,0 +1,91 @@
+\hypertarget{bro__comm__blocks_8c}{
+\section{/home/jazzinghen/Documents/Tesi/BROFist/scicos/bro\_\-comm\_\-blocks.c File Reference}
+\label{bro__comm__blocks_8c}\index{/home/jazzinghen/Documents/Tesi/BROFist/scicos/bro\_\-comm\_\-blocks.c@{/home/jazzinghen/Documents/Tesi/BROFist/scicos/bro\_\-comm\_\-blocks.c}}
+}
+{\ttfamily \#include $<$scicos/scicos\_\-block.h$>$}\par
+{\ttfamily \#include $<$stdio.h$>$}\par
+{\ttfamily \#include $<$string.h$>$}\par
+{\ttfamily \#include $<$sys/types.h$>$}\par
+{\ttfamily \#include $<$sys/socket.h$>$}\par
+{\ttfamily \#include $<$sys/un.h$>$}\par
+{\ttfamily \#include $<$unistd.h$>$}\par
+{\ttfamily \#include \char`\"{}../src/headers/bro\_\-fist.h\char`\"{}}\par
+{\ttfamily \#include $<$stdint.h$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$time.h$>$}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{bro__comm__blocks_8c_a1275b6e1028d5076b544553b79f52e82}{bro\_\-encode\_\-sci\_\-datablock} (bro\_\-fist\_\-t $\ast$data\_\-block, double $\ast$params)
+\item 
+void \hyperlink{bro__comm__blocks_8c_a18e5a3408f114eb0bfdafa9a728def4b}{bro\_\-decode\_\-sci\_\-datablock} (bro\_\-fist\_\-t $\ast$data\_\-block, double $\ast$param)
+\item 
+int \hyperlink{bro__comm__blocks_8c_a241c4dbd71739a02db8b03076656fde3}{bro\_\-comm\_\-init} (scicos\_\-block $\ast$block)
+\item 
+int \hyperlink{bro__comm__blocks_8c_a11ee4c68f7d5beebc3bbe2eec64b26af}{bro\_\-comm\_\-kill} (scicos\_\-block $\ast$block)
+\item 
+void \hyperlink{bro__comm__blocks_8c_a46dc5132c2a4f314435a535f4efdb7b2}{bro\_\-comm\_\-controller} (scicos\_\-block $\ast$block, int flag)
+\item 
+int \hyperlink{bro__comm__blocks_8c_a98aa246b99934a55079d401a739edcce}{bro\_\-sens\_\-send} (scicos\_\-block $\ast$block)
+\item 
+int \hyperlink{bro__comm__blocks_8c_a1910ea81b190da1712281745dc94fff4}{bro\_\-sens\_\-read} (scicos\_\-block $\ast$block)
+\item 
+void \hyperlink{bro__comm__blocks_8c_ae184c7be106f79ec18b48a54d3826917}{bro\_\-comm\_\-sens\_\-disp} (scicos\_\-block $\ast$block, int flag)
+\item 
+int \hyperlink{bro__comm__blocks_8c_ae8fc1c075ea89299ca5aa1f0940aaa92}{bro\_\-motor\_\-set} (scicos\_\-block $\ast$block)
+\item 
+void \hyperlink{bro__comm__blocks_8c_a17527eae92f0e79c484c0717246b8da1}{bro\_\-comm\_\-motor\_\-disp} (scicos\_\-block $\ast$block, int flag)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{bro__comm__blocks_8c_a46dc5132c2a4f314435a535f4efdb7b2}{
+\index{bro\_\-comm\_\-blocks.c@{bro\_\-comm\_\-blocks.c}!bro\_\-comm\_\-controller@{bro\_\-comm\_\-controller}}
+\index{bro\_\-comm\_\-controller@{bro\_\-comm\_\-controller}!bro_comm_blocks.c@{bro\_\-comm\_\-blocks.c}}
+\subsubsection[{bro\_\-comm\_\-controller}]{\setlength{\rightskip}{0pt plus 5cm}void bro\_\-comm\_\-controller (scicos\_\-block $\ast$ {\em block}, \/  int {\em flag})}}
+\label{bro__comm__blocks_8c_a46dc5132c2a4f314435a535f4efdb7b2}
+\hypertarget{bro__comm__blocks_8c_a241c4dbd71739a02db8b03076656fde3}{
+\index{bro\_\-comm\_\-blocks.c@{bro\_\-comm\_\-blocks.c}!bro\_\-comm\_\-init@{bro\_\-comm\_\-init}}
+\index{bro\_\-comm\_\-init@{bro\_\-comm\_\-init}!bro_comm_blocks.c@{bro\_\-comm\_\-blocks.c}}
+\subsubsection[{bro\_\-comm\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}int bro\_\-comm\_\-init (scicos\_\-block $\ast$ {\em block})}}
+\label{bro__comm__blocks_8c_a241c4dbd71739a02db8b03076656fde3}
+\hypertarget{bro__comm__blocks_8c_a11ee4c68f7d5beebc3bbe2eec64b26af}{
+\index{bro\_\-comm\_\-blocks.c@{bro\_\-comm\_\-blocks.c}!bro\_\-comm\_\-kill@{bro\_\-comm\_\-kill}}
+\index{bro\_\-comm\_\-kill@{bro\_\-comm\_\-kill}!bro_comm_blocks.c@{bro\_\-comm\_\-blocks.c}}
+\subsubsection[{bro\_\-comm\_\-kill}]{\setlength{\rightskip}{0pt plus 5cm}int bro\_\-comm\_\-kill (scicos\_\-block $\ast$ {\em block})}}
+\label{bro__comm__blocks_8c_a11ee4c68f7d5beebc3bbe2eec64b26af}
+\hypertarget{bro__comm__blocks_8c_a17527eae92f0e79c484c0717246b8da1}{
+\index{bro\_\-comm\_\-blocks.c@{bro\_\-comm\_\-blocks.c}!bro\_\-comm\_\-motor\_\-disp@{bro\_\-comm\_\-motor\_\-disp}}
+\index{bro\_\-comm\_\-motor\_\-disp@{bro\_\-comm\_\-motor\_\-disp}!bro_comm_blocks.c@{bro\_\-comm\_\-blocks.c}}
+\subsubsection[{bro\_\-comm\_\-motor\_\-disp}]{\setlength{\rightskip}{0pt plus 5cm}void bro\_\-comm\_\-motor\_\-disp (scicos\_\-block $\ast$ {\em block}, \/  int {\em flag})}}
+\label{bro__comm__blocks_8c_a17527eae92f0e79c484c0717246b8da1}
+\hypertarget{bro__comm__blocks_8c_ae184c7be106f79ec18b48a54d3826917}{
+\index{bro\_\-comm\_\-blocks.c@{bro\_\-comm\_\-blocks.c}!bro\_\-comm\_\-sens\_\-disp@{bro\_\-comm\_\-sens\_\-disp}}
+\index{bro\_\-comm\_\-sens\_\-disp@{bro\_\-comm\_\-sens\_\-disp}!bro_comm_blocks.c@{bro\_\-comm\_\-blocks.c}}
+\subsubsection[{bro\_\-comm\_\-sens\_\-disp}]{\setlength{\rightskip}{0pt plus 5cm}void bro\_\-comm\_\-sens\_\-disp (scicos\_\-block $\ast$ {\em block}, \/  int {\em flag})}}
+\label{bro__comm__blocks_8c_ae184c7be106f79ec18b48a54d3826917}
+\hypertarget{bro__comm__blocks_8c_a18e5a3408f114eb0bfdafa9a728def4b}{
+\index{bro\_\-comm\_\-blocks.c@{bro\_\-comm\_\-blocks.c}!bro\_\-decode\_\-sci\_\-datablock@{bro\_\-decode\_\-sci\_\-datablock}}
+\index{bro\_\-decode\_\-sci\_\-datablock@{bro\_\-decode\_\-sci\_\-datablock}!bro_comm_blocks.c@{bro\_\-comm\_\-blocks.c}}
+\subsubsection[{bro\_\-decode\_\-sci\_\-datablock}]{\setlength{\rightskip}{0pt plus 5cm}void bro\_\-decode\_\-sci\_\-datablock (bro\_\-fist\_\-t $\ast$ {\em data\_\-block}, \/  double $\ast$ {\em param})}}
+\label{bro__comm__blocks_8c_a18e5a3408f114eb0bfdafa9a728def4b}
+\hypertarget{bro__comm__blocks_8c_a1275b6e1028d5076b544553b79f52e82}{
+\index{bro\_\-comm\_\-blocks.c@{bro\_\-comm\_\-blocks.c}!bro\_\-encode\_\-sci\_\-datablock@{bro\_\-encode\_\-sci\_\-datablock}}
+\index{bro\_\-encode\_\-sci\_\-datablock@{bro\_\-encode\_\-sci\_\-datablock}!bro_comm_blocks.c@{bro\_\-comm\_\-blocks.c}}
+\subsubsection[{bro\_\-encode\_\-sci\_\-datablock}]{\setlength{\rightskip}{0pt plus 5cm}void bro\_\-encode\_\-sci\_\-datablock (bro\_\-fist\_\-t $\ast$ {\em data\_\-block}, \/  double $\ast$ {\em params})}}
+\label{bro__comm__blocks_8c_a1275b6e1028d5076b544553b79f52e82}
+\hypertarget{bro__comm__blocks_8c_ae8fc1c075ea89299ca5aa1f0940aaa92}{
+\index{bro\_\-comm\_\-blocks.c@{bro\_\-comm\_\-blocks.c}!bro\_\-motor\_\-set@{bro\_\-motor\_\-set}}
+\index{bro\_\-motor\_\-set@{bro\_\-motor\_\-set}!bro_comm_blocks.c@{bro\_\-comm\_\-blocks.c}}
+\subsubsection[{bro\_\-motor\_\-set}]{\setlength{\rightskip}{0pt plus 5cm}int bro\_\-motor\_\-set (scicos\_\-block $\ast$ {\em block})}}
+\label{bro__comm__blocks_8c_ae8fc1c075ea89299ca5aa1f0940aaa92}
+\hypertarget{bro__comm__blocks_8c_a1910ea81b190da1712281745dc94fff4}{
+\index{bro\_\-comm\_\-blocks.c@{bro\_\-comm\_\-blocks.c}!bro\_\-sens\_\-read@{bro\_\-sens\_\-read}}
+\index{bro\_\-sens\_\-read@{bro\_\-sens\_\-read}!bro_comm_blocks.c@{bro\_\-comm\_\-blocks.c}}
+\subsubsection[{bro\_\-sens\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}int bro\_\-sens\_\-read (scicos\_\-block $\ast$ {\em block})}}
+\label{bro__comm__blocks_8c_a1910ea81b190da1712281745dc94fff4}
+\hypertarget{bro__comm__blocks_8c_a98aa246b99934a55079d401a739edcce}{
+\index{bro\_\-comm\_\-blocks.c@{bro\_\-comm\_\-blocks.c}!bro\_\-sens\_\-send@{bro\_\-sens\_\-send}}
+\index{bro\_\-sens\_\-send@{bro\_\-sens\_\-send}!bro_comm_blocks.c@{bro\_\-comm\_\-blocks.c}}
+\subsubsection[{bro\_\-sens\_\-send}]{\setlength{\rightskip}{0pt plus 5cm}int bro\_\-sens\_\-send (scicos\_\-block $\ast$ {\em block})}}
+\label{bro__comm__blocks_8c_a98aa246b99934a55079d401a739edcce}
