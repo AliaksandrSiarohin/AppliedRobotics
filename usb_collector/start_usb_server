@@ -1,0 +1,12 @@
+#! /bin/bash
+
+USB_SERVER="/home/ubuntu/NXT/AppliedRobotics/usb_collector/usb_server"
+
+echo "Download USB client on brick"
+if [ $# != "2" ]; then
+	echo "Usage: start_usb_server <filename> <measure_time>"
+	exit 1
+fi
+
+cd $USB_SERVER
+python usb_server.py "../../motor_data/"$1 $2

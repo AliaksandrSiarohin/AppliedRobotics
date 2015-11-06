@@ -29,7 +29,7 @@ void user_1ms_isr_type2(void)
 
 TASK(TaskMain)
 {
-	const S8 MOTOR_POWER = 50; 
+    const S8 MOTOR_POWER = 50;
 	U32 len = 8;
 
 	U32 tick;

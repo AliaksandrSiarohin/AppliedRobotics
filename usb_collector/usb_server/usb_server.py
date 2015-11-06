@@ -99,7 +99,7 @@ def connect():
 def collect_data(read, filename, measure_time):
     start_tick = 0
     tick = 0
-    with open("../../motor_data/" + filename, 'w') as my_file:
+    with open(filename, 'w') as my_file:
         print  >> my_file, "Time, Count"
         while tick - start_tick < measure_time:
             data = read(8)

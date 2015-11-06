@@ -1,0 +1,24 @@
+#! /bin/bash
+
+NXT_READY="0694:0002"
+
+CLIENT_PATH="/home/ubuntu/NXT/AppliedRobotics/usb_collector/usb_client";
+if [ $# != "1" ]; then
+	echo "Usage: download_usb_client <motor_power>"
+	exit 1
+fi
+cd $CLIENT_PATH
+sed -i '/const S8 MOTOR_POWER =/c\    const S8 MOTOR_POWER = '$1';' usb_client.cpp
+make all > /dev/null
+cd --
+
+AVAIL_NXT=$(lsusb | grep $NXT_READY)
+if [ "$AVAIL_NXT" == "" ]
+then
+	echo "No brick found, is it connected to USB and turned on?"
+	exit 1
+fi 			
+
+echo "Dowloading usb client for data streaming..."
+cd $CLIENT_PATH
+./rxeflash.sh
