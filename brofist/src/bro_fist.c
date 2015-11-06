@@ -39,7 +39,7 @@ main (int argc, char *argv[])
 
     int conect_status = bro_bt_connect_device (&bro_spam_socket, options.mac);;
     if (conect_status == 0) {
-		printf("Connected %i.\n", );
+		printf("Connected. Press RUN>.\n");
 	} else {
 		printf("Can`t connect to brick.\n");
 		exit(1);
@@ -57,7 +57,8 @@ main (int argc, char *argv[])
 	fprintf(f, "TIME, TACHO_COUNT\n");
 
     packet_no = 0;
-	int time, elapsed_time, start_time, distance;
+	int time = 0 , elapsed_time, start_time, distance;
+	int time_setted = 0;
     do {
     	bro_fist_t countFist;
 		countFist.operation = TACHO_COUNT;
@@ -70,7 +71,7 @@ main (int argc, char *argv[])
 			startFist.data = MOTOR_POWER;
 			in_packet[1] = startFist;
 		} else {
-			in_packet = countFist;
+			in_packet[1] = countFist;
 		}
 
         comm_res = bro_bt_client_fist(in_packet, out_packet, bro_spam_socket);       
@@ -84,8 +85,9 @@ main (int argc, char *argv[])
 				time = out_packet[i].timestamp;
 			}			
         }
-		if (packet_no == 0) {
+		if (!time_setted && time != 0) {
 			start_time = time;
+			time_setted = 1;
 		}
 		elapsed_time = time - start_time;
 		fprintf(f, "%i,%i\n", elapsed_time, distance);
@@ -93,7 +95,7 @@ main (int argc, char *argv[])
 			printf("TIME: %i, TACHO_COUNT: %i\n", elapsed_time, distance);
 		}
 		packet_no++;
-		usleep(READ_PERIOD * 1000);
+		//usleep(READ_PERIOD * 1000);
     } while ((time - start_time) < MEASURE_TIME);
 
     printf("Exited communication loop after %i packets!\n", packet_no);
