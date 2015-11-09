@@ -1,0 +1,31 @@
+Collecting time and tacho from motor on port B
+
+By bluetooth:
+-> launch LEGO Mindstorm terminal
+-> run start_bt_server
+-> read collected data from /home/ubuntu/NXT/AppliedRobotics/motor_data
+
+By USB:
+-> go to folder NXT/usb_collector/usb_client
+-> make all
+-> go to folder NXT/usb_collector
+-> ./download_usb_client 60 //where 60 is the setting for motor power
+-> Run usb_client program on brick
+-> ./start_usb_server 60 5000 //where 60 = file name; 5000 = time limit (ms)
+
+if there're some issues with pip library:
+sudo apt-get install python-pip
+sudo pip install pyusb
+
+-> read collected data from /home/ubuntu/NXT/AppliedRobotics/motor_data
+
+How to read and plot collected data:
+-> go to folder AppliedRobotics/motor_data/
+-> enter file "p60" and delete first row 			!!change this from code!!
+-> mv p60 p60.mat //transform file "p60" to "p60.mat" !!this file cannot be called as a number (eg 60.mat)!!
+-> load_scicoslab (from LEGO Mindstorm terminal)
+-> scipad compute_velocity.sci (from ScicosLab terminal, file is stored in brofist/scicos_32)
+-> Execute - load into Scilab (from Scipad menu bar)
+-> go to folder AppliedRobotics/motor_data/ (from ScicosLab terminal)
+-> loadmatfile('-ascii','p60') (from ScicosLab terminal)
+-> compute_velocity(p50) (from ScicosLab terminal)

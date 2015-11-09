@@ -18,10 +18,9 @@ main (int argc, char *argv[])
 
 	
 	char file_name[200];
-	sprintf(file_name, "/home/ubuntu/NXT/AppliedRobotics/motor_data/p%i", 
-				(int) MOTOR_POWER);	
-    
-    int i, comm_res, packet_no;
+	sprintf(file_name, "/home/ubuntu/NXT/AppliedRobotics/motor_data/p%i", (int) MOTOR_POWER);
+
+	int i, comm_res, packet_no;
     
     bro_opts_t options;
 
