@@ -10,9 +10,7 @@ filter_data <- function(df, plot = TRUE) {
              Time = floor(Time[1]/ sampling_time) * sampling_time);
   n =  length(df$Count);
   speed = (df$Count[2:n] - df$Count[1:(n-1)]) / (df$Time[2:n] - df$Time[1:(n-1)]);
-  
-  plot(speed, type = 'l')
-  plot(df$Time[2:n], speed, type ='l');
+
   b1 <- butter(1, 0.02, type ='low')
   speed.filtered <- filtfilt(b1, speed);
   
@@ -32,9 +30,9 @@ files = c("20_20000.csv", "30_20000.csv", "40_20000.csv", "50_20000.csv", "60_20
 #files = "90_20000.csv"
 for (filename in files) {
   df = read.csv(filename);
-  pdf(paste("plots/", filename, ".pdf", sep = ""));
+  #pdf(paste("plots/", filename, ".pdf", sep = ""));
   result = filter_data(df, plot = TRUE);
   write.csv(file = paste("velocity/", filename, sep=""), quote = FALSE, result, row.names = FALSE);
-  dev.off();
+  #dev.off();
 }
 

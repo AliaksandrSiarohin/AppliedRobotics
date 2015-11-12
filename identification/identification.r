@@ -76,7 +76,7 @@ regression_estimation = list(q = c(), omega = c(), xi = c());
 i = 1
 for (filename in files) {
   df = read.csv(filename);
-  pdf(paste("../plots/", filename));
+  pdf(paste("../plots/", filename, ".pdf", sep =""));
   
   plot(df, type='l', ylab = "Speed (rad/s)", xlab = "Time (s)");
   
