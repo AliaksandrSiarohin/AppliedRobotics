@@ -12,8 +12,10 @@
 \usepackage{times}
 \usepackage{graphicx}
 \usepackage{subfigure}
+\usepackage{csvsimple}
 \usepackage{color}
 \usepackage{url}
+\usepackage{hyperref} 
 \usepackage{cleveref}
 
 % By Davide
@@ -76,7 +78,7 @@
 \begin{abstract}
 
 \textit{
-  Report for the first assigment on Applied robotics. Identification parameters of the motor. In this report we disscuss our method of obtaining the data from Lego Mindstorm motor as well as estimation of parameters from the motor  data.
+  Report for the first assignment on Applied robotics. Identification parameters of the motor. In this report we discuss our method of obtaining the data from Lego Mindstorm motor as well as estimation of parameters from the motor  data.
 }
 
 
@@ -87,8 +89,8 @@
 \section{Collecting motor data}
 We use 2 methods for collecting the motor data:
 \begin{enumerate}
-\item Using the bluetooth connection
-\item Using usb connection
+\item Using the Bluetooth connection
+\item Using USB connection
 \end{enumerate}
 
 \subsection{Bluetooth data collection}
@@ -100,10 +102,10 @@ We start from the brofist source, and we change message interface to include tim
 \item Save (timestamp, tacho count) to file.
 \item Go to step 2.
 \end{enumerate}
-You can find code in \url{https://github.com/AliaksandrSiarohin/AppliedRobotics/brofist}. But using this methodology we obtain very hight latency $\approx 50ms$. So we decided to use USB conection instead.
+You can find code in \href{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/brofist}{Bluetooth Collector}. But using this methodology we obtain very high latency $\approx 50ms$. So we decided to use USB connection instead.
 
 \subsection{USB data collection}
-We use library pyusb to establich usb conection with brick. The idea is folows:
+We use library pyusb to establish USB connection with brick. The idea is follows:
 \begin{enumerate}
 \item Establish connection with brick using pyusb.
 \item Setup the motor power on the brick.
@@ -112,7 +114,7 @@ We use library pyusb to establich usb conection with brick. The idea is folows:
 \item Save (timestamp,  tacho count) to file.
 \item Go to step 3.
 \end{enumerate}
-You can find code in \url{https://github.com/AliaksandrSiarohin/AppliedRobotics/usb_collector}. Using this methodology we obtain much better perfomance $\approx 2ms$ latency. Using USB we collect 10 data files with different raw powers.
+You can find code in \href{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/usb_collector}{USB Collector}. Using this methodology we obtain much better performance $\approx 2ms$ latency. Using USB we collect 10 data files with different raw powers.
 
 \section {Estimating the parameters from the data}
 To estimate the parameters we filter the data using butterworth filter and then we estimate the parameters using 2 methods:
@@ -122,13 +124,92 @@ To estimate the parameters we filter the data using butterworth filter and then 
 \end{itemize}
 
 \subsection {Filtering}
-We use butterwoth filter of order 1 and and cut-off frequency 0.02. For example \cref{fig:filterd}.
+We use butterwoth filter of order 1 and and cut-off frequency 0.02. For example \cref{fig:filtered}. You can find code for filtering in \href{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/identification/filtering.r}{Filtering}. And plot for all the powers in \href{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/motor_data/plots/filtering}{Filtering Plots}.
 \begin{figure}[t]%
 	\centering
-	\includegraphics[width=\columnwidth]{~/apr/AppliedRobotics/motor_data/plots/v90_20000.pdf}
-	\caption{Deviation of x from it`s mean.}%
+	\includegraphics[width=\columnwidth]{../motor_data/plots/filtering/90}
+	\caption{Filtered and raw data for motor power = 90.}%
 	\label{fig:filtered}%
 \end{figure}
 
+\subsection {Parameter Estimation}
+We need to estimate 3 parameters $q$, $\omega_{n}$, $\xi$. You can find code in \href{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/identification/identification.r}{Identification}
+\subsubsection {Regular method}
+For the regular method we use the following formulas:
+\begin{equation}
+q = \text{Last speed value}
+\end{equation}
+\begin{equation}
+\xi = \sqrt{\frac{\log(\text{overshot}) ^ 2}{\pi ^ 2 + \log(\text{overshot}) ^ 2}}
+\end{equation}
+\begin{equation}
+\omega_{n} =  \frac{\log(\frac{alpha}{100}) -\log(\frac{1}{\sqrt{1-\xi^2}})}{-\text{settling time} * \xi}
+\end{equation}
+Using this method we obtain 10 sets of parameters which we can see in \cref{table:reg_es}.
+\begin{table}
+\centering
+\caption{Parameters obtained using regular estimation}
+\label{table:reg_es}
+\csvreader[tabular=cccc,
+    table head=\toprule Power & $q$ & $\xi$ & $\omega_{n}$ \\\midrule,
+    table foot=\bottomrule
+]%
+{../motor_data/regular_estimated_params.csv}{power=\p,q=\q,omega=\o, xi=\x}%
+{\p & \q & \o & \x}%
+\end{table}
+
+
+\subsubsection {Regression method}
+Let $\hat{s_t}$ be the speed at time $t$, and $T$ - finish time, and ${s_t(q, \xi, \omega_{n})}$ will be the speed from our model. The result parameters will be:
+\begin{equation}
+(q, \xi, \omega_{n}) = arg\max_{q, \xi, \omega_{n}}{\sum_{t=1}^{T}{(s_t(q, \xi, \omega_{n}) - \hat{s_t}) ^ 2}}
+\end{equation}
+Using this method we obtain 10 sets of parameters which we can see in \cref{table:regres_es}.
+
+\begin{table}
+\centering
+\caption{Parameters obtained using regression estimation}
+\label{table:regres_es}
+\csvreader[tabular=cccc,
+    table head=\toprule Power & $q$ & $\xi$ & $\omega_{n}$ \\\midrule,
+    table foot=\bottomrule
+]%
+{../motor_data/regression_estimated_params.csv}{power=\p,q=\q,omega=\o, xi=\x}%
+{\p & \q & \o & \x}%
+\end{table}
+\subsubsection {Methods Comparison}
+For every set of parameters we plot how modeled data and filtered data ax example \cref{fig:fit_dual}, you can find all the plots in \href{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/motor_data/plots/dual_estimation}{Model comparison plots}.
+\begin{figure}[t]%
+	\centering
+	\includegraphics[width=\columnwidth]{../motor_data/plots/dual_estimation/90}
+	\caption{Filtered and modeled data for motor power = 90.}%
+	\label{fig:fit_dual}%
+\end{figure}
+For every set of parameters we also compute mean of mean square errors for all data sets.
+\begin{equation}
+\text{result in cell} = \frac{1}{10}\sum_{i=1}^{10}\frac{1}{T}\sum_{t=1}^{T}{(s_t^i(q, \xi, \omega_{n}) - \hat{s_t^i}) ^ 2}
+\end{equation}
+
+And we get a result which is in table \cref{table:square_error} (Power is from which data set we obtain a parameters, second column for regular method and third for the regression method). From \cref{table:square_error} we can see that optimal parameters is obtained from (power = 80) data and regression method. We plot filtered data and modeled data with optimal parameters, for example \cref{fig:fit_res}. You can find other plots in \href{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/motor_data/plots/result_estimation}{Result plots}.
+
+
+\begin{figure}[t]%
+	\centering
+	\includegraphics[width=\columnwidth]{../motor_data/plots/result_estimation/90}
+	\caption{Filtered and modeled data (with result parameters) for motor power = 90.}%
+	\label{fig:fit_res}%
+\end{figure}
+
+\begin{table}
+\centering
+\caption{Mean of mean square error for all data sets.}
+\label{table:square_error}
+\csvreader[tabular=cccc,
+    table head=\toprule Power & Regular Method & Regression Method \\\midrule,
+    table foot=\bottomrule
+]%
+{../motor_data/square_error.csv}{power=\p,regression=\rr,regular=\rg}%
+{\p & \rg & \rr}%
+\end{table}
 
 \end{document}

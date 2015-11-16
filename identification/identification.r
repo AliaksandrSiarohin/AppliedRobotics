@@ -90,7 +90,7 @@ for (filename in files) {
   df = read.csv(filename);
   params_regular <- c(q_est(df$Speed), xi_est(df$Speed), w_est(df$Speed, df$Time))
   params_regresion <- estimate_params_with_regression(df$Time, df$Speed);
-  pdf(paste("../plots/", filename, ".pdf", sep =""));
+  pdf(paste("../plots/dual_estimation/", gsub("_20000.csv", "", filename), ".pdf", sep =""));
   plot_speed_and_estimations(df, params_regular, params_regresion);
   dev.off();
 
@@ -146,15 +146,17 @@ if (opt_index[1, 2] == 2) {
 } else {
   optimal_parameters = reg_est[opt_index[1,1], ]
 }
-
 i = 1
 for (filename in files) {
   df = read.csv(filename);
-  pdf(paste("../plots/", filename, "opt", ".pdf", sep =""));
+  pdf(paste("../plots/result_estimation/", gsub("_20000.csv", "", filename), ".pdf", sep =""));
   plot(df, type='l', ylab = "Speed (rad/s)", xlab = "Time (s)");
   lines (df$Time, 
          time_responce(df$Time, q = optimal_parameters$q * power[i],
                        xi = optimal_parameters$xi, w = optimal_parameters$omega), type = 'l', col = 'blue');
+  
+  legend(x = "bottomright", col = c('black', 'blue'), lty = 1, 
+         legend = c("Filtered Data", "Estimation"));
   dev.off()
   
   i = i + 1
