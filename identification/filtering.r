@@ -18,9 +18,11 @@ filter_data <- function(df, plot = TRUE) {
   
   
   speed.cutted = (speed.cutted / 180) * pi * 1000;
+  speed = (speed / 180) * pi * 1000;
   time.cutted = df$Time[2:(length(speed.cutted)+1)] / 1000;
   if (plot) {
-    plot (time.cutted, speed.cutted, type = 'l', xlab = "Time (s)", ylab = "Speed (rad/s)");
+    plot (time.cutted, speed[1: (n/2)], type = 'l', col ='gray', xlab = "Time (s)", ylab = "Speed (rad/s)");
+    lines (time.cutted, speed.cutted, type = 'l', col='red');
   }
   return (data.frame(Time = time.cutted, Speed = speed.cutted));
 } 
@@ -30,7 +32,7 @@ files = c("20_20000.csv", "30_20000.csv", "40_20000.csv", "50_20000.csv", "60_20
 #files = "90_20000.csv"
 for (filename in files) {
   df = read.csv(filename);
-  #pdf(paste("plots/", filename, ".pdf", sep = ""));
+  #pdf(paste("plots/v", filename, ".pdf", sep = ""));
   result = filter_data(df, plot = TRUE);
   write.csv(file = paste("velocity/", filename, sep=""), quote = FALSE, result, row.names = FALSE);
   #dev.off();

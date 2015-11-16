@@ -107,9 +107,9 @@ for (filename in files) {
 }
 
 reg_est = data.frame(power = power,regular_estimation)
-write.csv(file = "../regular_estimated_params.csv", reg_est, quote = FALSE, row.names = FALSE)
+write.csv(file = "../regular_estimated_params.csv", format(reg_est, digits = 4), quote = FALSE, row.names = FALSE)
 regression_est = data.frame(power = power, regression_estimation)
-write.csv(file = "../regression_estimated_params.csv", regression_est, quote = FALSE, row.names = FALSE)
+write.csv(file = "../regression_estimated_params.csv", format(regression_est, digits = 4), quote = FALSE, row.names = FALSE)
 
 
 ################### MESAURING PERFOMANCE ############################
@@ -137,7 +137,7 @@ for (i in 1:nrow(regression_est)) {
 
 squared_error_df = data.frame(power = power, regular = m[, 1], regression = m[,2]) 
 
-write.csv(file = "../square_error.csv", squared_error_df, row.names = FALSE, quote = FALSE);
+write.csv(file = "../square_error.csv", format(squared_error_df, digits = 4), row.names = FALSE, quote = FALSE);
 
 ########################## CHOSING THE BEST MODEL ############################
 opt_index = which(m == min(m), arr.ind = TRUE)
