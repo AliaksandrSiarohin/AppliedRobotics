@@ -88,12 +88,12 @@
 
 
 \section{Tools and definitions}
-We used scicoslab with scipad to write all the code and function to handle the data that we collected before. To collect the data from the motor, we used our pc, with 2 types of connection: bluetooth and usb wired. From the Lego terminal we instantiated a server on our pc, and a client on the NXT brick  connected to the motor. In this way it was simply comunicate with the motor, define an angular velocity(determined by the power gived to the motor by the centraline), and then pick up the data. We use scicoslab to plot and filter with some function our data. 
+
 
 \subsection{General definition}
 ..
 \subsection{Used tools}
-..
+To collect the data from the motor, we used our pc, with 2 types of connection: bluetooth (Based on brofist) and usb wired (based on pyusb library). From the Lego terminal we instantiated a server on our pc, and a client on the NXT brick  connected to the motor. In this way it was simply comunicate with the motor, define an angular velocity(determined by the power gived to the motor by the centraline), and then pick up the data. We use R to plot, filter and estimate parameters from collected data. 
 
 \section{Collecting motor data}
 Have been used 2 different methods to collect motor data:
@@ -113,7 +113,7 @@ Given by the lab the code to comunicate between our PC and the NXT brick, we lea
 \item Repeat all from step 2
 \end{enumerate}
 Using this methodology there is a very hight latency $\approx 50ms$. It is possible to force the speed connection, but using USB connection it results more reliable and fast.
-Code is available here: \url{https://github.com/AliaksandrSiarohin/AppliedRobotics/brofist}
+Code is available here: \href{https://github.com/AliaksandrSiarohin/AppliedRobotics/brofist}{Bluetooth colection}
 \subsection{USB data collection}
 To establish a connection between PC and NXT brick is possible using a specific Pyton library called "pyusb".
 The procedure to get data with this method is the following:
@@ -126,7 +126,7 @@ The procedure to get data with this method is the following:
 \item Go to step 3
 \end{enumerate}
 Using this methodology is possible to obtain much better performance about $\approx 2ms$ latency. 
-Code is available here: \url{https://github.com/AliaksandrSiarohin/AppliedRobotics/usb_collector}
+Code is available here: \href{https://github.com/AliaksandrSiarohin/AppliedRobotics/usb_collector}{USB colection}
 \section {Estimating the parameters from the data}
 To estimate the parameters we filter the data using butterworth filter and then we estimate the parameters using 2 methods:
 \begin{itemize}
