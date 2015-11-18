@@ -102,40 +102,40 @@ Have been used 2 different methods to collect motor data:
 \item Usb connection
 \end{enumerate}
 It is important get the minimum time gap between measures, but it require an extra check to detect if the tachometer sensor is fast and precious as the used transmission.
-For this report is decider to use USB connection getting 10 different data files with different raw powers.
+For this report we decided to use USB connection getting 10 different data files with different raw powers.
 \subsection{Bluetooth data collection}
 Given by the lab the code to comunicate between our PC and the NXT brick, we learned how it works and we implement the interface to include also the current measure NXT timestamp. The procedure to get data with bluetooth is the following:
 \begin{enumerate}
-\item Send message from PC to brick that set motor power
+\item Send message from PC to brick that define motor power(that determines the speed)
 \item Send message from PC to brick that requests tachometer count from the motor
 \item Receive message from brick with tachometer count and relative timestamps
-\item Save timestamps and tachometer count to file
+\item Save timestamps and tachometer count in a file.txt
 \item Repeat all from step 2
 \end{enumerate}
 Using this methodology there is a very hight latency $\approx 50ms$. It is possible to force the speed connection, but using USB connection it results more reliable and fast.
 Code is available here: \href{https://github.com/AliaksandrSiarohin/AppliedRobotics/brofist}{Bluetooth colection}
 \subsection{USB data collection}
-To establish a connection between PC and NXT brick is possible using a specific Pyton library called "pyusb".
+To establish a connection between PC and NXT brick is it possible use a specific Pyton library called "pyusb".
 The procedure to get data with this method is the following:
 \begin{enumerate}
 \item Establish connection with brick using pyusb
 \item Set up the motor power on the brick
 \item Send (timestamp,  tacho count) from PC to brick
 \item Receive (timestamp,  tacho count)from brick to PC
-\item Save collected data to file
+\item Save collected data in a file
 \item Go to step 3
 \end{enumerate}
-Using this methodology is possible to obtain much better performance about $\approx 2ms$ latency. 
+Using this methodology is it possible to obtain much better performance in terms of $\approx 2ms$ latency. 
 Code is available here: \href{https://github.com/AliaksandrSiarohin/AppliedRobotics/usb_collector}{USB colection}
 \section {Estimating the parameters from the data}
-To estimate the parameters we filter the data using butterworth filter and then we estimate the parameters using 2 methods:
+To estimate the parameters we filter the data using butterworth filter and then we estimate the parameters in two different way:
 \begin{itemize}
 \item Regular method proposed on the lecture
 \item Regression method
 \end{itemize}
 
 \subsection {Filtering}
-We use butterwoth filter of order 1 and and cut-off frequency 0.02. For example \cref{fig:filtered}. You can find code for filtering in \href{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/identification/filtering.r}{Filtering}. And plot for all the powers in \href{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/motor_data/plots/filtering}{Filtering Plots}.
+We use butterwoth filter of order 1 and and a cut-off frequency of 0.02. For example \cref{fig:filtered}. You can find code for filtering in \href{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/identification/filtering.r}{Filtering}, and plot for all the powers in \href{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/motor_data/plots/filtering}{Filtering Plots}.
 \begin{figure}[t]%
 	\centering
 	\includegraphics[width=\columnwidth]{../motor_data/plots/filtering/90}
@@ -156,7 +156,7 @@ q = \text{Last speed value}
 \begin{equation}
 \omega_{n} =  \frac{\log(\frac{alpha}{100}) -\log(\frac{1}{\sqrt{1-\xi^2}})}{-\text{settling time} * \xi}
 \end{equation}
-Using this method we obtain 10 sets of parameters which we can see in \cref{table:reg_es}.
+Using this method we obtain 10 sets of parameter which can be seen in \cref{table:reg_es}.
 \begin{table}
 \centering
 \caption{Parameters obtained using regular estimation}
@@ -175,7 +175,7 @@ Let $\hat{s_t}$ be the speed at time $t$, and $T$ - finish time, and ${s_t(q, \x
 \begin{equation}
 (q, \xi, \omega_{n}) = arg\max_{q, \xi, \omega_{n}}{\sum_{t=1}^{T}{(s_t(q, \xi, \omega_{n}) - \hat{s_t}) ^ 2}}
 \end{equation}
-Using this method we obtain 10 sets of parameters which we can see in \cref{table:regres_es}.
+Using this method we obtain 10 sets of parameter which can be seen in \cref{table:regres_es}.
 
 \begin{table}
 \centering
@@ -189,14 +189,14 @@ Using this method we obtain 10 sets of parameters which we can see in \cref{tabl
 {\p & \q & \o & \x}%
 \end{table}
 \subsubsection {Methods Comparison}
-For every set of parameters we plot how modeled data and filtered data ax example \cref{fig:fit_dual}, you can find all the plots in \href{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/motor_data/plots/dual_estimation}{Model comparison plots}.
+For every set of parameters we plot either modeled data and filtered data as example in \cref{fig:fit_dual}, you can find all the plots in \href{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/motor_data/plots/dual_estimation}{Model comparison plots}.
 \begin{figure}[t]%
 	\centering
 	\includegraphics[width=\columnwidth]{../motor_data/plots/dual_estimation/90}
 	\caption{Filtered and modeled data for motor power = 90.}%
 	\label{fig:fit_dual}%
 \end{figure}
-For every set of parameters we also compute mean of mean square errors for all data sets.
+For every set of parameters we also compute the mean of mean square errors for all the data sets.
 \begin{equation}
 \text{result in cell} = \frac{1}{10}\sum_{i=1}^{10}\frac{1}{T}\sum_{t=1}^{T}{(s_t^i(q, \xi, \omega_{n}) - \hat{s_t^i}) ^ 2}
 \end{equation}
