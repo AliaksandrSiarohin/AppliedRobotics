@@ -91,7 +91,11 @@
 
 
 \subsection{General definition}
-..
+\begin{itemize}
+\item \texttt{Lego Mindstorms NXT}: LEGO Mindstorms NXT is a programmable robotics kit released by LEGO in late July 2006. The main component in the kit is a brick-shaped computer called the NXT Intelligent Brick; it can take input from up to four sensors and control up to three motors\footnote{Lego Mindstorms NXT - Wikipedia, the free encyclopedia, \url{https://en.wikipedia.org/wiki/Lego_Mindstorms_NXT}}.
+\item \texttt{nxtOSEK}: nxtOSEK is an open source platform for LEGO MINDSTORMS NXT; it can provide C/C++ programming environment and API for NXT Sensors, Motor, and other devices\footnote{nxtOSEK, \url{http://lejos-osek.sourceforge.net/whatislejososek.htm}}.
+\end{itemize}
+
 \subsection{Used tools}
 To collect the data from the motor, we used our pc, with 2 types of connection: bluetooth (Based on brofist) and usb wired (based on pyusb library). From the Lego terminal we instantiated a server on our pc, and a client on the NXT brick  connected to the motor. In this way it was simply comunicate with the motor, define an angular velocity(determined by the power gived to the motor by the centraline), and then pick up the data. We use R to plot, filter and estimate parameters from collected data. 
 
@@ -190,7 +194,7 @@ Using this method we obtain 10 sets of parameter which can be seen in \cref{tabl
 \end{table}
 \subsubsection {Methods Comparison}
 For every set of parameters we plot either modeled data and filtered data as example in \cref{fig:fit_dual}, you can find all the plots in \href{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/motor_data/plots/dual_estimation}{Model comparison plots}.
-\begin{figure}[t]%
+\begin{figure}[h]%
 	\centering
 	\includegraphics[width=\columnwidth]{../motor_data/plots/dual_estimation/90}
 	\caption{Filtered and modeled data for motor power = 90.}%
@@ -204,7 +208,7 @@ For every set of parameters we also compute the mean of mean square errors for a
 And we get a result which is in table \cref{table:square_error} (Power is from which data set we obtain a parameters, second column for regular method and third for the regression method). From \cref{table:square_error} we can see that optimal parameters is obtained from (power = 80) data and regression method. We plot filtered data and modeled data with optimal parameters, for example \cref{fig:fit_res}. You can find other plots in \href{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/motor_data/plots/result_estimation}{Result plots}.
 
 
-\begin{figure}[t]%
+\begin{figure}[h]%
 	\centering
 	\includegraphics[width=\columnwidth]{../motor_data/plots/result_estimation/90}
 	\caption{Filtered and modeled data (with result parameters) for motor power = 90.}%
@@ -222,5 +226,8 @@ And we get a result which is in table \cref{table:square_error} (Power is from w
 {../motor_data/square_error.csv}{power=\p,regression=\rr,regular=\rg}%
 {\p & \rg & \rr}%
 \end{table}
+
+\section{Conclusion}
+As discussed in the second chapter "Collecting motor data", USB connection gives a better and faster connectivity. Thanks to the quantity and quality of the collected date, it is possible to compare them to the estimated date. To do it, it is needed to filter the collected date and match them to the estimated ones. With filter is possible to get hight readability plots and better result.
 
 \end{document}
