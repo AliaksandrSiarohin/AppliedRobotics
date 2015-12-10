@@ -36,3 +36,17 @@ plot(t, yo1, 'r--');
 scf(2);
 clf;
 evans(C * LM, Kc);
+max_overshot = 0.2;
+max_settling_time = 0.4;
+
+alpha = 0.05;
+oc = -log(0.2)/%pi
+sl = log(alpha)/max_settling_time;
+
+plot([sl,-15], [sl/oc,-15/oc], 'b--');
+plot([sl,-15], [-sl/oc, 15/oc], 'b--');
+plot([sl, sl], [-sl/oc, sl/oc], 'b--');
+
+//LineSpec and GlobalProperty examples:
+//plot([t ;t],[sin(t) ;cos(t)], 'blue');//,'marker','d','markerfac','green','markeredg','yel')
+
