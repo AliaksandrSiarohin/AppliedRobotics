@@ -7,5 +7,5 @@ TOPPERS_OSEK_OIL_SOURCE := ./BRO_spam_client.oil
 
 O_PATH ?= build
 
-include ../../../nxtOSEK/ecrobot/ecrobot.mak
+include ../../nxtOSEK/ecrobot/ecrobot.mak
 

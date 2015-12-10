@@ -1,0 +1,39 @@
+#include "implementation.oil"
+CPU ATMEL_AT91SAM7S256
+{
+  OS LEJOS_OSEK
+	{
+    	STATUS = EXTENDED;
+    	STARTUPHOOK = TRUE;
+    	ERRORHOOK = FALSE;
+    	SHUTDOWNHOOK = FALSE;
+    	PRETASKHOOK = TRUE;
+    	POSTTASKHOOK = FALSE;
+    	USEGETSERVICEID = FALSE;
+    	USEPARAMETERACCESS = FALSE;
+    	USERESSCHEDULER = FALSE;
+  	};
+
+  APPMODE appmode1{};
+  TASK task1 {
+    AUTOSTART = FALSE;
+    PRIORITY = 1; 
+    ACTIVATION = 1;
+    SCHEDULE = FULL;
+    STACKSIZE = 512;
+  };
+  COUNTER SysTimerCnt {
+    MINCYCLE = 1;
+    MAXALLOWEDVALUE = 10000;
+    TICKSPERBASE = 1;
+  };
+  ALARM cyclic_alarm1 {
+    COUNTER = SysTimerCnt;
+    ACTION = ACTIVATETASK {TASK = task1;};
+    AUTOSTART = TRUE {
+      ALARMTIME = 1000; /* Offset */
+      CYCLETIME = 5;  /* Period */
+      APPMODE = appmode1;
+    };
+  };
+};
