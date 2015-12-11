@@ -42,12 +42,12 @@ TASK(task1)
 	int space = current_rev - prev_rev;
 	//speed_deg = space / time_step; // degree / s
 	double speed_rad = speed((space * (M_PI / 180.0)) / T); // radiant / s
-	double error = speed_rad - reference_speed;
+	double error = reference_speed - speed_rad;
 	double power = controller(error);
 	prev_rev = current_rev;
 
 	//adjust the motor power
-	nxt_motor_set_speed(NXT_PORT_B, 50, 1);
+	nxt_motor_set_speed(NXT_PORT_B, power, 1);
 
 	//print to display
     display_clear(0);
