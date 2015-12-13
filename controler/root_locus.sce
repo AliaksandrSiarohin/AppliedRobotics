@@ -29,9 +29,11 @@ yo1 = csim('step', t, Gc1);
 //Plot
 scf(1);
 clf;
-plot(t, y);
+//plot(t, y);
 plot(t, yo1, 'r--');
-
+//xlabel("time (s)");
+//ylabel("speed (rad/s)");
+legend('Responce to 1(t)');
 //Root locus
 scf(2);
 clf;
