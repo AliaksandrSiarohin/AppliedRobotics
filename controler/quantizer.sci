@@ -1,3 +1,4 @@
+//Round power to nearest integer, because we can set only integer power on brick.
 function out = Quantizer(in)
 
     // Inputs
