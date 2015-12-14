@@ -7,7 +7,7 @@ DeclareCounter(SysTimerCnt);
 int prev_rev = 0;
 double gain = 10;
 double alpha = 0.075;
-double T = 0.005;
+double T = 0.005; // period sampling time
 double reference_speed = 10.0;
 
 void user_1ms_isr_type2(void)
@@ -25,21 +25,20 @@ double controller(double u_2) {
 	static double u_0 = 0.0, u_1 = 0.0;
 	static double y_0 = 0.0, y_1 = 0.0;
 
-	//double y_2 = 1/(4 + 42 * T) *
-	//	((gain * (u_2 * (4 + 100*T*T + 40*T) + u_1 * (-8 + 200*T*T) + u_0 * (4 - 40*T + 100*T*T))) - y_1 * (-8) - y_0 * (4 - 42*T));
-	double y_2 = (T/2 * u_2 + T/2 * u_1)*gain + y_1;
+	double y_2 = 1/(4 + 42 * T) *
+		((gain * (u_2 * (4 + 100*T*T + 40*T) + u_1 * (-8 + 200*T*T) + u_0 * (4 - 40*T + 100*T*T))) - y_1 * (-8) - y_0 * (4 - 42*T));
 	u_0 = u_1;
 	u_1 = u_2;
 	y_0 = y_1;
 	y_1 = y_2;
 	return y_2;
 }
-TASK(task1)
+TASK(task1) // called every 5 ms
 {
-	//get new motor evolution
+	//get motor evolution
 	int current_rev = nxt_motor_get_count(NXT_PORT_B);
 	//find out the speed
-	int space = current_rev - prev_rev;
+	int space = current_rev - prev_rev; //how space it takes in degree
 	//speed_deg = space / time_step; // degree / s
 	double speed_rad = speed((space * (M_PI / 180.0)) / T); // radiant / s
 	double error = reference_speed - speed_rad;

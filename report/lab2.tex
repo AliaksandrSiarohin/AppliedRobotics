@@ -33,11 +33,13 @@
 \newcommand{\mono}[1]{\texttt{#1}}
 %\newcommand{\mono}[1]{\texttt{\textbf{#1}}}
 
-\title{Identification procedure for Lego Mindstorm motor}
+\title{Controller design for Lego Mindstorm motor}
 
 \author{Diego Verona, Aliaksandr Siarohin, Mattia Digilio}
 
 \date{\today}
+
+\newtheorem{thm}[equation]{Theorem}
 
 \begin{document}
 %\maketitle
@@ -86,9 +88,25 @@
 
 \end{titlepage}
 
+\section{General definition}
+
+\begin{thm}
+\textbf{Root locus}. The \texttt{root locus}, or \texttt{Evans locus}, is a graphical method that
+depicts the curves of the roots of the denominator of the
+closed loop transfer function in the complex plane
+(sometimes called Argand plane or Gauss plane). \\ The curves are parameterized by a parameter, typically the
+gain of the loop  \footnote{\url{http://disi.unitn.it/~palopoli/courses/ECL/RootLocus.pdf}}
+\end{thm}
+
 \section{Design of continues time controller}
 \subsection{Controller requirments}
-The contoller should have zero stady state tracking error, overshot less than 20\% and settling time less than 0.4s. To show overshot requirment on root locus plot we use the folowing formula:
+The contoller should have:
+\begin{itemize}
+\item stady state tracking error = 0
+\item overshot $<$ 20\%
+\item settling time $<$ 0.4s
+\end{itemize}
+To show overshot requirment on root locus plot we use the folowing formula:
 \begin{equation}
 \frac{Re}{Im} = \frac{\xi}{\sqrt{1-\xi^{2}}} = \pm\frac{ln{0.2}}{\pi}
 \end{equation}
@@ -105,18 +123,18 @@ C(s) = \frac{(s+10)^2}{s(s+21)}
 \begin{equation}
 K_c = 10
 \end{equation}
-You can see root locus in \cref{fig:root_locus}, and ideal responce to 1(t) \cref{fig:responce}. You can also see result of our scicoslab simulation  in \cref{fig:simulation}.
+You can see root locus in \cref{fig:root_locus}, and ideal responce to 1(t) \cref{fig:responce}. You can also see result of our scicoslab simulation  in \cref{fig:simulation}. Code is available in a shared folder\footnote{\url{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/controler}}.
 
 \begin{figure}[t]
 	\centering
-	\includegraphics[width=\columnwidth]{../motor_data/plots/filtering/90}
-	\caption{Root locus, blue lines show constains on overshot and settling time}
+	\includegraphics[width=\columnwidth]{../controler/root_locus}
+	\caption{Root locus, red lines show constains on overshot and settling time}
 	\label{fig:root_locus}
 \end{figure}
 
 \begin{figure}[t]
 	\centering
-	\includegraphics[width=\columnwidth]{../motor_data/plots/filtering/90}
+	\includegraphics[width=\columnwidth]{../controler/response}
 	\caption{Responce to 1(t).}
 	\label{fig:responce}
 \end{figure}
@@ -133,6 +151,12 @@ Digital vestion of controller is (obtained using trapezoid rule):
 \begin{multline}
 y_{k+2} = \frac{1}{4 + 42 * T} (K_cu_{k+2}(4 + 100T^2 + 40T) + K_cu_{k+1}(-8 + 200T^2) \\+ K_cu_{k}(4 - 40T + 100T^2) + 8y_{k+1} - y_{k}(4 - 42*T))
 \end{multline}
+Speed estimated using exponential average
+\begin{equation}
+S(t) = 0.075 * S(t) + (1 - 0.075) * \frac{(Angle(t) - Angle(t-1))}{T}
+\end{equation}
+
+Code is available in a shared folder\footnote{\url{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/motor_controller}}.
 
 \section{Conclusion}
 
