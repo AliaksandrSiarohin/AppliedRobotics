@@ -9,7 +9,7 @@ xi = 1;
 o_n = 10.52;
 
 
-//Plat transfer function, look in 6 lecture.
+//Transfer function, look in 6 lecture.
 
 LM = Kg/(s ^ 2 / o_n ^ 2 + 2*xi/o_n * s + 1);
 G = syslin('c', LM);
