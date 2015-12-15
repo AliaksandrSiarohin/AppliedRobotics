@@ -1,0 +1,32 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Usage: -To include a Figure with a caption, insert the TWO following lines
+%        in your Latex file:
+% \input{This_file_name} 
+% \dessin{The_caption}{The_label}
+%         -To include just a picture, insert the lines 
+%         between \fbox{\begin{picture}...  and \end{picture}} below 
+%          
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+ \long\def\Checksifdef#1#2#3{%
+\expandafter\ifx\csname #1\endcsname\relax#2\else#3\fi}
+\Checksifdef{Figdir}{\gdef\Figdir{}}{}
+\def\dessin#1#2{
+\begin{figure}[hbtp]
+\begin{center}
+%%%%%%%%%%%%%%%%%%%%%%%% 
+%If you prefer cm, uncomment the following two lines
+%\setlength{\unitlength}{1mm}
+%\fbox{\begin{picture}(850.50,601.02)
+%%%%%%%%%%%%%%%%%%%%%%%% 
+\fbox{\begin{picture}(300.00,212.00)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% If you want do not want to use epsfig ,comment the following line 
+% and uncomment the \special line 
+\epsfig{file=\Figdir power.eps,width=300.00pt,height=212.00pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\special{psfile=\Figdir power.eps hscale=100.00 vscale=100.00}
+\end{picture}}
+\end{center}
+\caption{\label{#2}#1}
+\end{figure}}

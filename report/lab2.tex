@@ -5,7 +5,7 @@
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
-\usepackage{graphicx}
+\usepackage{graphics}
 \usepackage[colorinlistoftodos]{todonotes}
 
 % By LoCigno
@@ -31,7 +31,6 @@
 
 \usepackage{courier}
 \newcommand{\mono}[1]{\texttt{#1}}
-%\newcommand{\mono}[1]{\texttt{\textbf{#1}}}
 
 \title{Controller design for Lego Mindstorm motor}
 
@@ -39,7 +38,9 @@
 
 \date{\today}
 
+% By Diego
 \newtheorem{thm}[equation]{Theorem}
+\usepackage[outdir=./]{epstopdf}
 
 \begin{document}
 %\maketitle
@@ -100,18 +101,18 @@ gain of the loop  \footnote{\url{http://disi.unitn.it/~palopoli/courses/ECL/Root
 
 \section{Design of continues time controller}
 \subsection{Controller requirments}
-The contoller should have:
+The contoller should has:
 \begin{itemize}
 \item stady state tracking error = 0
 \item overshot $<$ 20\%
 \item settling time $<$ 0.4s
 \end{itemize}
-To show overshot requirment on root locus plot we use the folowing formula:
+Overshot requirement on root locus plot is shown by the following formula:
 \begin{equation}
 \frac{Re}{Im} = \frac{\xi}{\sqrt{1-\xi^{2}}} = \pm\frac{ln{0.2}}{\pi}
 \end{equation}
 
-To show settling time requirment, we use dominant pool aproximation:
+To show settling time requirement, it is possible to use the dominant pool approximation:
 \begin{equation}
 Re = \frac{ln(\alpha)}{0.4}
 \end{equation}
@@ -123,39 +124,52 @@ C(s) = \frac{(s+10)^2}{s(s+21)}
 \begin{equation}
 K_c = 10
 \end{equation}
-You can see root locus in \cref{fig:root_locus}, and ideal responce to 1(t) \cref{fig:responce}. You can also see result of our scicoslab simulation  in \cref{fig:simulation}. Code is available in a shared folder\footnote{\url{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/controler}}.
+Root locus can be seen in \cref{fig:root_locus}, and the ideal response to 1(t) in \cref{fig:response}.\\ Results of Scicoslab simulation is shown in different figures:
+\begin{itemize}
+\item $\Omega$ in \cref{fig:simulation_omega}
+\item Power in \cref{fig:simulation_power}
+\item Tracking error in \cref{fig:simulation_tracking_err}
+\end{itemize}
+Code is available in a shared folder\footnote{\url{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/controler}}.
 
-\begin{figure}[t]
+\begin{figure}
 	\centering
 	\includegraphics[width=\columnwidth]{../controler/root_locus}
 	\caption{Root locus, red lines show constains on overshot and settling time}
 	\label{fig:root_locus}
-\end{figure}
-
-\begin{figure}[t]
 	\centering
 	\includegraphics[width=\columnwidth]{../controler/response}
-	\caption{Responce to 1(t).}
-	\label{fig:responce}
+	\caption{response to 1(t).}
+	\label{fig:response}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}
 	\centering
-	\includegraphics[width=\columnwidth]{../motor_data/plots/filtering/90}
+	\includegraphics[width=\columnwidth]{../controler/omega.eps}
 	\caption{Scicoslab simulation.}
-	\label{fig:simulation}
+	\label{fig:simulation_omega}
+	\centering
+	\includegraphics[width=\columnwidth]{../controler/power.eps}
+	\caption{Scicoslab simulation.}
+	\label{fig:simulation_power}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=\columnwidth]{../controler/tracking_err.eps}
+	\caption{Scicoslab simulation.}
+	\label{fig:simulation_tracking_err}
 \end{figure}
 
-\section{Implimentation of digital controller}
-Digital vestion of controller is (obtained using trapezoid rule):
+\section{Practical case: vehicle}
+Using 2 different motors applied on the NXT brick, it is possible to do a simple modelling of a vehicle. The scope of this simple experiment is to let our model to go straight without any visual or position control, but only using the the following implementation of a digital controller.\\
+Digital version of controller is (obtained using trapezoid rule):
 \begin{multline}
 y_{k+2} = \frac{1}{4 + 42 * T} (K_cu_{k+2}(4 + 100T^2 + 40T) + K_cu_{k+1}(-8 + 200T^2) \\+ K_cu_{k}(4 - 40T + 100T^2) + 8y_{k+1} - y_{k}(4 - 42*T))
 \end{multline}
-Speed estimated using exponential average
+Speed estimated using exponential average:
 \begin{equation}
 S(t) = 0.075 * S(t) + (1 - 0.075) * \frac{(Angle(t) - Angle(t-1))}{T}
 \end{equation}
-
 Code is available in a shared folder\footnote{\url{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/motor_controller}}.
 
 \section{Conclusion}
