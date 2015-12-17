@@ -22,7 +22,19 @@ CPU ATMEL_AT91SAM7S256
     SCHEDULE = FULL;
     STACKSIZE = 512;
   };
+  TASK task2 {
+    AUTOSTART = FALSE;
+    PRIORITY = 1; 
+    ACTIVATION = 1;
+    SCHEDULE = FULL;
+    STACKSIZE = 512;
+  };
   COUNTER SysTimerCnt {
+    MINCYCLE = 1;
+    MAXALLOWEDVALUE = 10000;
+    TICKSPERBASE = 1;
+  };
+  COUNTER SysTimerCnt2 {
     MINCYCLE = 1;
     MAXALLOWEDVALUE = 10000;
     TICKSPERBASE = 1;
@@ -30,6 +42,15 @@ CPU ATMEL_AT91SAM7S256
   ALARM cyclic_alarm1 {
     COUNTER = SysTimerCnt;
     ACTION = ACTIVATETASK {TASK = task1;};
+    AUTOSTART = TRUE {
+      ALARMTIME = 1000; /* Offset */
+      CYCLETIME = 5;  /* Period */
+      APPMODE = appmode1;
+    };
+  };
+  ALARM cyclic_alarm2 {
+    COUNTER = SysTimerCnt;
+    ACTION = ACTIVATETASK {TASK = task2;};
     AUTOSTART = TRUE {
       ALARMTIME = 1000; /* Offset */
       CYCLETIME = 5;  /* Period */

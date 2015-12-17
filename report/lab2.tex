@@ -41,6 +41,7 @@
 % By Diego
 \newtheorem{thm}[equation]{Theorem}
 \usepackage[outdir=./]{epstopdf}
+\usepackage{float}
 
 \begin{document}
 %\maketitle
@@ -93,11 +94,23 @@
 
 \begin{thm}
 \textbf{Root locus}. The \texttt{root locus}, or \texttt{Evans locus}, is a graphical method that
-depicts the curves of the roots of the denominator of the
-closed loop transfer function in the complex plane
-(sometimes called Argand plane or Gauss plane). \\ The curves are parameterized by a parameter, typically the
+depicts the curves of the roots of the denominator of the closed loop transfer function in the complex plane
+(sometimes called Argand plane or Gauss plane). The curves are parameterized by a parameter, typically the
 gain of the loop  \footnote{\url{http://disi.unitn.it/~palopoli/courses/ECL/RootLocus.pdf}}
 \end{thm}
+\begin{thm}
+\textbf{Closed-loop transfer function}. A closed-loop transfer function in control theory is a mathematical expression (algorithm) describing the net result of the effects of a closed (feedback) loop on the input signal to the circuits enclosed by the loop. \footnote{\url{https://en.wikipedia.org/wiki/Closed-loop_transfer_function}}
+\end{thm}
+
+\begin{figure}[h]
+	\vspace{-1.5em}
+	\centering
+	\includegraphics[width=\columnwidth]{./closed_loop_controller.png}
+	\vspace{-1.5em}
+	\caption{Closed loop with controller}
+	\label{fig:closed_loop_controller}
+	\vspace{-2em}
+\end{figure}
 
 \section{Design of continues time controller}
 \subsection{Controller requirments}
@@ -132,6 +145,27 @@ Root locus can be seen in \cref{fig:root_locus}, and the ideal response to 1(t) 
 \end{itemize}
 Code is available in a shared folder\footnote{\url{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/controler}}.
 
+\section{Practical case: vehicle}
+Using 2 different motors applied on the NXT brick, it is possible to do a simple modelling of a vehicle. The scope of this simple experiment is to let our model to go straight without any external sensors, but only using the the following implementation of a digital controller.
+\begin{figure}[H]
+	\vspace{-1em}
+	\centering
+	\includegraphics[width=\columnwidth]{./vehicle.png}
+	\vspace{-1.5em}	
+	\caption{Closed loop with controller}
+	\label{fig:closed_loop_controller}
+	\vspace{-1em}	
+\end{figure}
+Digital version of controller is obtained using trapezoid rule:
+\begin{multline}
+y_{k+2} = \frac{1}{4 + 42 * T} (K_cu_{k+2}(4 + 100T^2 + 40T) + K_cu_{k+1}(-8 + 200T^2) \\+ K_cu_{k}(4 - 40T + 100T^2) + 8y_{k+1} - y_{k}(4 - 42*T))
+\end{multline}
+Speed estimated using exponential average:
+\begin{equation}
+S(t) = 0.075 * S(t) + (1 - 0.075) * \frac{(Angle(t) - Angle(t-1))}{T}
+\end{equation}
+Code is available in a shared folder\footnote{\url{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/motor_controller}}.
+
 \begin{figure}
 	\centering
 	\includegraphics[width=\columnwidth]{../controler/root_locus}
@@ -146,31 +180,19 @@ Code is available in a shared folder\footnote{\url{https://github.com/Aliaksandr
 \begin{figure}
 	\centering
 	\includegraphics[width=\columnwidth]{../controler/omega.eps}
-	\caption{Scicoslab simulation.}
+	\caption{Scicoslab simulation: omega}
 	\label{fig:simulation_omega}
 	\centering
 	\includegraphics[width=\columnwidth]{../controler/power.eps}
-	\caption{Scicoslab simulation.}
+	\caption{Scicoslab simulation: power}
 	\label{fig:simulation_power}
 \end{figure}
 \begin{figure}
 	\centering
 	\includegraphics[width=\columnwidth]{../controler/tracking_err.eps}
-	\caption{Scicoslab simulation.}
+	\caption{Scicoslab simulation: tracking error}
 	\label{fig:simulation_tracking_err}
 \end{figure}
-
-\section{Practical case: vehicle}
-Using 2 different motors applied on the NXT brick, it is possible to do a simple modelling of a vehicle. The scope of this simple experiment is to let our model to go straight without any visual or position control, but only using the the following implementation of a digital controller.\\
-Digital version of controller is (obtained using trapezoid rule):
-\begin{multline}
-y_{k+2} = \frac{1}{4 + 42 * T} (K_cu_{k+2}(4 + 100T^2 + 40T) + K_cu_{k+1}(-8 + 200T^2) \\+ K_cu_{k}(4 - 40T + 100T^2) + 8y_{k+1} - y_{k}(4 - 42*T))
-\end{multline}
-Speed estimated using exponential average:
-\begin{equation}
-S(t) = 0.075 * S(t) + (1 - 0.075) * \frac{(Angle(t) - Angle(t-1))}{T}
-\end{equation}
-Code is available in a shared folder\footnote{\url{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/motor_controller}}.
 
 \section{Conclusion}
 
