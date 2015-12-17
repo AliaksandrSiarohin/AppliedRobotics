@@ -13,7 +13,7 @@ double R = 28; //radius wheel in mm
 double gain = 10;
 double alpha = 0.075;
 double T = 0.005; // period sampling time
-double reference_speed = 10.0;
+double reference_speed = 2.0;
 int canModify = 0;
 
 void user_1ms_isr_type2(void)
@@ -46,18 +46,6 @@ double controller_A(double u_2) {
 	return y_2;
 }
 double controller_B(double u_2) {
-	static double u_0 = 0.0, u_1 = 0.0;
-	static double y_0 = 0.0, y_1 = 0.0;
-
-	double y_2 = 1/(4 + 42 * T) *
-		((gain * (u_2 * (4 + 100*T*T + 40*T) + u_1 * (-8 + 200*T*T) + u_0 * (4 - 40*T + 100*T*T))) - y_1 * (-8) - y_0 * (4 - 42*T));
-	u_0 = u_1;
-	u_1 = u_2;
-	y_0 = y_1;
-	y_1 = y_2;
-	return y_2;
-}
-double controller_w(double u_2) {
 	static double u_0 = 0.0, u_1 = 0.0;
 	static double y_0 = 0.0, y_1 = 0.0;
 
