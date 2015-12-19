@@ -82,7 +82,7 @@
 \begin{abstract}
 
 \textit{
-  Report for the second assignment on Applied robotics: design and implement controller for the Lego NXT motor.\\In this report we show our controller, describe it properties and describe it digital implementation.
+  Report for the second assignment on Applied robotics: design and implement a controller for the Lego NXT motor.\\In this report we show our controller, describe it properties and describe it digital implementation.
 }
 
 
@@ -96,7 +96,7 @@
 \textbf{Root locus}. The \texttt{root locus}, or \texttt{Evans locus}, is a graphical method that
 depicts the curves of the roots of the denominator of the closed loop transfer function in the complex plane
 (sometimes called Argand plane or Gauss plane). The curves are parameterized by a parameter, typically the
-gain of the loop  \footnote{\url{http://disi.unitn.it/~palopoli/courses/ECL/RootLocus.pdf}}
+gain of the loop.  \footnote{\url{http://disi.unitn.it/~palopoli/courses/ECL/RootLocus.pdf}}
 \end{thm}
 \begin{thm}
 \textbf{Closed-loop transfer function}. A closed-loop transfer function in control theory is a mathematical expression (algorithm) describing the net result of the effects of a closed (feedback) loop on the input signal to the circuits enclosed by the loop. \footnote{\url{https://en.wikipedia.org/wiki/Closed-loop_transfer_function}}
@@ -114,9 +114,9 @@ gain of the loop  \footnote{\url{http://disi.unitn.it/~palopoli/courses/ECL/Root
 
 \section{Design of continues time controller}
 \subsection{Controller requirments}
-The contoller should has:
+The contoller should have:
 \begin{itemize}
-\item stady state tracking error = 0
+\item stady state tracking error equal to 0
 \item overshot $<$ 20\%
 \item settling time $<$ 0.4s
 \end{itemize}
@@ -137,7 +137,7 @@ C(s) = \frac{(s+10)^2}{s(s+21)}
 \begin{equation}
 K_c = 10
 \end{equation}
-Root locus can be seen in \cref{fig:root_locus}, and the ideal response to 1(t) in \cref{fig:response}.\\ Results of Scicoslab simulation is shown in different figures:
+Root locus can be seen in \cref{fig:root_locus}, and the ideal response to 1(t) in \cref{fig:response}.\\ Results of Scicoslab simulation are shown in different figures:
 \begin{itemize}
 \item $\Omega$ in \cref{fig:simulation_omega}
 \item Power in \cref{fig:simulation_power}
@@ -146,7 +146,7 @@ Root locus can be seen in \cref{fig:root_locus}, and the ideal response to 1(t) 
 Code is available in a shared folder\footnote{\url{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/controler}}.
 
 \section{Practical case: vehicle}
-Using 2 different motors applied on the NXT brick, it is possible to do a simple modelling of a vehicle. The scope of this simple experiment is to let our model to go straight without any external sensors, but only using the the following implementation of a digital controller.
+Using two different motors applied on the NXT brick, it is possible to do a simple modelling of a vehicle. The aim of this experiment is to let our model go straight ahead autonomously without any external sensors, but only using the the following implementation of a digital controller to manage the motors.
 \begin{figure}[H]
 	\vspace{-1em}
 	\centering
