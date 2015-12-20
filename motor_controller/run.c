@@ -7,7 +7,6 @@
 #include "kernel.h"
 #include "ecrobot_interface.h"
 DeclareTask(task1);
-DeclareTask(task2);
 DeclareCounter(SysTimerCnt);
 DeclareCounter(SysTimerCnt2);
 int prev_rev_A = 0;
@@ -23,8 +22,7 @@ double dis3=300;
 double vel1 = 2.0;
 double vel2 = 5.0;
 double vel3 = 7.0;
-double reference_speed = get_reference_speed(2*M_PI * (current_rev_A + current_rev_B) / 360) * R); // calculate distance in real time 
-int canModify = 0;
+
 
 
 
@@ -104,20 +102,10 @@ TASK(task1) // called every 5 ms
 	double velocity = (w_A + w_B) / 2 * R; // speed of the vehicle in radiant / s
 	double error_w = (w_B - w_A) / L * R; // it has to be = 0
 
+	double reference_speed = get_reference_speed(2*M_PI * (current_rev_A + current_rev_B) / 360) * R); // calculate distance in real time 
+
 	double error_A = reference_speed - w_A;
 	double error_B = reference_speed - w_B;
-
-	// in milliseconds: 1 wait -> 5ms, 2 wait -> 10ms, ...
-	// our settling time is 0.4ms and our sampling time is 0.5ms,
-	// so it is useless.. it was written to have a complete code
-	int wait = 1; //1 is fine for us
-	if(canModify == wait){
-		//ecrobot_sound_tone(1500, 2, 50); //1500KHz, 2ms, volume:50
-		double err = w_B - w_A;
-		error_A += err / 2;
-		error_B += -err / 2;
-	}
-	canModify = 0;
 
 	double power_A = controller_A(error_A);
 	double power_B = controller_B(error_B);
@@ -160,9 +148,4 @@ TASK(task1) // called every 5 ms
     display_update();
     TerminateTask();
 }
-int i = 0;
-TASK(task2) // called every 5 ms
-{
-	canModify++;
-	TerminateTask();
-}
+
