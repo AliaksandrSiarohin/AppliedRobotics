@@ -23,7 +23,7 @@ double dis3=300;
 double vel1 = 2.0;
 double vel2 = 5.0;
 double vel3 = 7.0;
-double reference_speed = get_reference_speed(2pi * (current_rev_A + current_rev_B) / 360) * R);
+double reference_speed = get_reference_speed(2*M_PI * (current_rev_A + current_rev_B) / 360) * R); // calculate distance in real time 
 int canModify = 0;
 
 
@@ -69,14 +69,21 @@ double controller_B(double u_2) {
 	y_1 = y_2;
 	return y_2;
 }
+
 double get_reference_speed(double distance) {
-   if (distance < dis1)
+   if (distance < dis1){
+        
         return vel1;  
-    if (distance < dis2)
+   }
+   if (distance < dis2){
+         
          return vel2; 
-    if (distance < dis3)
-         return vel3;  
-    return 0;//or do something like exit();
+   }
+   if (distance < dis3){
+
+         return vel3;
+   }  
+   return 0;
 }
 
 
