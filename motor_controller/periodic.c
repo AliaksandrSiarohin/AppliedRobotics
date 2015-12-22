@@ -8,8 +8,8 @@ DeclareCounter(SysTimerCnt);
 DeclareCounter(SysTimerCnt2);
 int prev_rev_A = 0;
 int prev_rev_B = 0;
-double L = 	130; //space between wheels in mm
-double R = 28; //radius wheel in mm
+double L = 	13; //space between wheels in cm
+double R = 2.8; //radius wheel in cm
 double gain = 10;
 double alpha = 0.075;
 double T = 0.005; // period sampling time
@@ -65,10 +65,10 @@ TASK(task1) // called every 5 ms
 	//find out the speed
 	int space_A = current_rev_A - prev_rev_A; //how much space it takes in degree motor A
 	int space_B = current_rev_B - prev_rev_B; //how much space it takes in degree motor A
-	//speed_deg = space / time_step; // degree / s
-	double w_A = speed_A((space_A * (M_PI / 180.0)) / T); // radiant / s
-	double w_B = speed_B((space_B * (M_PI / 180.0)) / T); // radiant / s
-	double velocity = (w_A + w_B) / 2 * R; // speed of the vehicle in radiant / s
+	//speed_deg = space / time_step; // degree / ms
+	double w_A = speed_A((space_A * (M_PI / 180.0)) / T); // radiant / ms
+	double w_B = speed_B((space_B * (M_PI / 180.0)) / T); // radiant / ms
+	double velocity = (w_A + w_B) / 2 * R; // speed of the vehicle in radiant / ms
 	double error_w = (w_B - w_A) / L * R; // it has to be = 0
 
 	double error_A = reference_speed - w_A;
