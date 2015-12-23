@@ -7,8 +7,8 @@ DeclareCounter(SysTimerCnt);
 DeclareCounter(SysTimerCnt2);
 int prev_rev_A = 0;
 int prev_rev_B = 0;
-double L = 	13; //space between wheels in cm
-double R = 2.8; //radius wheel in cm
+double L = 	0.13; //space between wheels in m
+double R = 0.028; //radius wheel in m
 double gain = 10;
 double alpha = 0.075;
 double T = 0.005; // period sampling time
@@ -91,8 +91,7 @@ TASK(task1) // called every 5 ms
 	double velocity = (w_A + w_B) / 2 * R; // speed of the vehicle in radiant / ms
 	double error_w = (w_B - w_A) / L * R; // it has to be = 0
 
-	//double reference_speed = get_reference_speed(2*M_PI * (current_rev_A + current_rev_B) / 360) * R); // calculate distance in real time
-	double reference_speed = get_reference_speed(current_rev_A); //it should works fine
+	double reference_speed = get_reference_speed((2 * M_PI * (current_rev_A + current_rev_B) / 360) * R); // calculate distance in real time
 
 	double error_A = reference_speed - w_A;
 	double error_B = reference_speed - w_B;

@@ -8,13 +8,19 @@ DeclareCounter(SysTimerCnt);
 DeclareCounter(SysTimerCnt2);
 int prev_rev_A = 0;
 int prev_rev_B = 0;
-double L = 	13; //space between wheels in cm
-double R = 2.8; //radius wheel in cm
+double L = 0.013; //space between wheels in m
+double R = 0.028; //radius wheel in m
 double gain = 10;
 double alpha = 0.075;
 double T = 0.005; // period sampling time
-double reference_speed = 2.0;
+//double reference_speed = 2.0;
 int canModify = 0;
+double dis1=1; // m
+double dis2=2; // m
+double dis3=3; // m
+double vel1 = 3.0; // radiant / ms
+double vel2 = 6.0; // radiant / ms
+double vel3 = 9.0; // radiant / ms
 
 void user_1ms_isr_type2(void)
 {
@@ -57,6 +63,18 @@ double controller_B(double u_2) {
 	y_1 = y_2;
 	return y_2;
 }
+double get_reference_speed(double distance) {
+   if (distance < dis1){
+	   return vel1;
+   }else if (dis1 <= distance && distance < dis2){
+	   return vel2;
+   }else if (dis2 <= distance && distance < dis3){
+   	   return vel3;
+   }else if (distance >= dis3){
+	   return 0;
+   }
+   return 0;
+}
 TASK(task1) // called every 5 ms
 {
 	//get motor evolution
@@ -71,6 +89,9 @@ TASK(task1) // called every 5 ms
 	double velocity = (w_A + w_B) / 2 * R; // speed of the vehicle in radiant / ms
 	double error_w = (w_B - w_A) / L * R; // it has to be = 0
 
+	double distance = (current_rev_A / 360) * (2 * M_PI * R); // m
+	double reference_speed = get_reference_speed(distance);
+
 	double error_A = reference_speed - w_A;
 	double error_B = reference_speed - w_B;
 
@@ -79,7 +100,6 @@ TASK(task1) // called every 5 ms
 	// so it is useless.. it was written to have a complete code
 	int wait = 1; //1 is fine for us
 	if(canModify == wait){
-		//ecrobot_sound_tone(1500, 2, 50); //1500KHz, 2ms, volume:50
 		double err = w_B - w_A;
 		error_A += err / 2;
 		error_B += -err / 2;
@@ -123,6 +143,16 @@ TASK(task1) // called every 5 ms
 	display_string("err_w:");
 	display_goto_xy(7,4);
 	display_int(error_w*100, 3);
+
+	display_goto_xy(0,5);
+	display_string("tot[dm]:");
+	display_goto_xy(7,5);
+	display_int(distance*10, 3);
+
+	display_goto_xy(0,7);
+	display_string("ref_:");
+	display_goto_xy(7,7);
+	display_int(reference_speed, 3);
 
     display_update();
     TerminateTask();
