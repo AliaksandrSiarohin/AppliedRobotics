@@ -88,8 +88,9 @@ TASK(task1) // called every 5 ms
 	double w_B = speed_B((space_B * (M_PI / 180.0)) / T); // radiant / ms
 	double velocity = (w_A + w_B) / 2 * R; // speed of the vehicle in radiant / ms
 	double error_w = (w_B - w_A) / L * R; // it has to be = 0
-
-	double distance = (current_rev_A / 360) * (2 * M_PI * R); // m
+	
+	double distance = get_reference_speed((M_PI * (current_rev_A + current_rev_B) / 360) * R);
+	//double distance = (current_rev_A / 360) * (2 * M_PI * R); // m
 	double reference_speed = get_reference_speed(distance);
 
 	double error_A = reference_speed - w_A;
