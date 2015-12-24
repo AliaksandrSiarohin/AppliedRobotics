@@ -66,11 +66,11 @@ double get_reference_speed(double distance) {
         
         return vel1;  
    }
-   if (dis1 <= distance < dis2){
+   if (distance >= dis1 && distance < dis2){
          
          return vel2; 
    }
-   if (dis2 <= distance < dis3){
+   if (distance >= dis3){
 
          return vel3;
    }  
