@@ -139,23 +139,13 @@ K_c = 10
 \end{equation}
 Root locus can be seen in \cref{fig:root_locus}, and the ideal response to 1(t) in \cref{fig:response}.\\ Results of Scicoslab simulation are shown in different figures:
 \begin{itemize}
-\item $\Omega$ in \cref{fig:simulation_omega}
+\item Speed ($\omega$) in \cref{fig:simulation_omega}
 \item Power in \cref{fig:simulation_power}
 \item Tracking error in \cref{fig:simulation_tracking_err}
 \end{itemize}
 Code is available in a shared folder\footnote{\url{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/controler}}.
 
-\section{Practical case: vehicle}
-Using two different motors applied on the NXT brick, it is possible to do a simple modelling of a vehicle. The aim of this experiment is to let our model go straight ahead autonomously without any external sensors, but only using the the following implementation of a digital controller to manage the motors.
-\begin{figure}[H]
-	\vspace{-1em}
-	\centering
-	\includegraphics[width=\columnwidth]{./vehicle.png}
-	\vspace{-1.5em}	
-	\caption{Closed loop with controller}
-	\label{fig:closed_loop_controller}
-	\vspace{-1em}	
-\end{figure}
+\section{Digital controller}
 Digital version of controller is obtained using trapezoid rule:
 \begin{multline}
 y_{k+2} = \frac{1}{4 + 42 * T} (K_cu_{k+2}(4 + 100T^2 + 40T) + K_cu_{k+1}(-8 + 200T^2) \\+ K_cu_{k}(4 - 40T + 100T^2) + 8y_{k+1} - y_{k}(4 - 42*T))
@@ -164,12 +154,12 @@ Speed estimated using exponential average:
 \begin{equation}
 S(t) = 0.075 * S(t) + (1 - 0.075) * \frac{(Angle(t) - Angle(t-1))}{T}
 \end{equation}
-Code is available in a shared folder\footnote{\url{https://github.com/AliaksandrSiarohin/AppliedRobotics/tree/master/motor_controller}}.
+Code is available in a shared folder\footnote{\url{https://github.com/AliaksandrSiarohin/AppliedRobotics/blob/81388e0b7589c9aa38e6b5bc4f148191b2f37a03/motor_controller}}.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\columnwidth]{../controler/root_locus}
-	\caption{Root locus, red lines show constains on overshot and settling time}
+	\caption{Root locus, red lines show constrains on overshot and settling time}
 	\label{fig:root_locus}
 	\centering
 	\includegraphics[width=\columnwidth]{../controler/response}
@@ -195,6 +185,6 @@ Code is available in a shared folder\footnote{\url{https://github.com/Aliaksandr
 \end{figure}
 
 \section{Conclusion}
-
+In this assignment we design motor controller and implement it digital version on Lego NXT motor.
 
 \end{document}
