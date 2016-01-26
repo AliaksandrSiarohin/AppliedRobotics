@@ -3,9 +3,7 @@
 #include "kernel.h"
 #include "ecrobot_interface.h"
 DeclareTask(task1);
-DeclareTask(task2);
 DeclareCounter(SysTimerCnt);
-DeclareCounter(SysTimerCnt2);
 int prev_rev_A = 0;
 int prev_rev_B = 0;
 double L = 0.013; //space between wheels in m
@@ -18,16 +16,15 @@ int canModify = 0;
 double dis1=1; // m
 double dis2=2; // m
 double dis3=3; // m
-double vel1 = 3.0; // radiant / ms
-double vel2 = 6.0; // radiant / ms
-double vel3 = 9.0; // radiant / ms
+double vel1 = 3.0; // radiant / s
+double vel2 = 6.0; // radiant / s
+double vel3 = 9.0; // radiant / s
 
 void user_1ms_isr_type2(void)
 {
-  StatusType ercd, ercd2;
+  StatusType ercd;
   ercd = SignalCounter(SysTimerCnt);
-  ercd2 = SignalCounter(SysTimerCnt2);
-  if (ercd != E_OK || ercd2 != E_OK){ShutdownOS(ercd);}
+  if (ercd != E_OK){ShutdownOS(ercd);}
 }
 double speed_A(double raw_speed) {
 	static double prev_speed = 0.0;
@@ -83,29 +80,22 @@ TASK(task1) // called every 5 ms
 	//find out the speed
 	int space_A = current_rev_A - prev_rev_A; //how much space it takes in degree motor A
 	int space_B = current_rev_B - prev_rev_B; //how much space it takes in degree motor A
-	//speed_deg = space / time_step; // degree / ms
-	double w_A = speed_A((space_A * (M_PI / 180.0)) / T); // radiant / ms
-	double w_B = speed_B((space_B * (M_PI / 180.0)) / T); // radiant / ms
-	double velocity = (w_A + w_B) / 2 * R; // speed of the vehicle in radiant / ms
+	//speed_deg = space / time_step; // degree / s
+	double w_A = speed_A((space_A * (M_PI / 180.0)) / T); // radiant / s
+	double w_B = speed_B((space_B * (M_PI / 180.0)) / T); // radiant / s
+	double velocity = (w_A + w_B) / 2 * R; // speed of the vehicle in radiant / s
 	double error_w = (w_B - w_A) / L * R; // it has to be = 0
 	
-	double distance = get_reference_speed((M_PI * ((current_rev_A + current_rev_B)/2.0) / 360) * R);
+	double distance = (M_PI * ((current_rev_A + current_rev_B)/2.0) / 180) * R;
 	//double distance = (current_rev_A / 360) * (2 * M_PI * R); // m
 	double reference_speed = get_reference_speed(distance);
 
 	double error_A = reference_speed - w_A;
 	double error_B = reference_speed - w_B;
 
-	// in milliseconds: 1 wait -> 5ms, 2 wait -> 10ms, ...
-	// our settling time is 0.4ms and our sampling time is 0.5ms,
-	// so it is useless.. it was written to have a complete code
-	int wait = 1; //1 is fine for us
-	if(canModify == wait){
-		double err = w_B - w_A;
-		error_A += err / 2;
-		error_B += -err / 2;
-	}
-	canModify = 0;
+	double err = w_B - w_A;
+	error_A += err / 2;
+	error_B += -err / 2;
 
 	double power_A = controller_A(error_A);
 	double power_B = controller_B(error_B);
@@ -157,10 +147,4 @@ TASK(task1) // called every 5 ms
 
     display_update();
     TerminateTask();
-}
-int i = 0;
-TASK(task2) // called every 5 ms
-{
-	canModify++;
-	TerminateTask();
 }
