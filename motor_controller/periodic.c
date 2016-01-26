@@ -6,7 +6,7 @@ DeclareTask(task1);
 DeclareCounter(SysTimerCnt);
 int prev_rev_A = 0;
 int prev_rev_B = 0;
-double L = 0.013; //space between wheels in m
+double L = 0.13; //space between wheels in m
 double R = 0.028; //radius wheel in m
 double gain = 10;
 double alpha = 0.075;
@@ -93,7 +93,7 @@ TASK(task1) // called every 5 ms
 	double error_A = reference_speed - w_A;
 	double error_B = reference_speed - w_B;
 
-	int fine = 50.0;
+	int fine = 50.0; //this value is obtained by some tests on the vehicle
 	double err = fabs(w_B - w_A);
 	if(error_w > fine){ //it is turning right
 		error_A += err;
@@ -105,8 +105,8 @@ TASK(task1) // called every 5 ms
 
 	/*double err = w_B - w_A;
 	error_A += err / 2;
-	error_B += -err / 2;
-*/
+	error_B += -err / 2;*/
+
 	double power_A = controller_A(error_A);
 	double power_B = controller_B(error_B);
 
