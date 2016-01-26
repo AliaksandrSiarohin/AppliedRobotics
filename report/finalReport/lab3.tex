@@ -82,7 +82,7 @@
 \begin{abstract}
 
 \textit{
-  Report for the third assignment on Applied robotics: design and implement a simple model of vehicle that can go straight without additional sensors for the Lego NXT.\\In this report we show model of a vehicle, describe it properties and describe it digital implementation.
+  Report for the third assignment on Applied robotics: design and implement a simple model of vehicle that can go straight without additional sensors for the Lego NXT.\\In this report we show model of a vehicle, describing its properties and its digital implementation.
 }
 
 
@@ -95,39 +95,40 @@
 
 \section{Design of vehicle}
 \subsection{Vehicle requirments}
-The vehicle should go statight without additional sensors and human interation, and it should change it`s velosity acording to the covered distance. The model of the robot should have at least 3 wheels and 2 motors, one wheel is free, and 2 other should be controled by the motors. 
+The vehicle should go statight without additional sensors and human interation, and it should change its velocity according to the covered distance. The model of the robot should have at least three wheels and two motors, one wheel is free, and the two other should be controlled by the motors. 
 \subsection{Lego structure}
-The design of our lego robot can be found in folowing pictures: \cref{fig:back}, \cref{fig:front}, 
+The design of our lego robot can be found in the following pictures: \cref{fig:back}, \cref{fig:front}, 
 \cref{fig:left}.
 \subsection{Controller design}
-We have 2 motors, so for every of them we create separate contorller, those controlles called inner. We also have a controller that should ajust direction of the vehicle, by ajusting motor powers, this controller called outer. The overall structure can be found in: \cref{fig:diagram}
+We have 2 motors, so for every of them we create a separate controller and we called them "inner". We have also a controller called "outer" that ajust the direction of the vehicle, balancing  motor powers. The overall structure can be found in: \cref{fig:diagram}
 
-The velosity of the vehicle is:
+Velocity of the vehicle:
 \begin{equation}
-\text{velosity} = R \frac{velosity_A + velosity_B}{2} 
+\text{velocity} = R \frac{velocity_A + velocity_B}{2} 
 \end{equation}
 
-Where R - is radius of the wheel. And $velosity_A$, $velosity_B$ is angular velosity of the motors. 
+Where R - is radius of the wheel. And $velocity_A$, $velocity_B$ is angular velocity of the motors. 
 
 And the direction of the vehicle is:
 \begin{equation}
-\text{direction} = R \frac{velosity_B - velosity_A}{L}
+\text{direction} = R \frac{velocity_B - velocity_A}{L}
 \end{equation}
 
 Where L is the distance between wheels. The direction should be 0 in order for vehicle to move straight.
 
 
-\subsection{Controller implimentation}
-We create a periodic task whith 5ms period, this task do the folowing:
+\subsection{Controller implementation}
+The main task is runned every 5ms and do this operations:
 \begin{enumerate}
-\item Compute current motors velocitys using exponential avearage.
-\item Compute vehicle velocity and it`s direction
-\item Compute difference in motor velositys
-\item Use this difference to compute new velosity for the motor
-\item Compute new motor power based on the new velosity using controller from assigment 2
+\item Compute current velocities of the motors using exponential avearage.
+\item Compute vehicle velocity and its direction
+\item Compute difference in motor velocities
+\item Use this difference to compute new velocity for the motors
+\item Compute new motors power based on the new velocity using controller from assigment 2
 \end{enumerate}
 \section{Conclusion}
-In this assignment we design a simple vehicle and implement it usign Lego NXT.
+
+In this assignment we designed a simple vehicle structure and implemented it usign Lego NXT.
 
 
 \begin{figure}
@@ -151,7 +152,7 @@ In this assignment we design a simple vehicle and implement it usign Lego NXT.
 \begin{figure}
 	\centering
 	\includegraphics[width=\columnwidth]{vehicle.png}
-	\caption{Structure of viecle controller}
+	\caption{Structure of vehicle controller}
 	\label{fig:diagram}
 \end{figure}
 
