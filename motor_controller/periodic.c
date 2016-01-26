@@ -93,10 +93,20 @@ TASK(task1) // called every 5 ms
 	double error_A = reference_speed - w_A;
 	double error_B = reference_speed - w_B;
 
-	double err = w_B - w_A;
+	int fine = 50.0;
+	double err = fabs(w_B - w_A);
+	if(error_w > fine){ //it is turning right
+		error_A += err;
+		error_B -= err;
+	}else if (error_w < -fine){ //it is turning left
+		error_A -= err;
+		error_B += err;
+	}
+
+	/*double err = w_B - w_A;
 	error_A += err / 2;
 	error_B += -err / 2;
-
+*/
 	double power_A = controller_A(error_A);
 	double power_B = controller_B(error_B);
 
